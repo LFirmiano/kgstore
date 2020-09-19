@@ -67,76 +67,8 @@
   </div>
   </div>
   </div>
-  <hr>
-    <!--form estoque-->
-    <form class="container">
-    <h1 class="display-4 text-center">Cadastro Estoque</h1>
-    
-    <label for="exampleFormControlSelect1"><strong>Tamanhos Disponíveis: </strong></label>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="PP">
-    <label class="form-check-label" for="inlineCheckbox1">PP</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="P">
-    <label class="form-check-label" for="inlineCheckbox2">P</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="M">
-    <label class="form-check-label" for="inlineCheckbox3">M</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="G">
-    <label class="form-check-label" for="inlineCheckbox4">G</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="GG">
-    <label class="form-check-label" for="inlineCheckbox5">GG</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="GG+">
-    <label class="form-check-label" for="inlineCheckbox6">XG</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="Tamanho Único">
-    <label class="form-check-label" for="inlineCheckbox7">Tamanho Único</label>
-    </div>
-
-    <div style="margin-bottom:-2%; margin-top:2%">
-    <label for="exampleFormControlInput1"><strong>Quantidades</strong></label>
-    </div>
-    <div class="row" style="margin-top:2%; margin-bottom:5%">
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">PP</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">P</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">M</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">G</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">GG</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">XG</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">Unitário</label>
-    <input type="number" class="form-control" placeholder="0" min="0">
-    </div>
-    </div>
-    </form>
-      
+  <a href="cad_estoque.php" class="btn btn-outline-success" style="margin-bottom:2%;">Avançar</a>
+  </form>
 
 </body>
 </html>
