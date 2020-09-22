@@ -25,6 +25,17 @@
     <h1 class="display-4 text-center">Cadastro Estoque</h1>
 
     <div style="margin-bottom:-2%; margin-top:2%">
+
+    
+    <label for="exampleFormControlSelect1"><strong>Unidade de Medida</strong></label>
+    <select class="form-control" id="exampleFormControlSelect1">
+    <!-- Unidadade que vai ser usada no estoque-->
+      <option value="">Unidades Calçados(Ex:36,38...)</option>
+      <option value="">Unidades Roupas Inferiores(Ex:36,42,50...)</option>
+      <option value="">Unidades Básicas (Ex: PP, P, M...)</option>
+      <option value="">Unidade Única(Tamanho único)</option>
+    </select>
+
     <label for="exampleFormControlInput1"><strong>Quantidades</strong></label>
     </div>
     <div class="row" style="margin-top:2%; margin-bottom:5%">
