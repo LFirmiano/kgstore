@@ -34,17 +34,6 @@
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>SubCategoria</strong></label>
     <input type="text" class="form-control" placeholder="Ex:Short Jeans Com Pontas Rasgadas">
-  </div>
-
-  <div class="form-group col-md-4">
-    <label for="exampleFormControlSelect1"><strong>Unidade de Medida</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1">
-    <!-- Unidadade que vai ser usada no estoque-->
-      <option value="">Unidades Calçados(Ex:36,38...)</option>
-      <option value="">Unidades Roupas Inferiores(Ex:36,42,50...)</option>
-      <option value="">Unidades Básicas (Ex: PP, P, M...)</option>
-      <option value="">Unidade Única(Tamanho único)</option>
-    </select>
   </div></div>
   
   <a href="categoria.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
