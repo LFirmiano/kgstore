@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de categoria</title>
+    <title>Editar Cliente</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -18,41 +18,44 @@
    <?php include "include/menu.php";?>
    
 
-   <!--form produto-->
+   <!--form cliente-->
    <form>
-   <div class="container">
-   
-   <h1 class="display-4 text-center">Cadastro de Categoria</h1>
+   <div class="container"> 
+   <h1 class="display-4 text-center">Editar Cliente</h1>
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 
-   <div class="form-group col-md-4">
-    <label for="exampleFormControlInput1"><strong>Categoria</strong></label>
-    <input type="text" class="form-control" placeholder="Ex:Short">
+   <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1"><strong>Cliente</strong></label>
+    <input type="text" class="form-control" value="Jorge Costa Mendes">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1"><strong>Email</strong></label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="jorge@gmail.com">
   </div>
 
   <div class="form-group col-md-4">
-    <label for="exampleFormControlInput1"><strong>SubCategoria</strong></label>
-    <input type="text" class="form-control" placeholder="Ex:Short Jeans Com Pontas Rasgadas">
+    <label for="exampleFormControlInput1"><strong>Telefone</strong></label>
+    <input type="text" class="form-control" value="(85)998562214">
+  </div>
+
+  <div class="form-group col-md-8">
+    <label for="inputAddress"><strong>Endereço</strong></label>
+    <input type="text" class="form-control" id="inputAddress" value="Rua Chile, 85, Bela Vista">
   </div>
 
   <div class="form-group col-md-4">
-    <label for="exampleFormControlSelect1"><strong>Unidade de Medida</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1">
-    <!-- Unidadade que vai ser usada no estoque-->
-      <option value="">Unidades Calçados(Ex:36,38...)</option>
-      <option value="">Unidades Roupas Inferiores(Ex:36,42,50...)</option>
-      <option value="">Unidades Básicas (Ex: PP, P, M...)</option>
-      <option value="">Unidade Única(Tamanho único)</option>
-    </select>
-  </div></div>
-  
-  <a href="categoria.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <label for="exampleFormControlInput1"><strong>Data Nascimento</strong></label>
+    <input type="text" class="form-control" value="25/10/1989">
+  </div>
+
+<br>
+</div>
+<a href="cliente.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-  </svg></a> 
-  
-  <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Cadastrar</button>
-  
+</svg></a>
+  <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Editar</button>
   </form>
 
   </div>
