@@ -1,0 +1,23 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+		$(function(){
+			$('#id').change(function(){
+				if( $(this).val() ) {
+					$('#id_pasta').hide();
+					//$('.carregando').show();
+					$.getJSON('include/listarpastas.php?search=',{id: $(this).val(), ajax: 'true'}, function(j){
+						var options = '<option value="">Escolha a Pasta</option>';	
+						for (var i = 0; i < j.length; i++) {
+							options += '<option value="' + j[i].nome_pasta + '">' + j[i].nome_pasta + '</option>';
+						}	
+						$('#id_pasta').html(options).show();
+						//$('.carregando').hide();
+					});
+				} else {
+					$('#id_pasta').html('<option value="">– Escolha a Pasta –</option>');
+				}
+			});
+		});
+</script>
