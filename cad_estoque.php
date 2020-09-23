@@ -19,7 +19,7 @@
    
 
        <!--form estoque tamanhos calçados-->
-    <form>
+    <form method="POST" action="include/C_estoque.php">
     <div class="container">
     
     <h1 class="display-4 text-center">Cadastro Estoque</h1>
@@ -50,7 +50,7 @@
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
     </svg></a> 
         
-    <a href="estoque.php" class="btn btn-outline-success" style="margin-bottom:2%;">Cadastrar</a>
+    <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Cadastrar</button>
 
     </div>
     </form>
@@ -65,7 +65,7 @@
             $.getJSON('include/pegar_unidades.php?search=',{id: sel.value, ajax: 'true'}, function(j){
                         var divs = '<div></div>';	
 						for (var i = 0; i < j.length; i++) {
-							divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="number" class="form-control" placeholder="0" min="0"></div>';
+							divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="number" name="' + j[i].tamanhos + '" class="form-control" placeholder="0" min="0"></div>';
 						}	
 						$('#unidades').html(divs).show();
 			});
