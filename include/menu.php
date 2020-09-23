@@ -13,7 +13,7 @@
           <a class="nav-link" href="categoria.php">Categorias</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#">Fornecedores</a>
+          <a class="nav-link" href="fornecedor.php">Fornecedores</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="cliente.php">Clientes</a>
