@@ -1,0 +1,9 @@
+-- CODIGO PARA MYSQL
+
+CREATE TABLE produtos (
+    id_produto INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    produto VARCHAR(200) NOT NULL,
+    categoria VARCHAR(200) NOT NULL,
+    fornecedor VARCHAR(200) NOT NULL,
+    valor DECIMAL(6,2) NOT NULL
+)

@@ -19,7 +19,7 @@
    
 
    <!--form produto-->
-   <form>
+   <form method="POST" action="include/C_produto.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Cadastro de Produto</h1>
 
@@ -27,28 +27,30 @@
 
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Produto</strong></label>
-    <input type="text" class="form-control" placeholder="Short Jeans">
+    <input type="text" class="form-control" name="produto" placeholder="Short Jeans" required>
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Categoria</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select class="form-control" name = "categoria" id="exampleFormControlSelect1" required>
     <!-- Puxar da tabela categoria(na verdade vai pegar as subcategorias)-->
-      <option value="">Short Masculino Praia</option>
-      <option value="">Blusa Tie Dye</option>
-      <option value="">Blusa Feminina Tomara que caia</option>
-      <option value="">Blusa Masculina GolaPolo</option>
+      <option value="">Selecione a Categoria</option>
+      <option value="Short Masculino Praia">Short Masculino Praia</option>
+      <option value="Blusa Tie Dye">Blusa Tie Dye</option>
+      <option value="Blusa Feminina Tomara que caia">Blusa Feminina Tomara que caia</option>
+      <option value="Blusa Masculina GolaPolo">Blusa Masculina GolaPolo</option>
     </select>
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Fornecedor</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1">
+    <select class="form-control" name="fornecedor" id="exampleFormControlSelect1" required>
     <!-- Puxar da tabela fornecedor-->
-      <option value="">Fornecedor A</option>
-      <option value="">Fornecedor B</option>
-      <option value="">Fornecedor C</option>
-      <option value="">Fornecedor D</option>
+      <option value="">Selecione o Fornecedor</option>
+      <option value="Fornecedor A">Fornecedor A</option>
+      <option value="Fornecedor B">Fornecedor B</option>
+      <option value="Fornecedor C">Fornecedor C</option>
+      <option value="Fornecedor D">Fornecedor D</option>
     </select>
   </div>
 
@@ -57,7 +59,7 @@
   <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" required>
   <div class="input-group-append">
     <span class="input-group-text">.00</span>
   </div>
@@ -69,7 +71,7 @@
   <a href="estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
   </svg></a>
-  <a href="cad_estoque.php" class="btn btn-outline-success" style="margin-bottom:2%;">Avançar</a>
+  <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Avançar</button>
   </div>
   </form>
 
