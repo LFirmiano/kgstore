@@ -65,7 +65,7 @@
             $.getJSON('include/pegar_unidades.php?search=',{id: sel.value, ajax: 'true'}, function(j){
                         var divs = '<div></div>';	
 						for (var i = 0; i < j.length; i++) {
-							divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="number" name="' + j[i].tamanhos + '" class="form-control" placeholder="0" min="0"></div>';
+							divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="hidden" name="' + j[i].tamanhos + 'H" value="' + j[i].tamanhos + '"><input type="number" name="' + j[i].tamanhos + '" class="form-control" placeholder="0" min="0"></div>';
 						}	
 						$('#unidades').html(divs).show();
 			});
