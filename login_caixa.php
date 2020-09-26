@@ -12,25 +12,25 @@
 <body>
     
 <div class="card text-center">
-  <div class="card-header">
+  <div class="card-header bg-info">
   
-  <h1 class="display-4 text-center">Login de Caixa</h1>
+  <h1 class="display-4 text-center text-light">Login Caixa</h1>
     
   </div>
   <div class="card-body">
     <!--form login-->
     <form class="container">
-    <a href="index.php" class="btn btn-outline-dark " style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <a href="index.php" class="btn btn-outline-info " style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
     </svg></a> 
     <div class="form-group">
         <label for="exampleInputEmail1"><strong>Email</strong></label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control border border-info" id="exampleInputEmail1" aria-describedby="emailHelp">
         
     </div>
     <div class="form-group ">
         <label for="exampleInputPassword1"><strong>Senha</strong></label>
-        <input type="password" class="form-control " id="exampleInputPassword1">
+        <input type="password" class="form-control border border-info" id="exampleInputPassword1">
         <a class="link" data-toggle="modal" data-target="#exampleModal">
         <small>Esqueci a senha</small>
         </a>
@@ -40,7 +40,7 @@
    </div> 
   </form>
 
-  <div class="card-footer text-muted">
+  <div class="card-footer text-muted fixed-bottom">
   copyright © 2020 . all rights reserved
   </div>
 </div>
