@@ -1,0 +1,9 @@
+-- CODIGO PARA MYSQL
+
+CREATE TABLE fornecedor (
+    id_fornecedor INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fornecedor VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    telefone VARCHAR(200) NOT NULL,
+    endereco VARCHAR(200) NOT NULL
+)
