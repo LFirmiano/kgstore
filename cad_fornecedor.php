@@ -19,7 +19,7 @@
    
 
    <!--form fornecedor-->
-   <form>
+   <form method="POST" action="include/C_fornecedor.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Cadastro de Fornecedor</h1>
@@ -28,22 +28,22 @@
 
    <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Fornecedor</strong></label>
-    <input type="text" class="form-control" placeholder="Fornecedor A">
+    <input type="text" class="form-control" name="fornecedor" placeholder="Fornecedor A">
   </div>
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Email</strong></label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@email.com">
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@email.com">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Telefone</strong></label>
-    <input type="text" class="form-control" placeholder="(DDD)90000-0000">
+    <input type="text" class="form-control" name="telefone" placeholder="(DDD)90000-0000">
   </div>
 
   <div class="form-group col-md-8">
     <label for="inputAddress"><strong>Endereço</strong></label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Rua ABC, 000, Bairro">
+    <input type="text" class="form-control" name="endereco" id="inputAddress" placeholder="Rua ABC, 000, Bairro">
   </div>
 
 
