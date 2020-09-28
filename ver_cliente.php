@@ -15,7 +15,10 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_cliente.php";
+   ?>
    
 
    <!--info Cliente-->
@@ -28,19 +31,19 @@
    <fieldset disabled>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Cliente:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="Jorge Costa Mendes">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->nome ?>">
 
       <label for="disabledTextInput"><strong>Email:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="jorge@gmail.com">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->email ?>">
 
       <label for="disabledTextInput"><strong>Telefone:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="(85)998562214">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->telefone ?>">
  
       <label for="disabledTextInput"><strong>Endereço:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="Rua Chile, 85, Bela Vista">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->endereco ?>">
 
       <label for="disabledTextInput"><strong>Data Nascimento:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="25/10/1989">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->data_nascimento ?>">
 
     </div>
         
