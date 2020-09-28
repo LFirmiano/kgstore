@@ -15,7 +15,10 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_fornecedor.php";
+   ?>
    
 
    <!--info Fornecedor-->
@@ -28,16 +31,16 @@
    <fieldset disabled>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Fornecedor:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="Fernanda">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->fornecedor ?>">
 
       <label for="disabledTextInput"><strong>Email:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="moraes@peças.com">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->email ?>">
 
       <label for="disabledTextInput"><strong>Telefone:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="(85)998562200">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->telefone ?>">
  
       <label for="disabledTextInput"><strong>Endereço:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="Avenida Beira Mar, 2010, Meireles">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->endereco ?>">
 
     </div>
         
