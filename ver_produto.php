@@ -15,7 +15,10 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_produto.php";
+   ?>
    
 
    <!--info produto-->
@@ -28,16 +31,16 @@
    <fieldset disabled>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Produto:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="Peça A">
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $prod->produto ?>">
 
       <label for="disabledTextInput"><strong>Categoria:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="Short Jeans">
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $prod->categoria ?>">
 
       <label for="disabledTextInput"><strong>Fornecedor:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="Fornecedor A">
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $prod->fornecedor ?>">
  
       <label for="disabledTextInput"><strong>Valor:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="R$ 15,00">
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="R$ <?php echo $prod->valor ?> ">
     </div>
 
   </fieldset>
