@@ -31,7 +31,7 @@
    <fieldset disabled>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Produto:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $prod->produto ?>">
+      <input type="text" id="prod" class="form-control" placeholder="<?php echo $prod->produto ?>" value="<?php echo $prod->produto ?>">
 
       <label for="disabledTextInput"><strong>Categoria:</strong></label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="<?php echo $prod->categoria ?>">
@@ -53,29 +53,7 @@
     <h1 class="display-4 text-center">Informações de Estoque</h1>
     
     <fieldset disabled>
-    <div class="form-group-inline" style="margin-bottom: 5%">
-      <label for="disabledTextInput"><strong>Tamanho PP:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho P:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho M:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho G:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho GG:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho GG+:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-      <label for="disabledTextInput"><strong>Tamanho Unitario:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="10">
-
-
+    <div class="form-group-inline" id="unidades" style="margin-bottom: 5%">
     </div>
     </fieldset>
     <a href="estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -83,6 +61,22 @@
     </svg></a> 
     </div>
     </form>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var unidade = $('#prod').val();
+        // console.log(unidade);
+        $.getJSON('include/R_estoque.php?search=',{id: unidade, ajax: 'true'}, function(j){
+            var divs = '<div></div>';	
+						for (var i = 0; i < j.length; i++) {
+							divs += '<label for="disabledTextInput"><strong>' + j[i].tamanhos + '</strong></label><input type="text" id="disabledTextInput" class="form-control" placeholder="' + j[i].quantidades + '">';
+						}	
+						$('#unidades').html(divs).show();
+			});
+      })
+    </script>
       
 
 </body>
