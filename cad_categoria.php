@@ -38,7 +38,7 @@
       
    <div class="form-group col-md-4">      
    <label for="exampleFormControlSelect1"><strong>Unidade de Medida</strong></label>
-    <select class="form-control" onchange="getval(this)" name="id" id="id">
+    <select class="form-control" name="unidade" id="unidade">
     <!-- Unidadade que vai ser usada no estoque-->
       <option value="">Selecione a Unidade</option>
       <option value="Unidades Calçados">Unidades Calçados</option>

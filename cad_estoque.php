@@ -19,7 +19,7 @@
    
 
        <!--form estoque tamanhos calçados-->
-    <form method="POST" action="include/C_estoque.php">
+    <form method="POST" action="include/C_prod_estoque.php">
     <div class="container">
     
     <h1 class="display-4 text-center">Cadastro Estoque</h1>
@@ -45,6 +45,12 @@
     <div class="row" name="unidades" id="unidades" style="margin-top:2%; margin-bottom:5%">
 
     </div>
+    
+    <input type="hidden" name="controle" value="CONTROLE">
+    <input type="hidden" name="produto" value="<?php echo $_POST['produto'] ?>">
+    <input type="hidden" name="categoria" value="<?php echo $_POST['categoria'] ?>">
+    <input type="hidden" name="fornecedor" value="<?php echo $_POST['fornecedor'] ?>">
+    <input type="hidden" name="valor" value="<?php echo $_POST['valor'] ?>">
 
     <a href="cad_produto.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
