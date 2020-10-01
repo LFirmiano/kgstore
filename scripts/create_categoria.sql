@@ -3,5 +3,6 @@
 CREATE TABLE categoria (
     id_categoria INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     categoria VARCHAR(200) NOT NULL,
-    subcategoria VARCHAR(200) NOT NULL
+    subcategoria VARCHAR(200) NOT NULL,
+    unidade VARCHAR(200) NOT NULL,
 )

@@ -19,7 +19,7 @@
    
 
    <!--form produto-->
-   <form method="POST" action="include/C_produto.php">
+   <form method="POST" action="cad_estoque.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Cadastro de Produto</h1>
 

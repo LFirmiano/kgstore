@@ -2,6 +2,7 @@
 
 CREATE TABLE estoque (
     id_estoque INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    produto VARCHAR(200) NOT NULL,
     unidade VARCHAR(200) NOT NULL,
     tamanho VARCHAR(200) NOT NULL,
     quantidade INT(10) NOT NULL
