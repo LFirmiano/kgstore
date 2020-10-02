@@ -15,11 +15,14 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+    include "include/menu.php";
+    include "include/R_cliente.php";
+    ?>
    
 
    <!--form cliente-->
-   <form>
+   <form method="POST" action="include/U_cliente.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Editar Cliente</h1>
 
@@ -27,28 +30,30 @@
 
    <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Cliente</strong></label>
-    <input type="text" class="form-control" value="Jorge Costa Mendes">
+    <input type="text" class="form-control" name="nome" value="<?php echo $row->nome ?>">
   </div>
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Email</strong></label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="jorge@gmail.com">
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="<?php echo $row->email ?>">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Telefone</strong></label>
-    <input type="text" class="form-control" value="(85)998562214">
+    <input type="text" class="form-control" name="telefone" value="<?php echo $row->telefone ?>">
   </div>
 
   <div class="form-group col-md-8">
     <label for="inputAddress"><strong>Endereço</strong></label>
-    <input type="text" class="form-control" id="inputAddress" value="Rua Chile, 85, Bela Vista">
+    <input type="text" class="form-control" name="endereco" id="inputAddress" value="<?php echo $row->endereco ?>">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Data Nascimento</strong></label>
-    <input type="text" class="form-control" value="25/10/1989">
+    <input type="date" class="form-control" name="data_nascimento" value=<?php echo $row->data_nascimento?>>
   </div>
+
+  <input type="hidden" name="edit" value=<?php echo $_POST['visualizar'] ?>>
 
 <br>
 </div>
