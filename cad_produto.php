@@ -25,7 +25,7 @@
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 
-   <div class="form-group col-md-4">
+  <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Produto</strong></label>
     <input type="text" class="form-control" name="produto" placeholder="Short Jeans" required>
   </div>
