@@ -44,7 +44,7 @@
         </svg>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Meus Dados</a>
+          <a class="dropdown-item" href="perfil.php">Meus Dados</a>
           <a class="dropdown-item" href="#">Dados da Empresa</a>
           <div class="dropdown-divider"></div>
           <!--Sair provissorio-->
