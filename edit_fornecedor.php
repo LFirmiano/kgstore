@@ -15,11 +15,14 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+    include "include/menu.php";
+    include "include/R_fornecedor.php";
+    ?>
    
 
    <!--form Fornecedor-->
-   <form>
+   <form method="POST" action="include/U_fornecedor.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Editar Fornecedor</h1>
 
@@ -27,23 +30,25 @@
 
    <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Fornecedor</strong></label>
-    <input type="text" class="form-control" value="Fernanda">
+    <input type="text" class="form-control" value="<?php echo $row->fornecedor ?>" name="fornecedor">
   </div>
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Email</strong></label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="moraes@peças.com">
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="<?php echo $row->email ?>">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Telefone</strong></label>
-    <input type="text" class="form-control" value="(85)998562200">
+    <input type="text" class="form-control" value="<?php echo $row->telefone ?>" name="telefone">
   </div>
 
   <div class="form-group col-md-8">
     <label for="inputAddress"><strong>Endereço</strong></label>
-    <input type="text" class="form-control" id="inputAddress" value="Avenida Beira Mar, 2010, Meireles">
+    <input type="text" class="form-control" name="endereco" value="<?php echo $row->endereco ?>">
   </div>
+
+  <input type="hidden" name="edit" value=<?php echo $_POST['visualizar'] ?>>
 
 <br>
 </div>
