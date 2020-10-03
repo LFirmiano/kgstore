@@ -33,7 +33,7 @@
               <tr>
                 <?php 
                     include "include/L_fornecedor.php";
-                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                    while($row = $forn->fetch(PDO::FETCH_OBJ)){
                       // echo $row->produto;
                 ?>
                 <th scope="row"><?php echo $row->fornecedor ?> </th>
