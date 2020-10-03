@@ -15,7 +15,11 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+    include "include/menu.php";
+    include "include/L_categoria.php";
+    include "include/L_fornecedor.php";
+   ?>
    
 
    <!--form produto-->
@@ -33,12 +37,11 @@
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Categoria</strong></label>
     <select class="form-control" name = "categoria" id="exampleFormControlSelect1" required>
-    <!-- Puxar da tabela categoria(na verdade vai pegar as subcategorias)-->
       <option value="">Selecione a Categoria</option>
-      <option value="Short Masculino Praia">Short Masculino Praia</option>
-      <option value="Blusa Tie Dye">Blusa Tie Dye</option>
-      <option value="Blusa Feminina Tomara que caia">Blusa Feminina Tomara que caia</option>
-      <option value="Blusa Masculina GolaPolo">Blusa Masculina GolaPolo</option>
+    <?php while($row = $stmt->fetch(PDO::FETCH_OBJ)){ ?>
+    <!-- Puxar da tabela categoria(na verdade vai pegar as subcategorias)-->
+      <option value="<?php echo $row->subcategoria; ?>"><?php echo $row->subcategoria; ?></option>
+    <?php } ?>
     </select>
   </div>
 
@@ -47,10 +50,9 @@
     <select class="form-control" name="fornecedor" id="exampleFormControlSelect1" required>
     <!-- Puxar da tabela fornecedor-->
       <option value="">Selecione o Fornecedor</option>
-      <option value="Fornecedor A">Fornecedor A</option>
-      <option value="Fornecedor B">Fornecedor B</option>
-      <option value="Fornecedor C">Fornecedor C</option>
-      <option value="Fornecedor D">Fornecedor D</option>
+      <?php while($row_forn = $forn->fetch(PDO::FETCH_OBJ)){ ?>
+      <option value="<?php echo $row_forn->fornecedor; ?>"><?php echo $row_forn->fornecedor; ?></option>
+      <?php } ?>
     </select>
   </div>
 

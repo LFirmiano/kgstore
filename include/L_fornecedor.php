@@ -2,7 +2,7 @@
 
 include_once("bd.php");
 
-$stmt = $conn->prepare("SELECT * FROM fornecedor");
-$stmt->execute();
+$forn = $conn->prepare("SELECT * FROM fornecedor");
+$forn->execute();
 
 ?>
