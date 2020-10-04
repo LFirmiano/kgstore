@@ -23,43 +23,25 @@
    <h1 class="display-4 text-center">Editar Estoque</h1>
 
    <!--Nome produto-->
-   <label class="text-info"><h5><strong>Produto: </strong>Sapatinho do Seninha</h5></label>
+   <label class="text-info"><h5><strong>Produto: </strong><?php echo $_POST['visualizar']?></h5></label>
 
    <!--form estoque-->
    <form action="edit_produto.php" method="POST">
         <input type="hidden" value="">
         <button type="submit" class="btn btn-outline-info" style="float: left; margin-right: 3%;">Editar Produto</button>
+        <input type="hidden" id="prod" name="prod" value="<?php echo $_POST['visualizar']?>">
+        <input type="hidden" id="edit" name="edit" value=<?php echo $_POST['edit']?>>
     </form>
 
     <br><br>
 
     <!--form estoque-->
-   <form>
+   <form method="POST" action="include/U_estoque.php">
+
+   <input type="hidden" id="prod" name="prod" value="<?php echo $_POST['visualizar']?>">
+   
    <label><strong>Quantidades:</strong></label>
-   <div class="row" style="margin-top:2%; margin-bottom:5%"> 
-   <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">36</label>
-    <input type="number" class="form-control" min="0" value="2">
-  </div>
-  <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">38</label>
-    <input type="number" class="form-control" min="0" value="0">
-  </div>
-  <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">40</label>
-    <input type="number" class="form-control" min="0" value="6">
-  </div>
-  <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">42</label>
-    <input type="number" class="form-control" min="0" value="0">
-  </div>
-  <div class="form-group col-md-2">
-    <label for="exampleFormControlInput1">44</label>
-    <input type="number" class="form-control" min="0" value="0">
-  </div>
-
-
-
+   <div class="row" style="margin-top:2%; margin-bottom:5%" id="unidades"> 
 <br>
 </div>
 <a href="estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -69,5 +51,21 @@
   </form>
 
   </div>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var unidade = $('#prod').val();
+      // console.log(unidade);
+      $.getJSON('include/R_estoque.php?search=',{id: unidade, ajax: 'true'}, function(j){
+          var divs = '<div></div>';	
+          for (var i = 0; i < j.length; i++) {
+            divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="hidden" name="' + j[i].tamanhos + 'H" value="' + j[i].tamanhos + '"><input type="number" name="' + j[i].tamanhos + '"class="form-control" min="0" value="' + j[i].quantidades + '"></div>';
+          }	
+          $('#unidades').html(divs).show();
+    });
+    })
+  </script>
 </body>
 </html>

@@ -15,11 +15,21 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+    include "include/menu.php";
+    include "include/L_categoria.php";
+    include "include/L_fornecedor.php";
+    require_once("include/bd.php");
+    $state = $conn->prepare("SELECT * FROM produtos WHERE produto = :produto");
+    $state->bindParam(':produto',$_POST['prod'],PDO::PARAM_STR);
+    if ($state->execute()){
+      $col = $state->fetch(PDO::FETCH_OBJ);
+    }
+   ?>
    
 
    <!--form produto-->
-   <form method="POST" action="cad_estoque.php">
+   <form method="POST" action="include/U_produto.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Edição de Produto</h1>
 
@@ -27,18 +37,20 @@
 
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Produto</strong></label>
-    <input type="text" class="form-control" name="produto" value="Sapato do seninha" required>
+    <input type="text" class="form-control" name="produto" value="<?php echo $col->produto ?>" required>
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Categoria</strong></label>
-    <select class="form-control" name = "categoria" id="exampleFormControlSelect1" required>
+    <select class="form-control" name ="categoria" id="exampleFormControlSelect1" required>
     <!-- Puxar da tabela categoria(na verdade vai pegar as subcategorias)-->
-      <option value="" selected>Categoria selecionada no BD</option>
-      <option value="Short Masculino Praia">Short Masculino Praia</option>
-      <option value="Blusa Tie Dye">Blusa Tie Dye</option>
-      <option value="Blusa Feminina Tomara que caia">Blusa Feminina Tomara que caia</option>
-      <option value="Blusa Masculina GolaPolo">Blusa Masculina GolaPolo</option>
+      <option value="<?php echo $col->categoria ?>" selected><?php echo $col->categoria ?></option>
+      <?php 
+        while($row = $stmt->fetch(PDO::FETCH_OBJ)){ 
+          if ($row->subcategoria != $col->categoria){
+      ?>
+        <option value="<?php echo $row->subcategoria; ?>"><?php echo $row->subcategoria; ?></option>
+      <?php }} ?>
     </select>
   </div>
 
@@ -46,20 +58,24 @@
     <label for="exampleFormControlSelect1"><strong>Fornecedor</strong></label>
     <select class="form-control" name="fornecedor" id="exampleFormControlSelect1" required>
     <!-- Puxar da tabela fornecedor-->
-      <option value="" selected>Fornecedor selecionado no BD</option>
-      <option value="Fornecedor A" >Fornecedor A</option>
-      <option value="Fornecedor B">Fornecedor B</option>
-      <option value="Fornecedor C">Fornecedor C</option>
-      <option value="Fornecedor D">Fornecedor D</option>
+    <option value="<?php echo $col->fornecedor ?>" selected><?php echo $col->fornecedor ?></option>
+    <?php 
+      while($row_forn = $forn->fetch(PDO::FETCH_OBJ)){ 
+        if ($row_forn->fornecedor != $col->fornecedor){
+    ?>
+      <option value="<?php echo $row_forn->fornecedor; ?>"><?php echo $row_forn->fornecedor; ?></option>
+    <?php }} ?>
     </select>
   </div>
+
+  <input type="hidden" name="edit" value=<?php echo $_POST['edit']?>>
 
   <div class="form-group col-md-4">
   <label for="exampleFormControlSelect1"><strong>Valor do Produto</strong></label>
   <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
-  <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" value="20">
+  <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" value=<?php echo $col->valor?>>
   <div class="input-group-append">
     <span class="input-group-text">.00</span>
   </div>
