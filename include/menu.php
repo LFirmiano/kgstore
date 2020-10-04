@@ -14,26 +14,21 @@
           <a class="nav-link text-dark" href="estoque.php">Estoque</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-dark" href="categoria.php">Categorias</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link text-dark" href="fornecedor.php">Fornecedores</a>
-        </li>
-        <li class="nav-item ">
           <a class="nav-link text-dark" href="cliente.php">Clientes</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="#">Relatórios</a>
         </li>
-        <!--
+      
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Outros
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Tamanhos</a>
-            <a class="dropdown-item" href="#">Clientes</a>
-        </li>-->
+          <a class="nav-link text-dark" href="categoria.php">Categorias</a>
+          <a class="nav-link text-dark" href="fornecedor.php">Fornecedores</a>
+          <a class="nav-link text-dark" href="usuario.php">Usuários</a>
+        </li>
         </ul> 
 
         <!--botão canto direito-->
