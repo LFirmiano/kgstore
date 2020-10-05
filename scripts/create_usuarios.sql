@@ -2,6 +2,7 @@
 
 CREATE TABLE usuarios (
     id_usuario INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(200) NOT NULL,
     email VARCHAR(200) NOT NULL,
     senha VARCHAR(200) NOT NULL,
     tipo INT(1) NOT NULL
