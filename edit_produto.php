@@ -38,6 +38,7 @@
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Produto</strong></label>
     <input type="text" class="form-control" name="produto" value="<?php echo $col->produto ?>" required>
+    <input type="hidden" class="form-control" name="produto_old" value="<?php echo $col->produto ?>" required>
   </div>
 
   <div class="form-group col-md-4">
