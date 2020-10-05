@@ -17,12 +17,12 @@
     </script>
    <?php 
     include "include/menu.php";
-    //include "include/R_fornecedor.php";
+    include "include/R_usuario.php";
     ?>
    
 
    <!--form Fornecedor-->
-   <form method="POST" action="include/U_fornecedor.php">
+   <form method="POST" action="include/U_usuario.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Editar Usuário</h1>
 
@@ -30,36 +30,52 @@
 
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Nome</strong></label>
-    <input type="text" class="form-control" value="<?php //echo $row->fornecedor ?>" name="nome">
+    <input type="text" class="form-control" value="<?php echo $user->nome ?>" name="nome">
   </div>
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Email</strong></label>
-    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="<?php //echo $row->email ?>">
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="<?php echo $user->email ?>">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Senha</strong></label>
-    <input type="password" class="form-control" value="<?php //echo $row->telefone ?>" name="telefone">
+    <input type="password" class="form-control" value="<?php echo $user->senha ?>" name="senha">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Tipo</strong></label>      
+    <?php if($user->tipo == 0){ ?>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0" checked>
     <label class="form-check-label" for="exampleRadios1">
         Administração
     </label>
     </div>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1">
     <label class="form-check-label" for="exampleRadios2">
         Caixa
     </label>
     </div>
+    <?php } else { ?>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0">
+    <label class="form-check-label" for="exampleRadios1">
+        Administração
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1" checked>
+    <label class="form-check-label" for="exampleRadios2">
+        Caixa
+    </label>
+    </div>
+    <?php } ?>
+
   </div> 
 
-  <input type="hidden" name="edit" value=<?php //echo $_POST['visualizar'] ?>>
+  <input type="hidden" name="edit" value=<?php echo $_POST['visualizar'] ?>>
 
 <br>
 </div>
