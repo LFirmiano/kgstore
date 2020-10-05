@@ -47,26 +47,26 @@
     <label for="exampleFormControlInput1"><strong>Tipo</strong></label>      
     <?php if($user->tipo == 0){ ?>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0" checked>
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value=0 checked>
     <label class="form-check-label" for="exampleRadios1">
         Administração
     </label>
     </div>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value=1>
     <label class="form-check-label" for="exampleRadios2">
         Caixa
     </label>
     </div>
     <?php } else { ?>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value=0>
     <label class="form-check-label" for="exampleRadios1">
         Administração
     </label>
     </div>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1" checked>
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value=1 checked>
     <label class="form-check-label" for="exampleRadios2">
         Caixa
     </label>
