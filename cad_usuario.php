@@ -19,7 +19,7 @@
    
 
    <!--form usuário-->
-   <form method="POST" action="">
+   <form method="POST" action="include/C_usuario.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Cadastro de Usuário</h1>
@@ -28,34 +28,36 @@
 
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Nome</strong></label>
-    <input type="text" class="form-control" name="nome" placeholder="Jorge Costa Mendes">
+    <input type="text" class="form-control" name="nome" placeholder="Jorge Costa Mendes" required>
   </div>
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Email</strong></label>
-    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@email.com">
+    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@email.com" required>
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Senha</strong></label>
-    <input type="password" class="form-control" name="senha">
+    <input type="password" class="form-control" name="senha" required>
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Tipo</strong></label>      
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    <label class="form-check-label" for="exampleRadios1">
-        Administração
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value=0 checked>
+    <label class="form-check-label" for="exampleRadios1" value="0">
+        ADMINISTRAÇÃO
     </label>
     </div>
     <div class="form-check">
-    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value=1>
     <label class="form-check-label" for="exampleRadios2">
-        Caixa
+        CAIXA
     </label>
     </div>
   </div> 
+
+  <input type="hidden" name="tipo">
 
 <br>
 </div>
