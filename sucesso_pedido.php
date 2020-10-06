@@ -18,11 +18,11 @@
    <?php include "include/menu.php";?>
    
 
-   <!--form fornecedor-->
+   <!--info pedido-->
    <form method="POST" action="">
    <div class="container">
    
-   <h1 class="display-4 text-center text-success">Pedido Efetuado</h1>    
+   <h1 class="display-4 text-center text-success">Pedido Efetuado com Sucesso!</h1>    
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
 
 

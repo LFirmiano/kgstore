@@ -41,7 +41,7 @@
                 <td><?php echo $row->unidade; ?></td>
                 <td>
 
-                <!--botao alterar-->
+                <!--botao edição-->
                 <form action="edit_categoria.php" method="POST">
                   <input type="hidden" value="<?php echo $row->id_categoria ?>" name="editar">
                   <button type="submit" class="btn btn-outline-dark" style="float: left; margin-right: 3%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
