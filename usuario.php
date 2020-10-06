@@ -42,7 +42,7 @@
                 <td><?php if ($row->tipo == 0){ echo "Administração";} else{ echo "Caixa"; } ?></td>
                 <td>
 
-                <!--botao alterar-->
+                <!--botao edição-->
                 <form action="edit_usuario.php" method="POST">
                   <input type="hidden" value="<?php echo $row->id_usuario ?>" name="visualizar">
                   <button type="submit" class="btn btn-outline-dark" style="float: left; margin-right: 3%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

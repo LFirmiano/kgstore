@@ -21,7 +21,7 @@
    ?>
    
 
-   <!--info Cliente-->
+   <!--info pedido-->
    <form>
    <div class="container">
    
