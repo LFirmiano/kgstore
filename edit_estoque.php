@@ -20,7 +20,7 @@
    
    
    <div class="container"> 
-   <h1 class="display-4 text-center">Editar Estoque</h1>
+   <h1 class="display-4 text-center">Editar Estoque</h1><hr>
 
    <!--Nome produto-->
    <label class="text-info"><h5><strong>Produto: </strong><?php echo $_POST['visualizar']?></h5></label>

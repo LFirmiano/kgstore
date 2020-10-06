@@ -14,7 +14,7 @@
 <div class="card text-center">
   <div class="card-header bg-info">
   
-  <h1 class="display-4 text-center text-light">Login Administrador</h1>
+  <h1 class="display-4 text-center text-light">Login Administração</h1>
     
   </div>
   <div class="card-body">
@@ -53,7 +53,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Recuperação de senha</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Recuperação de Senha</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

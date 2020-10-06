@@ -25,7 +25,7 @@
    <form>
    <div class="container">
    
-   <h1 class="display-4 text-center">Informações do Cliente</h1>
+   <h1 class="display-4 text-center">Informações do Cliente</h1><hr>
 
    <div style="margin-top:2%; margin-bottom:5%">
    <fieldset disabled>

@@ -25,7 +25,7 @@
               <tr>
                 <th scope="col">Qtd Itens</th>
                 <th scope="col">Valor Total</th>
-                <th scope="col">hora compra</th>
+                <th scope="col">Hora compra</th>
                 <th scope="col">Detalhes</th>
               </tr>
             </thead>

@@ -21,7 +21,7 @@
    ?>
    
 
-   <!--info Cliente-->
+   <!--info produto-->
    <form>
    <div class="container">
    

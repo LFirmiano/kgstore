@@ -22,7 +22,7 @@
    <form method="POST" action="">
    <div class="container">
    
-   <h1 class="display-4 text-center">Novo Pedido</h1>    
+   <h1 class="display-4 text-center">Novo Pedido</h1><hr> 
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
    <div class="col-8">
 

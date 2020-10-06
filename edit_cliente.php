@@ -24,7 +24,7 @@
    <!--form cliente-->
    <form method="POST" action="include/U_cliente.php">
    <div class="container"> 
-   <h1 class="display-4 text-center">Editar Cliente</h1>
+   <h1 class="display-4 text-center">Editar Cliente</h1><hr>
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 
