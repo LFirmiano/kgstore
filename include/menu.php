@@ -43,7 +43,7 @@
           <a class="dropdown-item" href="dados_empresa.php">Dados da Empresa</a>
           <div class="dropdown-divider"></div>
           <!--Sair provissorio-->
-          <a href="index.php" class="dropdown-item">Sair</a>
+          <a href="include/logout.php" class="dropdown-item">Sair</a>
         </div>
 </div> 
     </div>

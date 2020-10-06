@@ -15,11 +15,15 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_categoria.php";
+   $array_uni = ["Unidades Calçados","Unidades Roupas Inferiores","Unidades Básicas","Unidade Única"];
+   ?>
    
 
    <!--form categoria-->
-   <form method="POST" action="include/C_categoria.php">
+   <form method="POST" action="include/U_categoria.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Editar de Categoria</h1>
@@ -28,25 +32,27 @@
 
    <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Categoria</strong></label>
-    <input type="text" name="categoria" class="form-control" value="Short">
+    <input type="text" name="categoria" class="form-control" value="<?php echo $row->categoria ?>">
   </div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>SubCategoria</strong></label>
-    <input type="text" class="form-control" name="subcategoria" value="Short Jeans Com Pontas Rasgadas">
+    <input type="text" class="form-control" name="subcategoria" value="<?php echo $row->subcategoria?>">
   </div>
       
    <div class="form-group col-md-4">      
    <label for="exampleFormControlSelect1"><strong>Unidade de Medida</strong></label>
     <select class="form-control" name="unidade" id="unidade">
     <!-- Unidadade que vai ser usada no estoque-->
-      <option value="" selected>Item selecionado no BD</option>
-      <option value="Unidades Calçados">Unidades Calçados</option>
-      <option value="Unidades Roupas Inferiores">Unidades Roupas Inferiores</option>
-      <option value="Unidades Básicas">Unidades Básicas</option>
-      <option value="Unidade Única">Unidade Única</option>
+    <option value="<?php echo $row->unidade ?>" selected><?php echo $row->unidade ?></option>
+    <?php for($i=0;$i<count($array_uni);$i++){ 
+            if ($row->unidade != $array_uni[$i]){  ?>
+      <option value="<?php echo $array_uni[$i] ?>"><?php echo $array_uni[$i] ?></option>
+    <?php }} ?>
     </select>
     </div>
+
+    <input type="hidden" name="edit" value=<?php echo $_POST['editar'] ?>>
   
     </div>
   <a href="categoria.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
