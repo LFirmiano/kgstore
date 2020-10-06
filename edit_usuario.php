@@ -22,7 +22,7 @@
    
 
    <!--form usuário-->
-   <form method="POST" action="include/U_fornecedor.php">
+   <form method="POST" action="include/U_usuario.php">
    <div class="container"> 
    <h1 class="display-4 text-center">Editar usuário</h1>
 
