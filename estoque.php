@@ -50,7 +50,7 @@
                   </svg></button>
                 </form>
 
-                <!--botao alterar-->
+                <!--botao edição-->
                 <form action="edit_estoque.php" method="POST">
                   <input type="hidden" value="<?php echo $row->produto ?>" name="visualizar">
                   <input type="hidden" value="<?php echo $row->id_produto ?>" name="edit">

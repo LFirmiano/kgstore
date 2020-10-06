@@ -21,10 +21,10 @@
     ?>
    
 
-   <!--form Fornecedor-->
+   <!--form usuário-->
    <form method="POST" action="include/U_fornecedor.php">
    <div class="container"> 
-   <h1 class="display-4 text-center">Editar Usuário</h1>
+   <h1 class="display-4 text-center">Editar usuário</h1>
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 

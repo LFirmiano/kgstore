@@ -37,7 +37,7 @@
                       // echo $row->produto;
                 ?>
                 <th scope="row">01<?php //echo $row->nome ?></th>
-                <td>R$20,00<?php //echo $row->data_nascimento ?></td>
+                <td>R$25,00<?php //echo $row->data_nascimento ?></td>
                 <td>11:07:30<?php //echo $row->telefone ?></td>
                 <td>
 

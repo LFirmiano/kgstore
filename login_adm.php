@@ -14,7 +14,7 @@
 <div class="card text-center">
   <div class="card-header bg-info">
   
-  <h1 class="display-4 text-center text-light">Login Administrador</h1>
+  <h1 class="display-4 text-center text-light">Login Administração</h1>
     
   </div>
   <div class="card-body">
@@ -69,7 +69,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Solicitar</button>
+        <button type="button" class="btn btn-primary">Recuperar</button>
       </div>
     </div>
   </div>

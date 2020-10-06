@@ -22,7 +22,7 @@
     <form method="POST" action="include/C_prod_estoque.php">
     <div class="container">
     
-    <h1 class="display-4 text-center">Cadastro Estoque</h1>
+    <h1 class="display-4 text-center">Cadastro estoque</h1>
 
     <div style="margin-bottom:-2%; margin-top:2%">
 

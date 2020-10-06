@@ -25,7 +25,7 @@
    <form>
    <div  class="container">
    
-   <h1 class="display-4 text-center">Informações de Produto</h1>
+   <h1 class="display-4 text-center">Informações do produto</h1>
 
    <div style="margin-top:2%; margin-bottom:5%">
    <fieldset disabled>
@@ -50,7 +50,7 @@
 
     <!--info estoque-->
     <form class="container">
-    <h1 class="display-4 text-center">Informações de Estoque</h1>
+    <h1 class="display-4 text-center">Informações do estoque</h1>
     
     <fieldset disabled>
     <div class="form-group-inline" id="unidades" style="margin-bottom: 5%">

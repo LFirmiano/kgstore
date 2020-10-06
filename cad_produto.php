@@ -25,7 +25,7 @@
    <!--form produto-->
    <form method="POST" action="cad_estoque.php">
    <div class="container"> 
-   <h1 class="display-4 text-center">Cadastro de Produto</h1>
+   <h1 class="display-4 text-center">Cadastro de produto</h1>
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 

@@ -22,7 +22,7 @@
    <form method="POST" action="include/C_categoria.php">
    <div class="container">
    
-   <h1 class="display-4 text-center">Cadastro de Categoria</h1>
+   <h1 class="display-4 text-center">Cadastro de categoria</h1>
 
    <div class="row" style="margin-top:2%; margin-bottom:5%">
 
