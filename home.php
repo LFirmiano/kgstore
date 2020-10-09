@@ -13,31 +13,48 @@
 <body>
     <?php include "include/menu.php" ?>
 
-    
-    <div class="chart-container text-center" style="position:relative, height:20vh; width:50vw; margin-left:2%; margin-top:2% ">
-        <h2 style="color:rgb(0, 89, 179)">Vendas (Outubro)</h2>
-        <canvas id="vendasDia"></canvas>
-        <figcaption class="figure-caption">Gráfico de vendas no mês de <!--mês conrrespondente-->  
-        </figcaption>
-    </div>
-    
-    <hr>
-    <div class="chart-container text-center" style="position:right, height:20vh; width:50vw; margin-left:2%; margin-top:2%">
-        <h2 style="color:rgb(230, 138, 0)">Valores (Outubro)</h2>
-        <canvas id="valorDia"></canvas>
-        <figcaption class="figure-caption">Gráfico de valores no mês de <!--mês conrrespondente-->  
-        </figcaption>
-    </div>
-    
-    <hr>
-    <div class="chart-container text-center" style="position:right, height:20vh; width:50vw; margin-left:2%; margin-top:2%">
-        <h2 style="color:rgb(0, 204, 102)">Vendas (2020)</h2>
-        <canvas id="vendasMes"></canvas>
-        <figcaption class="figure-caption">Gráfico de vendas do ano <!--mês conrrespondente-->  
-        </figcaption>
-    </div>
 
-    
+            <div class="row">
+                <div class="col">
+                    <div class="chart-container text-center" style="position:relative, height:20vh; width:35vw; margin-left:2%; margin-top:2% ">
+                        <h2 style="color:rgb(0, 89, 179)">Vendas (Outubro)</h2>
+                        <canvas id="vendasDia"></canvas><br>
+                        <figcaption class="figure-caption">Gráfico de vendas no mês de <!--mês conrrespondente-->  
+                        </figcaption>
+                    </div>
+                    
+                    <br><br><hr><br><br>
+
+                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                        <h2 style="color:rgb(230, 138, 0)">Valores (Outubro)</h2>
+                        <canvas id="valorDia"></canvas><br>
+                        <figcaption class="figure-caption">Gráfico de valores no mês de <!--mês conrrespondente-->  
+                        </figcaption>
+                    </div>
+                
+                </div>
+                
+                <div class="col">
+                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                        <h2 style="color:rgb(0, 204, 102)">Vendas (2020)</h2>
+                        <canvas id="vendasMes"></canvas><br>
+                        <figcaption class="figure-caption">Gráfico de vendas do ano <!--mês conrrespondente-->  
+                        </figcaption>
+                    </div>
+
+                    <br><br><hr><br><br>
+
+                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                        <h2 style="color:rgb(255, 0, 0)">Valores (2020)</h2>
+                        <canvas id="valoresMes"></canvas><br>
+                        <figcaption class="figure-caption">Gráfico de valores do ano <!--mês conrrespondente-->  
+                        </figcaption>
+                    </div>
+
+                </div>
+            </div>
+
+
 
     <script>
 
@@ -92,8 +109,8 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
                 labels: ['1-5', '6-10', '11-15', '16-20', '21-25', '26-31'],
                 datasets: [{
                     label: 'Valores diários',
-                    backgroundColor: 'rgba(255, 163, 26, 0.5)',
-                    borderColor: 'rgba(230, 138, 0, 0.5)',
+                    backgroundColor: 'rgb(255, 163, 26)',
+                    borderColor: 'rgb(230, 138, 0)',
                     data: [2, 10, 5, 2, 20, 30, 45]
                 }]
             },
@@ -131,7 +148,31 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
         });
 
 //===================================================================================================================
-        
+         //Valores Anuais
+         var ctx = document.getElementById('valoresMes').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'doughnut',
+
+            // The data for our dataset
+            data: {
+                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+                'Outubro','Novembro','Dezembro'],
+                datasets: [{
+                    label: 'Quantidades de valores',
+                    backgroundColor: ['rgb(255, 153, 0)','rgb(0, 255, 0)','rgb(255, 0, 0)',
+                    'rgb(255, 255, 0)','rgb(0, 255, 204)','rgb(204, 0, 255)','rgb(102, 51, 0)', 
+                    'rgb(255, 51, 204)', 'rgb(0, 0, 0, 0.4)', 'rgb(0, 115, 230)', 
+                    'rgb(204, 255, 51)', 'rgb(230, 230, 230)'],
+                    data: [2, 8, 8, 1, 3, 1, 4, 8, 2, 5, 2, 9]
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+            
+        });
+
     </script>
 
 </body>
