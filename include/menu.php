@@ -11,13 +11,16 @@
           <a class="nav-link text-dark" href="home.php">Home</a>
         </li>
         <li class="nav-item ">
+          <a class="nav-link text-dark" href="pedidos_diario.php">Pedidos</a>
+        </li>
+        <li class="nav-item ">
           <a class="nav-link text-dark" href="estoque.php">Estoque</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="cliente.php">Clientes</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link text-dark" href="#">Relatórios</a>
+          <a class="nav-link text-dark" href="relatorio.php">Relatórios</a>
         </li>
       
         <li class="nav-item dropdown">
