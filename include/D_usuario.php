@@ -4,11 +4,12 @@
 
 include "bd.php";
 
-$id = intval($_POST['id_cl']);
+$id = intval($_POST['id_del']);
 
-$stmt = $conn->prepare("DELETE FROM cliente WHERE id_cliente = :id");
+$stmt = $conn->prepare("DELETE FROM usuarios WHERE id_usuario = :id");
 $stmt->bindParam(':id',$id,PDO::PARAM_STR);
 $stmt->execute();
 
-header("Location: ../cliente.php");
+header("Location: ../usuario.php");
+
 ?>
