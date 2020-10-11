@@ -33,7 +33,7 @@
 </svg></h2> 
 
 <h5 class="text-info" style="margin-top:2%;"><strong>Empresa:</strong> KG Store</h5>
-<h5 class="text-info" style="margin-top:2%;"><strong>Nome Empresário(a):</strong> Gabe</h5> 
+<h5 class="text-info" style="margin-top:2%;"><strong>Nome Empresário(a):</strong> Gabrielle Feliciano da Rocha</h5> 
 <h5 class="text-info" style="margin-top:2%;"><strong>CNPJ:</strong> 36.496.261/0001-85</h5>
 <h5 class="text-info" style="margin-top:2%;"><strong>Logradouro:</strong> Rua Mario de Andrade</h5> 
 <h5 class="text-info" style="margin-top:2%;"><strong>CEP:</strong> 60442-132</h5> 
