@@ -28,7 +28,7 @@
 
    <div class="form-group col-md-6">
     <label for="exampleFormControlInput1"><strong>Cliente</strong></label>
-    <input type="text" class="form-control" name="nome" placeholder="Jorge Costa Mendes">
+    <input type="text" class="form-control" name="nome" placeholder="Jorge Costa Mendes" required>
   </div>
 
   <div class="form-group col-md-6">
@@ -38,7 +38,7 @@
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Telefone</strong></label>
-    <input type="text" class="form-control" name="telefone" placeholder="(DDD)90000-0000">
+    <input type="text" class="form-control" name="telefone" placeholder="(DDD)90000-0000" required>
   </div>
 
   <div class="form-group col-md-8">
@@ -48,7 +48,7 @@
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlInput1"><strong>Data Nascimento</strong></label>
-    <input type="date" class="form-control" name="data_nascimento" placeholder="Ex:Short">
+    <input type="date" class="form-control" name="data_nascimento" placeholder="Ex:Short" required>
   </div>
 
 <br>

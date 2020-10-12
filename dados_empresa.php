@@ -35,15 +35,16 @@
 <h5 class="text-info" style="margin-top:2%;"><strong>Empresa:</strong> KG Store</h5>
 <h5 class="text-info" style="margin-top:2%;"><strong>Nome Empresário(a):</strong> Gabrielle Feliciano da Rocha</h5> 
 <h5 class="text-info" style="margin-top:2%;"><strong>CNPJ:</strong> 36.496.261/0001-85</h5>
-<h5 class="text-info" style="margin-top:2%;"><strong>Logradouro:</strong> Rua Mario de Andrade</h5> 
-<h5 class="text-info" style="margin-top:2%;"><strong>CEP:</strong> 60442-132</h5> 
-<h5 class="text-info" style="margin-top:2%;"><strong>Bairro:</strong> Bela Vista</h5>     
+<h5 class="text-info" style="margin-top:2%;"><strong>Logradouro:</strong> Rua Argentina, 184</h5> 
+<h5 class="text-info" style="margin-top:2%;"><strong>CEP:</strong> 60442-440</h5> 
+<h5 class="text-info" style="margin-top:2%;"><strong>Bairro:</strong> Bela Vista</h5>   
+
 
 </div>
 </div>
   </form>
   <!--botão voltar-->
-  <a href="javascript:history.back()" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <a href="javascript:history.back()" class="btn btn-outline-dark " style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
   </svg></a>
   </div>

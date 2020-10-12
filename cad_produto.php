@@ -57,16 +57,13 @@
   </div>
 
   <div class="form-group col-md-4">
-  <label for="exampleFormControlSelect1"><strong>Valor do Produto</strong></label>
-  <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">$</span>
-  <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" required>
-  <div class="input-group-append">
-    <span class="input-group-text">.00</span>
-  </div>
-  </div>
-  </div>
+    <label for="exampleFormControlSelect1"><strong>Valor do Produto</strong></label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" required>
+      </div>
+     </div>
   </div>
   </div>
   
