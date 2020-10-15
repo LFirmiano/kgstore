@@ -7,17 +7,53 @@
     
 </head>
 <body>
+
     <script>
         $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
         })
     </script>
+    <script>
+$(document).ready(function() {
+    $('#tabela').DataTable( {
+      paging:   false,
+      info:     false,
+      dom: 'Bfrtip',
+
+        "language": {
+          "searchPlaceholder": "Pesquisar ",
+          "sEmptyTable": "Nenhum registro encontrado",
+          "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+          "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+          "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+          "sInfoPostFix": "",
+          "sInfoThousands": ".",
+          "sLengthMenu": "_MENU_ resultados por página",
+          "sLoadingRecords": "Carregando...",
+          "sProcessing": "Processando...",
+          "sZeroRecords": "Nenhum registro encontrado",
+          "sSearch": "",
+        "oPaginate": {
+          "sNext": "Próximo",
+          "sPrevious": "Anterior",
+          "sFirst": "Primeiro",
+          "sLast": "Último"
+                    },
+        "oAria": {
+          "sSortAscending": ": Ordenar colunas de forma ascendente",
+          "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+                    }
+    });
+});
+
+</script>
    <?php include "include/menu.php";?>
    <div class="container">
    <h1 class="display-4 text-center">Clientes</h1>
    <a href="cad_cliente.php" class="btn btn-outline-success" style="margin-bottom:2%;">Adicionar Cliente</a>
    </div>
-        <table class="table table-striped container ">
+        <table class="table table-striped container display" id="tabela">
             <thead>
               <tr>
                 <th scope="col">Cliente</th>
