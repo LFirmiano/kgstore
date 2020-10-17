@@ -11,11 +11,16 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+    <script>
+      $(document).ready(function(){
+        $('#hide').hide();
+      });
+    </script>
+   <?php 
+   include "include/menu.php";
+   include "include/L_estoque.php";
+   ?>
    
-
-   <!--form fornecedor-->
-   <form method="POST" action="">
    <div class="container">
    
    <h1 class="display-4 text-center">Novo Pedido</h1> <hr>   
@@ -24,28 +29,38 @@
 
    <div class="form-group col-md-8">
     <label for="exampleFormControlSelect1"><strong>Produto</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option value="">Produto A</option>
-      <option value="">Produto B</option>
-      <option value="">Produto C</option>
-      <option value="">Produto D</option>
-      <option value="">Produto E</option>
+    <select class="form-control" onchange="getval(this)" name="id" id="id">
+    <option value="">Selecione o Produto</option>
+    <?php 
+      //$i=0; 
+      while ($row = $stmt->fetch(PDO::FETCH_OBJ)){ 
+        $data[] = array(
+          'produto' => $row->produto,
+          'valor' => $row->valor
+        );
+      ?>
+      <option value="<?php echo $row->produto ?>"><?php echo $row->produto ?></option>
+    <?php } ?>
     </select>
   </div>
 
   <div class="form-group col-md-8">
   <label for="exampleFormControlSelect1"><strong>Tamanho e Quantidade</strong></label>
   
-  <select class="form-control" id="exampleFormControlSelect1">
-      <option value="">P</option>
-      <option value="">M</option>
-      <option value="">G</option>
-    </select>
-  <input type="number" class="form-control">
+  <select class="form-control" id="unidades" name="tamanho">
+      <option value="">Selecione o Tamanho</option>
+  </select>
+
+  <input type="number" class="form-control" id="quantidade" name="quantidade">
   </div>
 
+  <?php 
+    for($j=0;$j<count($data);$j++){ ?>
+      <input type="hidden" id="<?php echo str_replace(' ','',$data[$j]['produto']) ?>" value=<?php echo $data[$j]['valor'] ?>>
+  <?php }?>
+
     <!--botão add item carrinho-->
-    <button type="submit" class="btn btn-outline-info btn-lg" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <button type="button" class="btn btn-outline-info btn-lg" id="target" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
   <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
 </svg></button>
@@ -59,20 +74,22 @@
   <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
 </svg></h2> 
 
-<h5 class="text-info" style="margin-top:2%;">Produto A - R$20,00(valor unitário)</h5>
-<h6 class="text-secundary">P x2</h6>
-<h6 class="text-secundary">G x1</h6>
+<br>
+
+<div id="carrinho"></div>
 
 <br>
-<h5 class="text-info text-right" style="margin-top:2%;"><strong>Valor total: R$60,00</strong></h5>
-    
+<h5 class="text-info text-right" id="hide" style="margin-top:2%;"><strong id="entrarvalor"></strong></h5>
 
 </div>
 </div>
+<form method="POST" action="cad_pedido2.php">
+    <div id="vals"></div>
+    <input type="hidden" name="tot" id="tot" value="">
 <a href="pedidos_diario.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
 </svg></a> 
-  <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;"><a href="cad_pedido2.php">Avançar</a></button>
+  <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Avançar</button>
   </form>
 
   </div>
@@ -80,5 +97,65 @@
   <div class="progress fixed-bottom">
   <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script>
+
+    let valor_total = 0
+
+    function getval(sel)
+    {
+        // window.alert(sel.value);
+        $.getJSON('include/R_estoque.php?search=',{id: sel.value, ajax: 'true'}, function(j){
+          var opt = '<option>Selecione o Tamanho</option>';	
+          for (var i = 0; i < j.length; i++) {
+            opt += '<option value="' + j[i].tamanhos + '">' + j[i].tamanhos + '</option>';
+          }	
+          $('#unidades').html(opt).show();
+  });
+    }
+
+    $('#target').click(function(){
+      var produto = $('#id').val()
+      var tamanho = $('#unidades').val()
+      var quantidade = $('#quantidade').val()
+      id_val = '#'+ produto.replace(' ','') +''
+      var valor = $(id_val).val()
+      var hs = '<h5></h5>'
+      var ipt_val = '<input type="hidden"></input>'
+
+      if ( $(id_val+'-D').length ){
+        console.log('#'+tamanho+'')
+        if ( $('#'+tamanho+'').length ){
+          total_qtd = parseInt($('#qtd'+tamanho +'').val()) + parseInt(quantidade)
+          $('#qtd'+tamanho +'').val(total_qtd)
+          $('#'+tamanho+'-SHOW').html('<strong>'+ tamanho +'</strong> -> x'+ total_qtd +'')
+        } else {
+          hs += '<h6 class="text-secundary" id="'+tamanho+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6>';
+          ipt_val += '<input type="hidden" id="'+ tamanho +'" name="'+ tamanho +'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +'" name="qtd'+ tamanho +'" value="'+ quantidade +'"></input>';
+          $(id_val+'-D').append(hs);
+          $(id_val+'-I').append(ipt_val);
+        }
+      } else {
+        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + produto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div>';
+        ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +'" name="'+ tamanho +'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +'" name="qtd'+ tamanho +'" value="'+ quantidade +'"></div>'
+        $('#carrinho').append(hs);
+        $('#vals').append(ipt_val);
+      }
+      calcularTotal(valor,quantidade)
+    })
+
+    function calcularTotal(valor,qtd){
+      qtd = parseInt(qtd)
+      valor = valor*qtd
+      valor_total += parseInt(valor)
+      $('#hide').show();
+      $('#entrarvalor').html('Valor total: R$'+ valor_total +'.00');
+      $('#tot').val(valor_total)
+    }
+
+</script>
+
 </body>
 </html>
