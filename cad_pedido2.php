@@ -18,7 +18,7 @@
    
 
    <!--form fornecedor-->
-   <form method="POST" action="include/teste.php">
+   <form method="POST" action="include/C_pedidoitem.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Novo Pedido</h1><hr> 
@@ -44,6 +44,15 @@
     </select>
   </div>
 
+  <div class="form-group col-md-4">
+    <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" name="desconto" aria-label="Amount (to the nearest dollar)" required>
+      </div>
+     </div>
+  </div>
 
 <br>
 </div>
@@ -107,6 +116,8 @@ for ($i=0; $i<count($array);$i++){
   <?php
   }
   ?>
+
+    <input type="hidden" name="tot" value="<?php echo $_POST['tot'] ?>">
   
   <!-- FIM DA GERACAO -->
 

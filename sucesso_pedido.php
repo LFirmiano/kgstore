@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Pedido Realizado!</title>
-    <?php include "include/painel2.php" ?>
+    <?php 
+    include "include/painel2.php" ;
+    include "include/C_pedidoitem.php";
+    ?>
 </head>
 <body>
     <script>
