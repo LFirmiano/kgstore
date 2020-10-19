@@ -10,19 +10,31 @@
         <li class="nav-item ">
           <a class="nav-link text-dark" href="home.php">Home</a>
         </li>
+        <?php if ($_SESSION['tipo']==1){ ?>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="pedidos_diario.php">Pedidos</a>
         </li>
+        <?php } ?>
+        <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="estoque.php">Estoque</a>
         </li>
+        <?php } ?>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="cliente.php">Clientes</a>
         </li>
+        <?php if ($_SESSION['tipo']==1){ ?>
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="cliente.php">Fornecedores</a>
+        </li>
+        <?php } ?>
+        <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="relatorio.php">Relatórios</a>
         </li>
-      
+        <?php } ?>
+          
+        <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Outros
@@ -32,6 +44,7 @@
           <a class="nav-link text-dark" href="fornecedor.php">Fornecedores</a>
           <a class="nav-link text-dark" href="usuario.php">Usuários</a>
         </li>
+        <?php } ?>
         </ul> 
 
         <!--botão canto direito-->
