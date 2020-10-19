@@ -51,7 +51,9 @@ $(document).ready(function() {
    <?php include "include/menu.php";?>
    <div class="container">
    <h1 class="display-4 text-center">Fornecedores</h1>
+   <?php if ($_SESSION['tipo']==0){ ?>
    <a href="cad_fornecedor.php" class="btn btn-outline-success" style="margin-bottom:2%;">Adicionar Fornecedor</a>
+   <?php } ?>
    </div>
         <table class="table table-striped container " id="tabela">
             <thead>

@@ -23,7 +23,7 @@ if ($stmt->execute()){
             header("Location: ../cliente.php");
         }
         if ($ident == 1){
-            header("Location: cliente.php");
+            header("Location: ../cliente.php");
         }
     }
 } else {
