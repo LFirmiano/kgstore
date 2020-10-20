@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de produto</title>
+    <title>Cadastro de Produto</title>
     <?php include "include/painel2.php" ?>
 </head>
 <body>
