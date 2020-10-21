@@ -20,6 +20,7 @@ foreach ($_POST as $row){
     $i++;
 }
 
+// PREAPRACAO PARA PEGAR E COLOCAR INFORMACOES NO BANCO
 $query = "INSERT INTO pedido_item (produto,tamanho,quantidade,valor,cliente,pagamento,desconto,hora_compra) VALUES (:produto,:tamanho,:quantidade,:valor,:cliente,:pagamento,:desconto,:hora_compra)";
 $s_estoque = "SELECT quantidade FROM estoque WHERE produto=:produto AND tamanho=:tamanho";
 $u_estoque = "UPDATE estoque SET quantidade=:quantidade WHERE produto=:produto AND tamanho=:tamanho";

@@ -20,6 +20,7 @@ foreach ($_POST as $row){
     $i++;
 }
 
+// PREAPRACAO PARA PEGAR E COLOCAR INFORMACOES NO BANCO
 $query = "INSERT INTO pedido_item (produto,tamanho,quantidade,valor,cliente,pagamento,desconto,hora_compra) VALUES (:produto,:tamanho,:quantidade,:valor,:cliente,:pagamento,:desconto,:hora_compra)";
 $s_estoque = "SELECT quantidade FROM estoque WHERE produto=:produto AND tamanho=:tamanho";
 $u_estoque = "UPDATE estoque SET quantidade=:quantidade WHERE produto=:produto AND tamanho=:tamanho";
@@ -44,7 +45,7 @@ for ($i=0; $i<count($array);$i++){
             // EXECUTAR O SELECT NA TABELA DE ESTOQUE PARA EDITAR AS QUANTIDADES
             $select->bindParam(':produto',$produto,PDO::PARAM_STR);
             $select->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
-            // $select->execute();
+            $select->execute();
             $qtd_old = $select->fetch(PDO::FETCH_OBJ);
             // OPERACAO PARA DIMINUIR O VALOR DO ESTOQUE
             $qtd_new = intval($qtd_old->quantidade) - intval($array[$i+1]);
@@ -52,11 +53,11 @@ for ($i=0; $i<count($array);$i++){
             $update->bindParam(':quantidade',$qtd_new,PDO::PARAM_STR);
             $update->bindParam(':produto',$produto,PDO::PARAM_STR);
             $update->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
-            // $update->execute();
+            $update->execute();
             // INSERIR NA TABELA PEDIDO ITEM
             $stmt->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
             $stmt->bindParam(':quantidade',$array[$i+1],PDO::PARAM_STR);
-            // $stmt->execute();
+            $stmt->execute();
             $i+=2;
         }
     }
