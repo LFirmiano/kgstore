@@ -18,7 +18,7 @@
    
 
    <!--form fornecedor-->
-   <form method="POST" action="include/teste.php">
+   <form method="POST" action="sucesso_pedido.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Novo Pedido</h1><hr> 
@@ -44,6 +44,15 @@
     </select>
   </div>
 
+  <div class="form-group col-md-4">
+    <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" name="desconto" aria-label="Amount (to the nearest dollar)" required>
+      </div>
+     </div>
+  </div>
 
 <br>
 </div>
@@ -67,12 +76,13 @@ foreach ($_POST as $row){
     $array[$i] = $row;
     $i++;
 }
+
 // GERAR O CARRINHO ANTERIOR
 $i = 0;
 for ($i=0; $i<count($array);$i++){
     if (substr($array[$i],0,4) == "prod"){
         $produto = substr($array[$i],4,strlen($array[$i]));
-        $i = $i+2;
+        $i = $i+2; 
 ?>
         <h5 class="text-info" style="margin-top:2%;"><?php echo $produto?> - R$<?php echo intval($array[$i-1])?>.00</h5>
 <?php
@@ -103,10 +113,12 @@ for ($i=0; $i<count($array);$i++){
   $j=0;
   for($j=0;$j<count($array);$j++){
   ?>
-    <input type="hidden" name="<?php echo $array[$j] ?>" value="<?php echo $array[$j] ?>">
+    <input type="hidden" name="<?php echo $array[$j].$j ?>" value="<?php echo $array[$j] ?>">
   <?php
   }
   ?>
+
+    <input type="hidden" name="tot" value="<?php echo $_POST['tot'] ?>">
   
   <!-- FIM DA GERACAO -->
 

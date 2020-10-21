@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Pedido Realizado!</title>
-    <?php include "include/painel2.php" ?>
+    <?php 
+    include "include/painel2.php" ;
+    include "include/C_pedidoitem.php";
+    ?>
 </head>
 <body>
     <script>
@@ -28,12 +31,30 @@
   <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
 </svg></h2> 
 
-<h5 class="text-success" style="margin-top:2%;">Produto A - R$20,00(valor unitário)</h5>
-<h6>P x2</h6>
-<h6>G x1</h6>
+<?php
+// INSERIR DADOS DO CARRINHO
+$w=0;
+for ($w=0; $w<count($array);$w++){
+    if (substr($array[$w],0,4) == "prod"){
+        $produto = substr($array[$w],4,strlen($array[$w]));
+        $val = $w+1;
+?>
+        <h5 class="text-success" style="margin-top:2%;"><?php echo $produto ?> - R$<?php echo $array[$val] ?></h5>
+<?php
+        $w = $w+2;
+        while (isset($array[$w]) && substr($array[$w],0,4) != "prod"){ 
+?>
+        <h6><strong><?php echo $array[$w] ?></strong> -> x<?php echo $array[$w+1] ?></h6>
+<?php
+            $w+=2;
+        }
+    }
+    $w--;
+}
+?>
 
 <br>
-<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$60,00</strong></h5>
+<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $val_tot ?>.00</strong></h5>
     
 
 </div>

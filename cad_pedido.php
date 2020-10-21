@@ -103,6 +103,8 @@
 <script>
 
     let valor_total = 0
+    let i = []
+    let aux = 0
 
     function getval(sel)
     {
@@ -127,32 +129,65 @@
 
       if ( $(id_val+'-D').length ){
         console.log('#'+tamanho+'')
-        if ( $('#'+tamanho+'').length ){
-          total_qtd = parseInt($('#qtd'+tamanho +'').val()) + parseInt(quantidade)
-          $('#qtd'+tamanho +'').val(total_qtd)
-          $('#'+tamanho+'-SHOW').html('<strong>'+ tamanho +'</strong> -> x'+ total_qtd +'')
+        if ( $('#'+tamanho+produto.replace(' ','')+'').length ){
+          total_qtd = parseInt($('#qtd'+tamanho +produto.replace(' ','')+'').val()) + parseInt(quantidade)
+          $('#qtd'+tamanho +produto.replace(' ','')+'').val(total_qtd)
+          $('#'+tamanho+produto.replace(' ','')+'-SHOW').html('<strong>'+ tamanho +'</strong> -> x'+ total_qtd +'')
         } else {
-          hs += '<h6 class="text-secundary" id="'+tamanho+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6>';
-          ipt_val += '<input type="hidden" id="'+ tamanho +'" name="'+ tamanho +'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +'" name="qtd'+ tamanho +'" value="'+ quantidade +'"></input>';
+          hs += '<h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6>';
+          ipt_val += '<input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></input>';
           $(id_val+'-D').append(hs);
           $(id_val+'-I').append(ipt_val);
         }
       } else {
-        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + produto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div>';
-        ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +'" name="'+ tamanho +'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +'" name="qtd'+ tamanho +'" value="'+ quantidade +'"></div>'
+        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + produto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div><button id="delet'+produto.replace(' ','')+'" value="'+produto.replace(' ','')+'" onclick="deletar(this)" class="btn btn-outline-danger btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></input>';
+        ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +produto.replace(' ','')+'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></div>'
         $('#carrinho').append(hs);
         $('#vals').append(ipt_val);
       }
-      calcularTotal(valor,quantidade)
+      calcularTotal(valor,quantidade,produto)
     })
 
-    function calcularTotal(valor,qtd){
+    function calcularTotal(valor,qtd,prod){
       qtd = parseInt(qtd)
       valor = valor*qtd
       valor_total += parseInt(valor)
       $('#hide').show();
       $('#entrarvalor').html('Valor total: R$'+ valor_total +'.00');
       $('#tot').val(valor_total)
+      bol = false
+      for (var j=0;j<i.length;j++){
+        if (i[j][0] == prod.replace(' ','')){
+          bol = true
+          break
+        }
+      }
+      if (bol == true){
+        i[j][1] = parseInt(i[j][1]) + parseInt(valor)
+      } else {
+        i.push([prod.replace(' ',''),valor])
+        aux++
+      }
+      console.log(i)
+    }
+
+    function deletar(deletar){
+      $('#' + $(deletar).val() + '-D').remove();
+      $('#' + $(deletar).val() + '-I').remove();
+      $('#delet' + $(deletar).val() + '').remove();
+      for (var j=0;j<i.length;j++){
+        if (i[j][0] == $(deletar).val()){
+          valor_total = valor_total - parseInt(i[j][1])
+          if (valor_total == 0){
+            $('#hide').hide();
+          } else {
+            $('#entrarvalor').html('Valor total: R$'+ valor_total +'.00');
+          }
+          $('#tot').val(valor_total)
+          i[j][1] = 0
+        }
+      }
+      console.log(i)
     }
 
 </script>
