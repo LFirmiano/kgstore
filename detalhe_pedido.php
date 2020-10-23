@@ -12,14 +12,18 @@
         $('#myInput').trigger('focus')
         })
     </script>
+    <style>
+    .botao-transparente{
+    }
+    </style>
    <?php 
    include "include/menu.php";
-   //include "include/R_cliente.php";
+   include "include/R_pedido.php";
+   $_SESSION['data'] = $_POST['data'];
    ?>
    
 
    <!--info pedido-->
-   <form>
    <div class="container">
    
    <h1 class="display-4 text-center">Informações do Pedido</h1>
@@ -28,22 +32,24 @@
    <fieldset disabled>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Quantidade Itens:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php //echo $row->nome ?>">
-      <a href="detalhe_produto.php">Ver detalhes do produto</a>
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->qtd_pedidos_item ?>">
+      <form method="POST" action="detalhe_produto.php">
+      <a href="#" onclick="this.parentNode.submit()">Ver detalhes do produto</a>
+      </form>
 
       <br>
    
       <label for="disabledTextInput"><strong>Valor:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php //echo $row->email ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->valor_final ?>">
 
       <label for="disabledTextInput"><strong>Cliente:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php //echo $row->telefone ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->cliente ?>">
  
       <label for="disabledTextInput"><strong>Pagamento:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php //echo $row->endereco ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->pagamento ?>">
 
       <label for="disabledTextInput"><strong>Hora Compra:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php //echo $row->data_nascimento ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo date_format(new DateTime($row->data),'H:i:s') ?>">
 
     </div>
         

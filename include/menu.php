@@ -1,3 +1,4 @@
+<?php include "include/is_logado.php"; ?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#f8a381; margin-bottom:1%">
 
   <a class="navbar-brand" href="#">
@@ -25,7 +26,7 @@
         </li>
         <?php if ($_SESSION['tipo']==1){ ?>
         <li class="nav-item ">
-          <a class="nav-link text-dark" href="cliente.php">Fornecedores</a>
+          <a class="nav-link text-dark" href="fornecedores.php">Fornecedores</a>
         </li>
         <?php } ?>
         <?php if ($_SESSION['tipo']==0){ ?>

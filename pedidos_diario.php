@@ -65,18 +65,18 @@ $(document).ready(function() {
             <tbody>
               <tr>
                 <?php 
-                    //include "include/L_cliente.php";
-                    //while($row = $stmt->fetch(PDO::FETCH_OBJ)){
-                      // echo $row->produto;
+                    include "include/L_pedido.php";
+                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
                 ?>
-                <th scope="row">01<?php //echo $row->nome ?></th>
-                <td>R$20,00<?php //echo $row->data_nascimento ?></td>
-                <td>11:07:30<?php //echo $row->telefone ?></td>
+                <th scope="row"><?php echo $row->qtd_pedidos_item ?></th>
+                <td><?php echo $row->valor_final ?></td>
+                <td><?php echo date_format(new DateTime($row->data),'H:i:s') ?></td>
                 <td>
 
                 <!--botao visualizar-->
                 <form action="detalhe_pedido.php" method="POST">
-                  <input type="hidden" value="<?php echo $row->id_cliente ?>" name="visualizar">
+                  <input type="hidden" value="<?php echo $row->id_pedido ?>" name="visualizar">
+                  <input type="hidden" value="<?php echo $row->data ?>" name="data">
                   <button type="submit" class="btn btn-outline-dark" style="float: left; margin-right: 3%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                   </svg></button>
@@ -84,21 +84,11 @@ $(document).ready(function() {
              
                 </td>
               </tr>
-              <?php// } ?>
+              <?php } ?>
             </tbody>
           </table>
           </div>
           </div>
-          
-          
-          <!-- <script>
-
-            $("#excluir").click(function(){
-              // var valor = $('#inpt').val();
-              window.location.href("../");
-            });
-          
-          </script> -->
 
 </body>
 </html>

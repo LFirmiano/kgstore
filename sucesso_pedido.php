@@ -18,7 +18,7 @@
    
 
    <!--info pedido-->
-   <form method="POST" action="">
+   <form method="POST" action="include/C_pedido.php">
    <div class="container">
    
    <h1 class="display-4 text-center text-success">Pedido Efetuado com Sucesso!</h1>    
@@ -55,6 +55,12 @@ for ($w=0; $w<count($array);$w++){
 
 <br>
 <h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $val_tot ?>.00</strong></h5>
+
+<input type="hidden" name="qtd_pedidos_item" value="<?php echo $qtd_pedidos_item;?>">
+<input type="hidden" name="valor_final" value="<?php echo $val_tot;?>">
+<input type="hidden" name="cliente" value="<?php echo $_POST['cliente'];?>">
+<input type="hidden" name="pagamento" value="<?php echo $_POST['forma'];?>">
+<input type="hidden" name="data" value="<?php echo $dataLocal;?>">
     
 
 </div>

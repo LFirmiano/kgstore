@@ -6,6 +6,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 $dataLocal = date('Y-m-d H:i:s', time());
 $val_tot = $_POST['tot'];
+$qtd_pedidos_item = 0;
 
 // FORMAR ARRAY
 $i=0;$j=0;
@@ -55,6 +56,7 @@ for ($i=0; $i<count($array);$i++){
             $update->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
             $update->execute();
             // INSERIR NA TABELA PEDIDO ITEM
+            $qtd_pedidos_item += intval($array[$i+1]);
             $stmt->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
             $stmt->bindParam(':quantidade',$array[$i+1],PDO::PARAM_STR);
             $stmt->execute();
