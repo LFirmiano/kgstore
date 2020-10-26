@@ -3,7 +3,7 @@ CREATE TABLE pedido_item (
     produto VARCHAR(200) NOT NULL,
     tamanho VARCHAR(200) NOT NULL,
     quantidade INT(10) NOT NULL,
-    valor INT(100) NOT NULL,
+    valor DECIMAL(6,2) NOT NULL,
     cliente VARCHAR(200) NOT NULL,
     pagamento VARCHAR(200) NOT NULL,
     hora_compra DATETIME

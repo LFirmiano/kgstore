@@ -37,12 +37,14 @@
 
   <div class="form-group col-md-8">
     <label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1" name="forma">
+    <select class="form-control" id="forma-pag" onchange="opcoesParcela()" name="forma">
       <option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option>
       <option value="Débito">Débito</option>
       <option value="Crédito">Crédito</option>
     </select>
   </div>
+
+  <div id="div-parc"></div>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
@@ -136,6 +138,20 @@ for ($i=0; $i<count($array);$i++){
   <div class="progress fixed-bottom">
   <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+
+<script>
+
+function opcoesParcela(){
+  val = $('#forma-pag').val()
+  sel = '<div id="nova-div" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Parcelas</strong></label><select class="form-control" id="exampleFormControlSelect1" name="parcelas"><option value="1">1x</option><option value="2">2x</option><option value="3">3x</option></div><option value="4">4x</option><option value="5">5x</option><option value="6">6x</option><option value="7">7x</option><option value="8">8x</option><option value="9">9x</option><option value="10">10x</option><option value="11">11x</option><option value="12">12x</option></select>'
+  if (val == "Crédito"){
+    $('#div-parc').html(sel)
+  } else {
+    $('#nova-div').remove()
+  }
+}
+
+</script>
 
 </body>
 </html>

@@ -62,6 +62,7 @@ for ($w=0; $w<count($array);$w++){
 <input type="hidden" name="pagamento" value="<?php echo $_POST['forma'];?>">
 <input type="hidden" name="desconto" value="<?php echo $_POST['desconto'];?>">
 <input type="hidden" name="data" value="<?php echo $dataLocal;?>">
+<input type="hidden" name="parcela" value="<?php echo $_POST['parcelas'];?>">
     
 
 </div>

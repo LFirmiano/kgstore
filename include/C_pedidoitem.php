@@ -9,14 +9,15 @@ $val_tot = $_POST['tot'];
 $qtd_pedidos_item = 0;
 
 // FORMAR ARRAY
-$i=0;$j=0;
+$i=0;$j=0;$aux=0;
 foreach ($_POST as $row){
     if ($i == count($_POST) - 1){
         continue;
     }
-    if ($i>2){
+    if (substr($row,0,4) == "prod" || $aux>0){
         $array[$j] = $row;
         $j++;
+        $aux++;
     }
     $i++;
 }
