@@ -18,7 +18,7 @@
    
 
    <!--form fornecedor-->
-   <form method="POST" action="include/teste.php">
+   <form method="POST" action="sucesso_pedido.php">
    <div class="container">
    
    <h1 class="display-4 text-center">Novo Pedido</h1><hr> 
@@ -37,13 +37,24 @@
 
   <div class="form-group col-md-8">
     <label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label>
-    <select class="form-control" id="exampleFormControlSelect1" name="forma">
+    <select class="form-control" id="forma-pag" onchange="opcoesParcela()" name="forma">
       <option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option>
       <option value="Débito">Débito</option>
       <option value="Crédito">Crédito</option>
     </select>
   </div>
 
+  <div id="div-parc"></div>
+
+  <div class="form-group col-md-4">
+    <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" name="desconto" aria-label="Amount (to the nearest dollar)" required>
+      </div>
+     </div>
+  </div>
 
 <br>
 </div>
@@ -67,12 +78,13 @@ foreach ($_POST as $row){
     $array[$i] = $row;
     $i++;
 }
+
 // GERAR O CARRINHO ANTERIOR
 $i = 0;
 for ($i=0; $i<count($array);$i++){
     if (substr($array[$i],0,4) == "prod"){
         $produto = substr($array[$i],4,strlen($array[$i]));
-        $i = $i+2;
+        $i = $i+2; 
 ?>
         <h5 class="text-info" style="margin-top:2%;"><?php echo $produto?> - R$<?php echo intval($array[$i-1])?>.00</h5>
 <?php
@@ -103,10 +115,12 @@ for ($i=0; $i<count($array);$i++){
   $j=0;
   for($j=0;$j<count($array);$j++){
   ?>
-    <input type="hidden" name="<?php echo $array[$j] ?>" value="<?php echo $array[$j] ?>">
+    <input type="hidden" name="<?php echo $array[$j].$j ?>" value="<?php echo $array[$j] ?>">
   <?php
   }
   ?>
+
+    <input type="hidden" name="tot" value="<?php echo $_POST['tot'] ?>">
   
   <!-- FIM DA GERACAO -->
 
@@ -124,6 +138,20 @@ for ($i=0; $i<count($array);$i++){
   <div class="progress fixed-bottom">
   <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+
+<script>
+
+function opcoesParcela(){
+  val = $('#forma-pag').val()
+  sel = '<div id="nova-div" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Parcelas</strong></label><select class="form-control" id="exampleFormControlSelect1" name="parcelas"><option value="1">1x</option><option value="2">2x</option><option value="3">3x</option></div><option value="4">4x</option><option value="5">5x</option><option value="6">6x</option><option value="7">7x</option><option value="8">8x</option><option value="9">9x</option><option value="10">10x</option><option value="11">11x</option><option value="12">12x</option></select>'
+  if (val == "Crédito"){
+    $('#div-parc').html(sel)
+  } else {
+    $('#nova-div').remove()
+  }
+}
+
+</script>
 
 </body>
 </html>

@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Pedido Realizado!</title>
-    <?php include "include/painel2.php" ?>
+    <?php 
+    include "include/painel2.php" ;
+    include "include/C_pedidoitem.php";
+    ?>
 </head>
 <body>
     <script>
@@ -15,7 +18,7 @@
    
 
    <!--info pedido-->
-   <form method="POST" action="">
+   <form method="POST" action="include/C_pedido.php">
    <div class="container">
    
    <h1 class="display-4 text-center text-success">Pedido Efetuado com Sucesso!</h1>    
@@ -28,12 +31,38 @@
   <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
 </svg></h2> 
 
-<h5 class="text-success" style="margin-top:2%;">Produto A - R$20,00(valor unitário)</h5>
-<h6>P x2</h6>
-<h6>G x1</h6>
+<?php
+// INSERIR DADOS DO CARRINHO
+$w=0;
+for ($w=0; $w<count($array);$w++){
+    if (substr($array[$w],0,4) == "prod"){
+        $produto = substr($array[$w],4,strlen($array[$w]));
+        $val = $w+1;
+?>
+        <h5 class="text-success" style="margin-top:2%;"><?php echo $produto ?> - R$<?php echo $array[$val] ?></h5>
+<?php
+        $w = $w+2;
+        while (isset($array[$w]) && substr($array[$w],0,4) != "prod"){ 
+?>
+        <h6><strong><?php echo $array[$w] ?></strong> -> x<?php echo $array[$w+1] ?></h6>
+<?php
+            $w+=2;
+        }
+    }
+    $w--;
+}
+?>
 
 <br>
-<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$60,00</strong></h5>
+<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $val_tot ?>.00</strong></h5>
+
+<input type="hidden" name="qtd_pedidos_item" value="<?php echo $qtd_pedidos_item;?>">
+<input type="hidden" name="valor_final" value="<?php echo $val_tot;?>">
+<input type="hidden" name="cliente" value="<?php echo $_POST['cliente'];?>">
+<input type="hidden" name="pagamento" value="<?php echo $_POST['forma'];?>">
+<input type="hidden" name="desconto" value="<?php echo $_POST['desconto'];?>">
+<input type="hidden" name="data" value="<?php echo $dataLocal;?>">
+<input type="hidden" name="parcela" value="<?php echo $_POST['parcelas'];?>">
     
 
 </div>

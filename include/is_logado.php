@@ -1,6 +1,6 @@
 <?php
 
-include "conn.php";
+include "bd.php";
 
 session_start();
 

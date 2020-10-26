@@ -7,9 +7,9 @@ CREATE TABLE tamunidades (
 )
 
 INSERT INTO tamunidades(tamanho, subcat)
-	VALUES ('37/38', 'Unidades Calçados');
+	VALUES ('37-38', 'Unidades Calçados');
 INSERT INTO tamunidades(tamanho, subcat)
-	VALUES ('38/39', 'Unidades Calçados')
+	VALUES ('38-39', 'Unidades Calçados')
 
 INSERT INTO tamunidades(tamanho, subcat)
 	VALUES ('36', 'Unidades Roupas Inferiores');
@@ -22,4 +22,4 @@ INSERT INTO tamunidades(tamanho, subcat)
 	VALUES ('M', 'Unidades Básicas')
 
 INSERT INTO tamunidades(tamanho, subcat)
-	VALUES ('Tamanho Único', 'Unidade Única')
+	VALUES ('TamanhoUnico', 'Unidade Única')
