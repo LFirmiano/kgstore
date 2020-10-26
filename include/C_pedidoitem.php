@@ -22,7 +22,7 @@ foreach ($_POST as $row){
 }
 
 // PREAPRACAO PARA PEGAR E COLOCAR INFORMACOES NO BANCO
-$query = "INSERT INTO pedido_item (produto,tamanho,quantidade,valor,cliente,pagamento,desconto,hora_compra) VALUES (:produto,:tamanho,:quantidade,:valor,:cliente,:pagamento,:desconto,:hora_compra)";
+$query = "INSERT INTO pedido_item (produto,tamanho,quantidade,valor,cliente,pagamento,hora_compra) VALUES (:produto,:tamanho,:quantidade,:valor,:cliente,:pagamento,:hora_compra)";
 $s_estoque = "SELECT quantidade FROM estoque WHERE produto=:produto AND tamanho=:tamanho";
 $u_estoque = "UPDATE estoque SET quantidade=:quantidade WHERE produto=:produto AND tamanho=:tamanho";
 $stmt = $conn->prepare($query);
@@ -30,7 +30,6 @@ $select = $conn->prepare($s_estoque);
 $update = $conn->prepare($u_estoque);
 $stmt->bindParam(':cliente',$_POST['cliente'],PDO::PARAM_STR);
 $stmt->bindParam(':pagamento',$_POST['forma'],PDO::PARAM_STR);
-$stmt->bindParam(':desconto',$_POST['desconto'],PDO::PARAM_STR);
 $stmt->bindParam(':hora_compra',$dataLocal,PDO::PARAM_STR);
 
 // INSERIR NA TABELA

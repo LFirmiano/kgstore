@@ -1,0 +1,7 @@
+CREATE TABLE relatorio (
+    id_relatorio INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    mes VARCHAR(200) NOT NULL,
+    pedidos VARCHAR(200) NOT NULL,
+    valor INT(100) NOT NULL,
+    status VARCHAR(100) NOT NULL
+)

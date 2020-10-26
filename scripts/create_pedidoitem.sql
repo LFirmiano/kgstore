@@ -6,6 +6,5 @@ CREATE TABLE pedido_item (
     valor INT(100) NOT NULL,
     cliente VARCHAR(200) NOT NULL,
     pagamento VARCHAR(200) NOT NULL,
-    desconto INT(100) NOT NULL,
     hora_compra DATETIME
 )

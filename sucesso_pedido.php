@@ -60,6 +60,7 @@ for ($w=0; $w<count($array);$w++){
 <input type="hidden" name="valor_final" value="<?php echo $val_tot;?>">
 <input type="hidden" name="cliente" value="<?php echo $_POST['cliente'];?>">
 <input type="hidden" name="pagamento" value="<?php echo $_POST['forma'];?>">
+<input type="hidden" name="desconto" value="<?php echo $_POST['desconto'];?>">
 <input type="hidden" name="data" value="<?php echo $dataLocal;?>">
     
 
