@@ -66,7 +66,7 @@ $(document).ready(function() {
               <tr>
                 <?php 
                     include "include/L_pedido.php";
-                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                      while($row = $stmt->fetch(PDO::FETCH_OBJ)){
                 ?>
                 <th scope="row"><?php echo $row->qtd_pedidos_item ?></th>
                 <td><?php echo $row->valor_final ?></td>
