@@ -2,14 +2,16 @@
 <html>
 <head>
     <meta charset="UTF-8">      <!--mudar mês-->
-    <title>Relatórios Do Mês de Outubro</title>
+    <title>Relatórios Do Mês de <?php echo $_POST['mes'] ?></title>
     <?php include "include/painel2.php" ?>
 </head>
 <body>
-    <?php include "include/menu.php" ?>
+    <?php include "include/menu.php";
+          include "include/det_relatorio_mes.php";
+    ?>
 
     <div class="container">
-   <h1 class="display-4 text-center">Relatórios dia <!--Puxar Dia--> de <!--Puxar mês--></h1>
+   <h1 class="display-4 text-center">Relatórios do dia <?php echo $_POST['visualizar'] ?> de <?php echo $_POST['mes'] ?></h1>
    
     <a href="detalhe_relatorio.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
@@ -25,12 +27,15 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">25185<?php //echo $row->nome ?></th>
-                <td>4<?php //echo $row->nome ?></td>
-                <td>R$ 51,50<?php //echo $row->nome ?></td>
-                <td>12:30:45</td>
+                <?php 
+                  while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                ?>
+                <th scope="row"><?php echo $row->id_pedido ?></th>
+                <td><?php echo $row->qtd_pedidos_item ?></td>
+                <td>R$ <?php echo $row->valor_final ?></td>
+                <td><?php echo date_format(new DateTime($row->data),'H:i:s') ?></td>
               </tr>
-              <?php// } ?>
+              <?php } ?>
             </tbody>
           </table>
           </div>
