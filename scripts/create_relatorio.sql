@@ -1,6 +1,6 @@
 CREATE TABLE relatorio (
     id_relatorio INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    mes VARCHAR(200) NOT NULL,
+    mes DATE NOT NULL,
     pedidos VARCHAR(200) NOT NULL,
     valor DECIMAL(6,2) NOT NULL,
     status VARCHAR(100) NOT NULL
