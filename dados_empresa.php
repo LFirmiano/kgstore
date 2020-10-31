@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dados da empresa</title>
+    <title>Dados da loja</title>
     <?php include "include/painel2.php" ?>
 </head>
 <body>
@@ -18,7 +18,7 @@
    <form method="POST" action="">
    <div class="container">
    
-   <h1 class="display-4 text-center text-info">Dados da empresa</h1>    
+   <h1 class="display-4 text-center text-info">Dados da loja</h1>    
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
 
 
