@@ -12,7 +12,10 @@
 
 </head>
 <body>
-    <?php include "include/menu.php" ?>
+    <?php 
+    include "include/menu.php";
+    include "include/grafs.php";
+    ?>
 
 
             <div class="row">
@@ -89,7 +92,7 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
                     label: 'Quantidades de vendas',
                     backgroundColor: 'rgba(0, 115, 230, 0.5)',
                     borderColor: 'rgba(0, 89, 179, 0.5)',
-                    data: [2, 10, 5, 2, 20, 30, 45]
+                    data: <?php echo json_encode($graf_vendas); ?>
                 }]
             },
 
@@ -112,7 +115,7 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
                     label: 'Valores diários',
                     backgroundColor: 'rgb(255, 163, 26)',
                     borderColor: 'rgb(230, 138, 0)',
-                    data: [2, 10, 5, 2, 20, 30, 45]
+                    data: <?php echo json_encode($graf_vendas); ?>
                 }]
             },
 
@@ -131,15 +134,14 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
 
             // The data for our dataset
             data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
-                'Outubro','Novembro','Dezembro'],
+                labels: <?php echo json_encode($plot_mes); ?>,
                 datasets: [{
                     label: 'Quantidades de vendas',
                     backgroundColor: ['rgba(255, 153, 0, 0.5)','rgba(0, 255, 0, 0.5)','rgba(255, 0, 0, 0.5)',
                     'rgba(255, 255, 0, 0.5)','rgba(0, 255, 204, 0.5)','rgba(204, 0, 255, 0.5)','rgba(102, 51, 0, 0.6)', 
                     'rgba(255, 51, 204, 0.5)', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 115, 230, 0.5)', 
                     'rgba(204, 255, 51, 0.5)', 'rgba(230, 230, 230, 0.7)'],
-                    data: [100, 80, 80, 120, 120, 100, 140, 180, 200, 150, 200, 90]
+                    data: <?php echo json_encode($plot_valor_ano); ?>
                 }]
             },
 
@@ -157,15 +159,14 @@ Dezembro: rgba(230, 230, 230, 0.7) - Cinza
 
             // The data for our dataset
             data: {
-                labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
-                'Outubro','Novembro','Dezembro'],
+                labels: <?php echo json_encode($plot_mes); ?>,
                 datasets: [{
                     label: 'Quantidades de valores',
                     backgroundColor: ['rgb(255, 153, 0)','rgb(0, 255, 0)','rgb(255, 0, 0)',
                     'rgb(255, 255, 0)','rgb(0, 255, 204)','rgb(204, 0, 255)','rgb(102, 51, 0)', 
                     'rgb(255, 51, 204)', 'rgb(0, 0, 0, 0.4)', 'rgb(0, 115, 230)', 
                     'rgb(204, 255, 51)', 'rgb(230, 230, 230)'],
-                    data: [2, 8, 8, 1, 3, 1, 4, 8, 2, 5, 2, 9]
+                    data: <?php echo json_encode($plot_venda_ano); ?>
                 }]
             },
 
