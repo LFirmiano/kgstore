@@ -20,10 +20,10 @@ if ($stmt->execute()){
         $_SESSION['senha'] = $db_senha;
         $_SESSION['tipo'] = $ident;
         if ($ident == 0){
-            header("Location: ../cliente.php");
+            header("Location: ../home.php");
         }
         if ($ident == 1){
-            header("Location: ../cliente.php");
+            header("Location: ../pedidos_diario.php");
         }
     }
 } else {
