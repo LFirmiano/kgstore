@@ -13,11 +13,11 @@ if ($_POST['pagamento'] == "Débito"){
     $val_final = $val_final*(0.9801);
 }
 if ($_POST['pagamento'] == "Crédito"){
-    $val_final = $val_final/intval($_POST['parcela']);
     if ($_POST['parcela'] == "1"){
         $val_final = $val_final*(0.9501);
     } else {
         $val_final = $val_final*(0.9441);
+        $val_final = $val_final/intval($_POST['parcela']);
     }
 }  
 
