@@ -45,31 +45,33 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Recuperação de Senha</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<form method="POST" action="include/recuperarsenha.php">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Recuperação de Senha</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="form-group">
+          <p><strong>Coloque seu email para ser enviado sua senha.</strong></p>
+          <label for="exampleInputEmail1">Email para Recuperação</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+          <small class="text-info">Verifique se seu email está certo</small>
+          
       </div>
-      <div class="modal-body">
-      <div class="form-group">
-        <p><strong>Coloque seu email para ser enviado sua senha.</strong></p>
-        <label for="exampleInputEmail1">Email para Recuperação</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <small class="text-info">Verifique se seu email está certo</small>
-        
-    </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Solicitar</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Solicitar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 
 
 </body>
