@@ -7,6 +7,7 @@ CREATE TABLE pedido (
     cliente VARCHAR(200) NOT NULL,
     pagamento VARCHAR(200) NOT NULL,
     desconto INT(100) NOT NULL,
-    parcelas INT(2) NOT NULL,
+    parcelas VARCHAR(100) NOT NULL,
+    observacao VARCHAR(1000),
     data DATETIME NOT NULL
 )

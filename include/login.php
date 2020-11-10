@@ -13,21 +13,26 @@ $stmt = $conn->prepare($query);
 $stmt->bindParam(':email',$email,PDO::PARAM_STR);
 if ($stmt->execute()){
     $row = $stmt->fetch(PDO::FETCH_OBJ);
-    $db_email = $row->email;
-    $db_senha = $row->senha;
-    if ($db_email == $email && $db_senha == $senha){
-        $_SESSION['email'] = $db_email;
-        $_SESSION['senha'] = $db_senha;
-        $_SESSION['tipo'] = $ident;
-        if ($ident == 0){
-            header("Location: ../home.php");
+    if (!empty($row)){
+        $db_email = $row->email;
+        $db_senha = $row->senha;
+        if ($db_email == $email && $db_senha == $senha){
+            $_SESSION['email'] = $db_email;
+            $_SESSION['senha'] = $db_senha;
+            $_SESSION['tipo'] = $ident;
+            if ($ident == 0){
+                header("Location: ../home.php");
+            }
+            if ($ident == 1){
+                header("Location: ../pedidos_diario.php");
+            }
         }
-        if ($ident == 1){
-            header("Location: ../pedidos_diario.php");
-        }
+    } else {
+        $_SESSION['msg'] = '<div class="alert alert-danger col-4" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
+        header("Location: ../login_adm.php");
     }
 } else {
-    echo "<br> NÃO FOI POSSIVEL EXECTUAR O LOGIN <br>";
+    $_SESSION['msg'] = '<div class="alert alert-danger col-4" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
 }
 
 ?>

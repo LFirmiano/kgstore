@@ -51,6 +51,12 @@
       <label for="disabledTextInput"><strong>Desconto:</strong></label>
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo "R$" . $row->desconto . ".00" ?>">
 
+      <label for="disabledTextInput"><strong>Parcelas:</strong></label>
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->parcelas ?>">
+
+      <label for="disabledTextInput"><strong>Observação:</strong></label>
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->observacao ?>">
+
       <label for="disabledTextInput"><strong>Hora Compra:</strong></label>
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo date_format(new DateTime($row->data),'H:i:s') ?>">
 

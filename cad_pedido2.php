@@ -36,22 +36,37 @@
   </div>
 
   <div class="form-group col-md-8">
+    <label for="exampleFormControlSelect1"><strong>Modos de Pagamento</strong></label>
+    <select class="form-control" id="plot-pag" onchange="plotarFormas()">
+      <option value="">Modos</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </div>
+
+  <!--<div class="form-group col-md-8">
     <label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label>
     <select class="form-control" id="forma-pag" onchange="opcoesParcela()" name="forma">
       <option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option>
       <option value="Débito">Débito</option>
       <option value="Crédito">Crédito</option>
     </select>
-  </div>
+  </div>-->
 
-  <div id="div-parc"></div>
+  <div id="div-form"></div>
+
+  <input type="hidden" name="control-parcelas" value="controle-parcelas">
+
+  <hr>
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
-        <input type="text" class="form-control" name="desconto" aria-label="Amount (to the nearest dollar)" required>
+        <input type="text" class="form-control" name="desconto" id="desconto" aria-label="Amount (to the nearest dollar)" required>
+        <button type="button" id="aplicar" onclick="aplicarDesconto()" class="btn btn-outline-warning" style="margin-bottom:2%;">Aplicar</button>
       </div>
      </div>
   </div>
@@ -102,7 +117,7 @@ for ($i=0; $i<count($array);$i++){
 <!-- FIM DA LISTAGEM -->
 
 <br>
-<h5 class="text-info text-right" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?>.00</strong></h5>
+<h5 class="text-info text-right" id="tot-visual" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?>.00</strong></h5>
     
 
 </div>
@@ -120,7 +135,7 @@ for ($i=0; $i<count($array);$i++){
   }
   ?>
 
-    <input type="hidden" name="tot" value="<?php echo $_POST['tot'] ?>">
+    <input type="hidden" name="tot" id="tot" value="<?php echo $_POST['tot'] ?>">
   
   <!-- FIM DA GERACAO -->
 
@@ -139,16 +154,49 @@ for ($i=0; $i<count($array);$i++){
   <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
 
-function opcoesParcela(){
-  val = $('#forma-pag').val()
-  sel = '<div id="nova-div" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Parcelas</strong></label><select class="form-control" id="exampleFormControlSelect1" name="parcelas"><option value="1">1x</option><option value="2">2x</option><option value="3">3x</option></div><option value="4">4x</option><option value="5">5x</option><option value="6">6x</option><option value="7">7x</option><option value="8">8x</option><option value="9">9x</option><option value="10">10x</option><option value="11">11x</option><option value="12">12x</option></select>'
+let global_incre = 0
+
+function opcoesParcela(object){
+  val = $(object).val()
+  identific = $(object).attr('id').substr(-1)
+  //hid = '<input type="hidden" name="valor_da_parcela'+identific+'" value="PARCELA-VAL">'
+  sel = '<div id="nova-div'+identific+'"><label for="exampleFormControlSelect1"><strong>Parcelas</strong></label><select class="form-control" id="exampleFormControlSelect1" name="parcelas'+identific+'"><option value="1">1x</option><option value="2">2x</option><option value="3">3x</option></div><option value="4">4x</option><option value="5">5x</option><option value="6">6x</option><option value="7">7x</option><option value="8">8x</option><option value="9">9x</option><option value="10">10x</option><option value="11">11x</option><option value="12">12x</option></select>'
   if (val == "Crédito"){
-    $('#div-parc').html(sel)
+    //$('#div-parc').html(sel)
+    $("#nova-div-form"+identific).append(sel)
   } else {
-    $('#nova-div').remove()
+    $('#nova-div'+identific).remove()
   }
+  global_incre += 1
+}
+
+function plotarFormas(){
+  val = $('#plot-pag').val()
+  div = "#div-form"
+  $('#div-form-controle').remove()
+  for (i=0;i<val;i++){
+    valor = '<label for="exampleFormControlSelect1"><strong>Valor</strong></label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">$</span><input type="text" class="form-control" name="parte'+i+'" value="" aria-label="Amount (to the nearest dollar)" required></div></div>'
+    if (i==0){
+      sel = '<div id="div-form-controle"><div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></div></div>'
+    } else {
+      sel = '<div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></div>'
+      div = '#div-form-controle'
+    }
+    $(div).append(sel)
+    $("#nova-div-form"+i).append(valor)
+  }
+}
+
+function aplicarDesconto(){
+  desconto = $('#desconto').val()
+  val_old = $('#tot').val()
+  val_new = val_old - desconto
+  $('#tot').val(val_new)
+  $('#tot-visual').html('<strong>Valor total: R$'+val_new+'.00</strong>')
 }
 
 </script>
