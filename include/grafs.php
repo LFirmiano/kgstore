@@ -37,7 +37,7 @@ while ($venda_diaria = $vendas_diarias->fetch(PDO::FETCH_OBJ)){
 }
 $w=0;
 for ($j=0;$j<32;$j++){
-    if ($dias_vd[$w] == $j){
+    if (isset($dias_vd[$w]) && $dias_vd[$w] == $j){
         $plotar_vendas[$j] = $qtd_dias[$w+1];
         $plotar_valores[$j] = $val_dias[$w+1];
         if (isset($dias_vd[$w+1])){
