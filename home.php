@@ -15,13 +15,15 @@
     <?php 
     include "include/menu.php";
     include "include/grafs.php";
+    $mes = "2020-".$mes_atual."-01";
+    $mes = ucfirst(strftime('%B', strtotime($mes)));
     ?>
 
 
             <div class="row">
                 <div class="col">
                     <div class="chart-container text-center" style="position:relative, height:20vh; width:35vw; margin-left:2%; margin-top:2% ">
-                        <h2 style="color:rgb(0, 89, 179)">Vendas (Outubro)</h2>
+                        <h2 style="color:rgb(0, 89, 179)">Vendas (<?php echo $mes; ?>)</h2>
                         <canvas id="vendasDia"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de vendas no mês de <!--mês conrrespondente-->  
                         </figcaption>
@@ -30,7 +32,7 @@
                     <br><br><hr><br><br>
 
                     <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
-                        <h2 style="color:rgb(230, 138, 0)">Valores (Outubro)</h2>
+                        <h2 style="color:rgb(230, 138, 0)">Valores (<?php echo $mes; ?>)</h2>
                         <canvas id="valorDia"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de valores no mês de <!--mês conrrespondente-->  
                         </figcaption>
