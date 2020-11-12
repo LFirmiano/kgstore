@@ -9,6 +9,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <?php if ($_SESSION['tipo']==1){ ?>
+          <li class="nav-item ">
+          <a class="nav-link text-dark" href="caixa.php">Home</a>
+        </li>
         <li class="nav-item ">
           <a class="nav-link text-dark" href="pedidos_diario.php">Pedidos</a>
         </li>
@@ -26,7 +29,7 @@
         </li>
         <?php if ($_SESSION['tipo']==1){ ?>
         <li class="nav-item ">
-          <a class="nav-link text-dark" href="fornecedores.php">Fornecedores</a>
+          <a class="nav-link text-dark" href="fornecedor.php">Fornecedores</a>
         </li>
         <?php } ?>
         <?php if ($_SESSION['tipo']==0){ ?>
