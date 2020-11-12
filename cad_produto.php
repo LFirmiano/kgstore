@@ -61,6 +61,17 @@
       </div>
      </div>
   </div>
+  <!--Valor que a KG comprou o produto-->
+  <div class="form-group col-md-4">
+    <label for="exampleFormControlSelect1"><strong>Valor da Compra</strong></label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" required>
+      </div>
+      <small class="form-text text-muted">Valor que a KG comprou do fornecedor</small>
+     </div>
+  </div>
   </div>
   
   <a href="estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
