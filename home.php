@@ -19,10 +19,10 @@
     $mes = ucfirst(strftime('%B', strtotime($mes)));
     ?>
 
-
+        <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="chart-container text-center" style="position:relative, height:20vh; width:35vw; margin-left:2%; margin-top:2% ">
+                    <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2% ">
                         <h2 style="color:rgb(0, 89, 179)">Vendas (<?php echo $mes; ?>)</h2>
                         <canvas id="vendasDia"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de vendas no mês de <?php echo $mes; ?>
@@ -31,7 +31,7 @@
                     
                     <br><br><hr><br><br>
 
-                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                    <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2%">
                         <h2 style="color:rgb(230, 138, 0)">Valores (<?php echo $mes; ?>)</h2>
                         <canvas id="valorDia"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de valores no mês de <?php echo $mes; ?> 
@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="col">
-                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                    <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2%">
                         <h2 style="color:rgb(0, 204, 102)">Vendas (2020)</h2>
                         <canvas id="vendasMes"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de vendas do ano 2020  
@@ -50,7 +50,7 @@
 
                     <br><br><hr><br><br>
 
-                    <div class="chart-container text-center" style="position:right, height:20vh; width:35vw; margin-left:2%; margin-top:2%">
+                    <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2%">
                         <h2 style="color:rgb(255, 0, 0)">Valores (2020)</h2>
                         <canvas id="valoresMes"></canvas><br>
                         <figcaption class="figure-caption">Gráfico de valores do ano 2020  
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-
+        </div>
 
     <script>
 

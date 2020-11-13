@@ -64,9 +64,8 @@
     <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text">$</span>
-        <input type="text" class="form-control" name="desconto" id="desconto" aria-label="Amount (to the nearest dollar)" required>
-        <button type="button" id="aplicar" onclick="aplicarDesconto()" class="btn btn-outline-warning" style="margin-bottom:2%;">Aplicar</button>
+        <input type="text" class="form-control" name="desconto" value="0" id="desconto" aria-label="Amount (to the nearest dollar)">
+        <button type="button" id="aplicar" onclick="aplicarDesconto()" class="btn btn-outline-info" style="margin-left:2%;">Aplicar</button>       
       </div>
      </div>
   </div>
