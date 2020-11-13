@@ -4,6 +4,9 @@
   <a class="navbar-brand" href="#">
     <img src="img/logo.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
   </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -52,13 +55,13 @@
         </ul> 
 
         <!--botão canto direito-->
-        <div class="dropdown dropleft">
-        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown drop" style="margin-right:8%">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
         </svg>
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="perfil.php">Meus Dados</a>
           <a class="dropdown-item" href="dados_empresa.php">Dados da Empresa</a>
           <div class="dropdown-divider"></div>
@@ -68,3 +71,4 @@
 </div> 
     </div>
   </nav>
+  

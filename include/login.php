@@ -28,11 +28,11 @@ if ($stmt->execute()){
             }
         }
     } else {
-        $_SESSION['msg'] = '<div class="alert alert-danger col-4" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
+        $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
         header("Location: ../login_adm.php");
     }
 } else {
-    $_SESSION['msg'] = '<div class="alert alert-danger col-4" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
+    $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
 }
 
 ?>
