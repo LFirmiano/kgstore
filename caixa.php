@@ -36,7 +36,11 @@
       <div class="card card-body">
         <div class="form-group col-md-10">
         <label for="exampleFormControlInput1">Digite o valor que quer <strong>colocar</strong> em caixa</label>
+          <form>
           <input type="text" class="form-control" name="valor">
+          <br>
+          <button type="submit" class="btn btn-outline-success btn-sm">Adicionar</button>
+          </form>
         </div>
       </div>
     </div>
@@ -46,7 +50,11 @@
       <div class="card card-body">
         <div class="form-group col-md-10">
           <label for="exampleFormControlInput1">Digite o valor que quer <strong>retirar</strong> do caixa</label>
+          <form>
           <input type="text" class="form-control" name="retirada">
+          <br>
+          <button type="submit" class="btn btn-outline-danger btn-sm">Retirar</button>
+          </form>
         </div>
       </div>
     </div>
