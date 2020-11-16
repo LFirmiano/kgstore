@@ -11,7 +11,15 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_perfil.php";
+   if ($_SESSION['tipo'] == 0){
+      $cargo = "ADMINISTRADOR";
+   } else {
+      $cargo = "CAIXA";
+   }
+   ?>
    
 
    <!--info dados pessoais-->
@@ -29,9 +37,9 @@
   <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
 </svg></h2> 
 
-<h5 class="text-info" style="margin-top:2%;"><strong>Nome:</strong> Gabriel Feliciano</h5>
-<h5 class="text-info" style="margin-top:2%;"><strong>Email:</strong> gabriel.feliciano@gmail.com</h5> 
-<h5 class="text-info" style="margin-top:2%;"><strong>Cargo:</strong> Dono</h5>    
+<h5 class="text-info" style="margin-top:2%;"><strong>Nome:</strong> <?php echo $row->nome ?></h5>
+<h5 class="text-info" style="margin-top:2%;"><strong>Email:</strong> <?php echo $_SESSION['email'] ?></h5>
+<h5 class="text-info" style="margin-top:2%;"><strong>Tipo:</strong> <?php echo $cargo ?></h5>    
 
 </div>
 </div>
