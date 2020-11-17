@@ -13,10 +13,11 @@
     </script>
    <?php 
     include "include/menu.php";
+    include "include/L_caixa.php";
     ?>
 
    <div class="container"> 
-   <h1 class="text text-info">Caixa: R$ 60,00</h1><hr>
+   <h1 class="text text-info">Caixa: R$ <?php echo $row2->valor ?></h1><hr>
 
     <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -36,8 +37,10 @@
       <div class="card card-body">
         <div class="form-group col-md-10">
         <label for="exampleFormControlInput1">Digite o valor que quer <strong>colocar</strong> em caixa</label>
-          <form>
-          <input type="text" class="form-control" name="valor">
+          <form method="POST" action="include/C_caixa.php">
+          <input type="text" placeholder="Digite algo" class="form-control" name="obs">
+          <br>
+          <input type="text" class="form-control" placeholder="Valor" name="valor">
           <br>
           <button type="submit" class="btn btn-outline-success btn-sm">Adicionar</button>
           </form>
@@ -50,8 +53,10 @@
       <div class="card card-body">
         <div class="form-group col-md-10">
           <label for="exampleFormControlInput1">Digite o valor que quer <strong>retirar</strong> do caixa</label>
-          <form>
-          <input type="text" class="form-control" name="retirada">
+          <form method="POST" action="include/C_caixa.php">
+          <input type="text" class="form-control" placeholder="Digite algo" name="obs">
+          <br>
+          <input type="text" class="form-control" placeholder="Valor" name="retirada">
           <br>
           <button type="submit" class="btn btn-outline-danger btn-sm">Retirar</button>
           </form>
@@ -75,7 +80,7 @@
   <tbody>
     <tr>
     <?php 
-        include "include/L_pedido.php";
+        include "include/L_pedido_prev.php";
           while($row = $stmt->fetch(PDO::FETCH_OBJ)){
     ?>
     <th scope="row"><?php echo $row->qtd_pedidos_item ?></th>
