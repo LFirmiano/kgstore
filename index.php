@@ -26,7 +26,7 @@
 </svg></a>
   </div>
   <div class="card-footer text-muted fixed-bottom">
-  copyright © 2020 . all rights reserved
+  copyright © 2020 Grapefy all rights reserved
   </div>
 </div>
 
