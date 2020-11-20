@@ -40,6 +40,11 @@
           <a class="nav-link text-dark" href="relatorio.php">Relatórios</a>
         </li>
         <?php } ?>
+        <?php if ($_SESSION['tipo']==1){ ?>
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="relatorio_caixa.php">Movimentações Caixa</a>
+        </li>
+        <?php } ?>
           
         <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item dropdown">

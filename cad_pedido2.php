@@ -13,7 +13,11 @@
     </script>
    <?php 
     include "include/menu.php";
-    include "include/L_cliente.php";    
+    include "include/L_cliente.php";   
+    if (count($_POST) == 1){
+      $_SESSION['msg_vazia'] = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Nenhum produto foi adicionado ao carrinho!</strong> Por favor, adicione antes de prosseguir.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+      header("Location: cad_pedido.php");
+    }
    ?>
    
 

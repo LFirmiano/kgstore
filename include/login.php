@@ -8,9 +8,10 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 $ident = $_POST['tipo'];
 
-$query = "SELECT * FROM usuarios WHERE email = :email";
+$query = "SELECT * FROM usuarios WHERE email = :email AND tipo = :tipo";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':email',$email,PDO::PARAM_STR);
+$stmt->bindParam(':tipo',$ident,PDO::PARAM_STR);
 if ($stmt->execute()){
     $row = $stmt->fetch(PDO::FETCH_OBJ);
     if (!empty($row)){
@@ -24,15 +25,20 @@ if ($stmt->execute()){
                 header("Location: ../home.php");
             }
             if ($ident == 1){
-                header("Location: ../pedidos_diario.php");
+                header("Location: ../caixa.php");
             }
         }
     } else {
         $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
-        header("Location: ../login_adm.php");
+        if ($ident == 0){
+            header("Location: ../login_adm.php");
+        } else {
+            header("Location: ../login_caixa.php");
+        }
     }
 } else {
     $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
+    header("Location: ../");
 }
 
 ?>

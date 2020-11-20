@@ -22,6 +22,17 @@
    ?>
    
    <div class="container">
+
+   <?php 
+   if (isset($_SESSION['msg_vazia'])){
+     echo $_SESSION['msg_vazia'];
+     unset($_SESSION['msg_vazia']);
+   }
+   if (isset($_SESSION['msg_forma'])){
+    echo $_SESSION['msg_forma'];
+    unset($_SESSION['msg_forma']);
+  }
+   ?>
    
    <h1 class="display-4 text-center">Novo Pedido</h1> <hr>   
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
