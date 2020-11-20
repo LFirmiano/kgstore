@@ -22,6 +22,8 @@ date_default_timezone_set('America/Sao_Paulo');
               <tr>
                 <th scope="col">Mês</th>
                 <th scope="col">Ano</th>
+                <th scope="col">Valor Mensal</th>
+                <th scope="col">Lucro Mensal</th>
                 <th scope="col">Detalhes</th>
               </tr>
             </thead>
@@ -32,6 +34,8 @@ date_default_timezone_set('America/Sao_Paulo');
                 ?>
                 <th scope="row"><?php echo ucfirst(strftime('%B', strtotime($row->mes))) ?></th>
                 <th><?php echo date_format(new DateTime($row->mes),'yy') ?></th>
+                <th><?php echo $row->valor?></th>
+                <th><?php echo $row->lucro?></th>
                 <td>
                 <!--botao detalhes-->
                 <form action="detalhe_relatorio.php" method="POST">

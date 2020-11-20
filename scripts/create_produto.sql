@@ -5,5 +5,6 @@ CREATE TABLE produtos (
     produto VARCHAR(200) NOT NULL,
     categoria VARCHAR(200) NOT NULL,
     fornecedor VARCHAR(200) NOT NULL,
-    valor DECIMAL(6,2) NOT NULL
+    valor DECIMAL(6,2) NOT NULL,
+    valor_compra DECIMAL(6,2) NOT NULL
 )

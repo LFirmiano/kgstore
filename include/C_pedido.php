@@ -27,12 +27,13 @@ if($stmt->execute()){
     $select->execute();
     // VERIFICAR SE EXISTE RELATORIO
     if (empty($select->fetch(PDO::FETCH_OBJ))){
-        $q_rel = "INSERT INTO relatorio (mes,pedidos,valor,status) VALUES (:mes,:pedidos,:valor,:status)";
+        $q_rel = "INSERT INTO relatorio (mes,pedidos,valor,lucro,status) VALUES (:mes,:pedidos,:valor,:lucro,:status)";
         $p = 1;
         $sql = $conn->prepare($q_rel);
         $sql->bindParam(':mes',$mes_ano,PDO::PARAM_STR);
         $sql->bindParam(':pedidos',$p,PDO::PARAM_STR);
         $sql->bindParam(':valor',$_POST['valor_final'],PDO::PARAM_STR);
+        $sql->bindParam(':lucro',$_POST['lucro'],PDO::PARAM_STR);
         $sql->bindParam(':status',$stat,PDO::PARAM_STR);
         $sql->execute();
     } else {
@@ -40,10 +41,12 @@ if($stmt->execute()){
         $row = $select->fetch(PDO::FETCH_OBJ);
         $pedidos_tot = intval($row->pedidos) + 1;
         $valor_tot = intval($row->valor) + intval($_POST['valor_final']);
-        $q_rel = "UPDATE relatorio SET pedidos = :pedidos, valor = :valor, status = :status";
+        $lucro_tot = intval($row->lucro) + intval($_POST['lucro']);
+        $q_rel = "UPDATE relatorio SET pedidos = :pedidos, valor = :valor, lucro = :lucro,status = :status";
         $sql = $conn->prepare($q_rel);
         $sql->bindParam(':pedidos',$pedidos_tot,PDO::PARAM_STR);
         $sql->bindParam(':valor',$valor_tot,PDO::PARAM_STR);
+        $sql->bindParam(':lucro',$lucro_tot,PDO::PARAM_STR);
         $sql->bindParam(':status',$stat,PDO::PARAM_STR);
         $sql->execute();
     }

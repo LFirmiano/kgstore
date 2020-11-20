@@ -3,5 +3,6 @@ CREATE TABLE relatorio (
     mes DATE NOT NULL,
     pedidos VARCHAR(200) NOT NULL,
     valor DECIMAL(6,2) NOT NULL,
+    lucro DECIMAL(6,2) NOT NULL,
     status VARCHAR(100) NOT NULL
 )
