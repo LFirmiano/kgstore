@@ -5,7 +5,6 @@
     <title>Pedido Realizado!</title>
     <?php 
     include "include/painel2.php" ;
-    include "include/C_pedidoitem.php";
     ?>
 </head>
 <body>
@@ -14,7 +13,8 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php include "include/menu.php";
+   include "include/C_pedidoitem.php";?>
    
 
    <!--info pedido-->

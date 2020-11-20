@@ -1,14 +1,13 @@
 <?php 
 
 include "bd.php";
-session_start();
 
 date_default_timezone_set('America/Sao_Paulo');
 
 $dataLocal = date('Y-m-d H:i:s', time());
 $qtd_pedidos_item = 0;
 
-$i=0;$aux=0;$val_tot=0;$lucro=0;
+$i=0;$aux=0;$val_tot=0;$lucro=0;$formas=[];
 
 foreach ($_POST as $post){
     if ($post == "controle-parcelas"){
