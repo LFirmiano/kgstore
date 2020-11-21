@@ -11,7 +11,7 @@ date_default_timezone_set('America/Sao_Paulo');
 ?>
 <body>
     <?php include "include/menu.php";
-          include "include/L_relatorio.php";
+          include "include/L_movcaixa.php";
     ?>
 
     <div class="container">
@@ -28,11 +28,20 @@ date_default_timezone_set('America/Sao_Paulo');
             </thead>
             <tbody>
               <tr>
-                <th scope="row">R$12,00</th>
-                <td>Retirada</td>
-                <td>11/11/2020</td>
-                <td>Almoço</td>
+                <?php
+                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                      if (substr($row->tipo,0,3) == "DEP"){
+                        $tipo = "Depósito";
+                      }else {
+                        $tipo = "Retirada";
+                      }
+                ?>
+                <th scope="row">R$ <?= $row->valor ?></th>
+                <td><?= $tipo ?></td>
+                <td><?= $row->data_caixa ?></td>
+                <td><?= $row->obs ?></td>
               </tr>
+                <?php } ?>
 
             </tbody>
           </table>
