@@ -16,6 +16,13 @@
   <div class="card-body">
     <!--form login-->
     <form class="container" method="POST" action="include/login.php">
+    <?php
+    session_start();
+    if (isset($_SESSION['msg'])){
+      echo $_SESSION['msg'];
+      session_destroy();
+    }
+    ?>
     <a href="index.php" class="btn btn-outline-info " style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
     </svg></a> 

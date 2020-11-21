@@ -18,10 +18,14 @@ while ($venda_mensal = $vendas_mensais->fetch(PDO::FETCH_OBJ)){
 }
 $plot_mes = []; $plot_venda_ano = []; $plot_valor_ano = [];
 for ($a=0;$a<count($mes_vm);$a++){
-    $plot_mes[] = ucfirst(strftime('%B', strtotime('0000-'.$mes_vm[$a].'-00')));
+    if (str_pad($mes_vm[$a],2,"0",STR_PAD_LEFT) == "03"){
+        $mes_vm[$a] = "Março";
+    }
+    $plot_mes[] = ucfirst(strftime('%B', strtotime('2000-'.str_pad($mes_vm[$a],2,"0",STR_PAD_LEFT).'-01')));
     $plot_venda_ano[] = $vm[$a];
     $plot_valor_ano[] = $valm[$a];
 }
+
 
 // QUERY PARA OS GRÁFICO DE VENDAS NO MÊS (DIÁRIO)
 $query_vd = "SELECT EXTRACT(DAY FROM data) as dia, count(1) as qtd, SUM(valor_final) as val FROM pedido WHERE EXTRACT(MONTH FROM data) = :mesAtual GROUP BY EXTRACT(DAY FROM data) ORDER BY EXTRACT(DAY FROM data) ASC";

@@ -13,7 +13,11 @@
     </script>
    <?php 
     include "include/menu.php";
-    include "include/L_cliente.php";    
+    include "include/L_cliente.php";   
+    if (count($_POST) == 1){
+      $_SESSION['msg_vazia'] = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Nenhum produto foi adicionado ao carrinho!</strong> Por favor, adicione antes de prosseguir.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+      header("Location: cad_pedido.php");
+    }
    ?>
    
 
@@ -64,9 +68,8 @@
     <label for="exampleFormControlSelect1"><strong>Desconto</strong></label>
     <div class="input-group">
       <div class="input-group-prepend">
-        <span class="input-group-text">$</span>
-        <input type="text" class="form-control" name="desconto" id="desconto" aria-label="Amount (to the nearest dollar)" required>
-        <button type="button" id="aplicar" onclick="aplicarDesconto()" class="btn btn-outline-warning" style="margin-bottom:2%;">Aplicar</button>
+        <input type="text" class="form-control" name="desconto" value="0" id="desconto" aria-label="Amount (to the nearest dollar)">
+        <button type="button" id="aplicar" onclick="aplicarDesconto()" class="btn btn-outline-info" style="margin-left:2%;">Aplicar</button>       
       </div>
      </div>
   </div>

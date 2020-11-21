@@ -5,7 +5,6 @@
     <title>Pedido Realizado!</title>
     <?php 
     include "include/painel2.php" ;
-    include "include/C_pedidoitem.php";
     ?>
 </head>
 <body>
@@ -14,7 +13,8 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php include "include/menu.php";
+   include "include/C_pedidoitem.php";?>
    
 
    <!--info pedido-->
@@ -64,7 +64,13 @@ for ($w=0; $w<count($array);$w++){
 <input type="hidden" name="desconto" value="<?php echo $_POST['desconto'];?>">
 <input type="hidden" name="data" value="<?php echo $dataLocal;?>">
 <input type="hidden" name="parcela" value="<?php echo $texto;?>">
-    
+<input type="hidden" name="lucro" value="<?php echo $lucro;?>">
+<?php 
+  if (isset($prox)){
+?>
+    <input type="hidden" name="prox" value="<?php echo $prox;?>">
+    <input type="hidden" name="val_parcela" value="<?php echo $valor_da_parcela;?>">
+<?php } ?>
 
 </div>
 </div>

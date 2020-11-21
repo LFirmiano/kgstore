@@ -1,6 +1,7 @@
 <?php 
 
 include "bd.php";
+include "functions/RelatorioFunction.php";
 
 
 date_default_timezone_set('America/Sao_Paulo');
@@ -18,6 +19,7 @@ $stmt->bindParam(':observacao',$_POST['obs'],PDO::PARAM_STR);
 $stmt->bindParam(':data',$_POST['data'],PDO::PARAM_STR);
 if($stmt->execute()){
     $diaLocal = date('d', time());
+    $id_pedido = $conn->lastInsertId();
     $stat = "pendente";
     // VERIFICAR SE JA EXISTE RELATORIO
     $mes_ano = date('Y-m-d',time());
@@ -27,25 +29,81 @@ if($stmt->execute()){
     $select->execute();
     // VERIFICAR SE EXISTE RELATORIO
     if (empty($select->fetch(PDO::FETCH_OBJ))){
-        $q_rel = "INSERT INTO relatorio (mes,pedidos,valor,status) VALUES (:mes,:pedidos,:valor,:status)";
-        $p = 1;
-        $sql = $conn->prepare($q_rel);
-        $sql->bindParam(':mes',$mes_ano,PDO::PARAM_STR);
-        $sql->bindParam(':pedidos',$p,PDO::PARAM_STR);
-        $sql->bindParam(':valor',$_POST['valor_final'],PDO::PARAM_STR);
-        $sql->bindParam(':status',$stat,PDO::PARAM_STR);
-        $sql->execute();
+
+        AdicionarRel($_POST['valor_final'],$_POST['lucro'],$stat,$mes_ano);
+
+        // INSERIR VALORES NA TABELA PARCELAS
+        if (isset($_POST['prox'])){
+            $a = "1/".intval($_POST['prox']);
+            if  (intval($_POST['prox']) > 1) {
+                AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+                for ($p=1;$p<intval($_POST['prox']);$p++){
+
+                    $mes = intval($mes)+1;
+                    if ($mes == 13){
+                        $mes = 1;
+                    }
+
+                    // ADICIONAR NA TABELA PARCELAS
+                    $mes_ano = date('Y', time())."-".str_pad($mes,2,"0",STR_PAD_LEFT)."-".date('d', time());
+                    $a = ($p+1)."/".intval($_POST['prox']);
+                    echo $a . " -> ". $_POST['val_parcela'] . "<br>";
+                    AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+
+                    $verificador = VerificarMes($mes);
+                    if ($verificador == 0){
+                        // ADICIONAR RELATORIO
+                        AdicionarRel($_POST['val_parcela'],$_POST['val_parcela'],$stat,$mes_ano);
+                    } else {
+                        continue;
+                    }
+                }
+            } else if (intval($_POST['prox']) == 1) {
+                // ADICIONAR SOMENTE UMA PARCELA COM MES ATUAL
+                AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+            }
+        }
     } else {
         $select->execute();
         $row = $select->fetch(PDO::FETCH_OBJ);
         $pedidos_tot = intval($row->pedidos) + 1;
         $valor_tot = intval($row->valor) + intval($_POST['valor_final']);
-        $q_rel = "UPDATE relatorio SET pedidos = :pedidos, valor = :valor, status = :status";
-        $sql = $conn->prepare($q_rel);
-        $sql->bindParam(':pedidos',$pedidos_tot,PDO::PARAM_STR);
-        $sql->bindParam(':valor',$valor_tot,PDO::PARAM_STR);
-        $sql->bindParam(':status',$stat,PDO::PARAM_STR);
-        $sql->execute();
+        $lucro_tot = intval($row->lucro) + intval($_POST['lucro']);
+        UpdateRelMes($pedidos_tot,$valor_tot,$lucro_tot,$stat,$mes);
+
+        // INSERIR VALORES NA TABELA PARCELAS
+        if (isset($_POST['prox'])){
+            $a = "1/".intval($_POST['prox']);
+            if  (intval($_POST['prox']) > 1) {
+                AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+                for ($p=1;$p<intval($_POST['prox']);$p++){
+
+                    $mes = intval($mes)+1;
+                    if ($mes == 13){
+                        $mes = 1;
+                    }
+
+                    // ADICIONAR NA TABELA PARCELAS
+                    $mes_ano = date('Y', time())."-".str_pad($mes,2,"0",STR_PAD_LEFT)."-".date('d', time());
+                    $a = ($p+1)."/".intval($_POST['prox']);
+                    AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+
+                    $verificador = VerificarMes($mes);
+                    if ($verificador == 0){
+                        // ADICIONAR RELATORIO INEXISTENTE
+                        AdicionarRel($_POST['val_parcela'],$_POST['val_parcela'],$stat,$mes_ano);
+                    } else {
+                        $pedidos_tot = intval($verificador->pedidos) + 1;
+                        $valor_tot = intval($verificador->valor) + intval($_POST['val_parcela']);
+                        $lucro_tot = intval($verificador->lucro) + intval($_POST['val_parcela']);
+                        UpdateRelMes($pedidos_tot,$valor_tot,$lucro_tot,$stat,$mes);
+                    }
+                }
+            } else if (intval($_POST['prox']) == 1) {
+                // ADICIONAR SOMENTE UMA PARCELA COM MES ATUAL
+                AdicionarParcela($a,$_POST['val_parcela'],$id_pedido,$mes_ano);
+            }
+        }
     }
 }
 
