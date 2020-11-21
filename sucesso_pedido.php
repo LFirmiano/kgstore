@@ -65,7 +65,12 @@ for ($w=0; $w<count($array);$w++){
 <input type="hidden" name="data" value="<?php echo $dataLocal;?>">
 <input type="hidden" name="parcela" value="<?php echo $texto;?>">
 <input type="hidden" name="lucro" value="<?php echo $lucro;?>">
-    
+<?php 
+  if (isset($prox)){
+?>
+    <input type="hidden" name="prox" value="<?php echo $prox;?>">
+    <input type="hidden" name="val_parcela" value="<?php echo $valor_da_parcela;?>">
+<?php } ?>
 
 </div>
 </div>

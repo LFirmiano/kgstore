@@ -16,7 +16,7 @@ date_default_timezone_set('America/Sao_Paulo');
 ?>
 <body>
     <?php include "include/menu.php";
-          include "include/L_relatorio.php";
+          include "include/L_parcelas.php";
     ?>
 
     <div class="container">
@@ -35,11 +35,21 @@ date_default_timezone_set('America/Sao_Paulo');
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><a href="">12</a></th>
-                <td>5/6</td>
-                <td>R$ 12,00</td>
+              <?php 
+                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                ?>
+                  <th scope="row">
+                    <form method="POST" action="detalhe_pedido.php">
+                      <a href="#" onclick="this.parentNode.submit()"><?= $row->pedido_id ?></a>
+                      <input type="hidden" name="visualizar" value="<?= $row->pedido_id ?>">
+                      <input type="hidden" value="<?php echo $row->ano ?>" name="data">
+                    </form>
+                  </th>
+                <td><?= $row->n_parcelas ?></td>
+                <td>R$ <?= $row->valor ?></td>
 
               </tr>
+              <?php } ?>
 
             </tbody>
           </table>
