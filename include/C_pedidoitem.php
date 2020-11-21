@@ -42,12 +42,14 @@ for ($i=0;$i<count($array_formas);$i++){
             $parcelas[] = $array_formas[$i+2];
             if ($array_formas[$i+2]=="1"){
                 $val_parcial = $array_formas[$i+1]*(0.9501);
+                $valor_da_parcela = $val_parcial;
                 $val_formas[] = $array_formas[$i+1];
                 $val_tot += $val_parcial;
                 $i++;
             } else {
                 $val_parcial = $array_formas[$i+1]*(0.9441);
                 $val_parcial = $val_parcial/intval($array_formas[$i+2]);
+                $valor_da_parcela = $val_parcial;
                 $val_formas[] = $array_formas[$i+1];
                 $val_tot += $val_parcial;
                 $i++;
@@ -60,6 +62,7 @@ if (isset($parcelas)){
     for ($m=0;$m<count($parcelas);$m++){
         if ($m==0){
             $texto = str_pad($parcelas[$m],2,"0",STR_PAD_LEFT)."x";
+            $prox = $parcelas[$m];
         }else {
             $texto .= "/".str_pad($parcelas[$m], 2, "0", STR_PAD_LEFT)."x";
         }

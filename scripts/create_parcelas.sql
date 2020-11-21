@@ -1,0 +1,9 @@
+-- CODIGO PARA MYSQL
+
+CREATE TABLE parcelas (
+    id_parcela INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    n_parcelas VARCHAR(200) NOT NULL,
+    valor DECIMAL(6,2) NOT NULL,
+    pedido_id INT(10) NOT NULL,
+    ano DATETIME NOT NULL
+)
