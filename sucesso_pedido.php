@@ -56,6 +56,8 @@ for ($w=0; $w<count($array);$w++){
 <br>
 <h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?>.00</strong></h5>
 
+<h5 class="text-success" style="margin-top:2%;">Pagamento efetuado em: <?php echo $forma?></h5>
+
 <input type="hidden" name="qtd_pedidos_item" value="<?php echo $qtd_pedidos_item;?>">
 <input type="hidden" name="valor_final" value="<?php echo $val_tot;?>">
 <input type="hidden" name="cliente" value="<?php echo $_POST['cliente'];?>">

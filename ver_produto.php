@@ -37,6 +37,9 @@
  
       <label for="disabledTextInput"><strong>Valor:</strong></label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="R$ <?php echo $prod->valor ?> ">
+
+      <label for="disabledTextInput"><strong>Valor de Compra:</strong></label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="R$ <?php echo $prod->valor_compra ?> ">
     </div>
 
   </fieldset>
@@ -59,7 +62,7 @@
     </form>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
         var unidade = $('#prod').val();
