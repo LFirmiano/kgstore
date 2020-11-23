@@ -6,6 +6,7 @@
     <?php include "include/painel2.php" ?>
 </head>
 <?php 
+header('Content-Type: text/html; charset=utf-8');
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 ?>
@@ -15,7 +16,7 @@ date_default_timezone_set('America/Sao_Paulo');
     ?>
 
     <div class="container">
-   <h1 class="display-4 text-center">Relatórios disponível</h1>
+   <h1 class="display-4 text-center">Relatórios disponíveis</h1>
    </div>
         <table class="table table-striped container ">
             <thead>
@@ -31,8 +32,14 @@ date_default_timezone_set('America/Sao_Paulo');
               <tr>
                 <?php 
                     while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+                      $partes = explode("-", $row->mes);
+                      if ($partes[1] == "03"){
+                        $mes = "Março";
+                      } else {
+                        $mes = ucfirst(strftime('%B', strtotime($row->mes)));
+                      }
                 ?>
-                <th scope="row"><?php echo ucfirst(strftime('%B', strtotime($row->mes))) ?></th>
+                <th scope="row"><?php echo $mes?></th>
                 <th><?php echo date_format(new DateTime($row->mes),'yy') ?></th>
                 <th><?php echo $row->valor?></th>
                 <th><?php echo $row->lucro?></th>
@@ -45,7 +52,7 @@ date_default_timezone_set('America/Sao_Paulo');
                   </svg></button>
                 </form>
                 <form action="detalhe_parcela_mes.php" method="POST">
-                  <input type="hidden" value="<?php //echo date_format(new DateTime($row->mes),'m') ?>" name="visualizar">
+                  <input type="hidden" value="<?php echo date_format(new DateTime($row->mes),'m') ?>" name="visualizar">
                   <button type="submit" class="btn btn-outline-success" style="float: left; margin-right: 3%;">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"/>

@@ -157,8 +157,8 @@ for ($i=0; $i<count($array);$i++){
   <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
 
 let global_incre = 0
@@ -182,7 +182,12 @@ function plotarFormas(){
   div = "#div-form"
   $('#div-form-controle').remove()
   for (i=0;i<val;i++){
-    valor = '<label for="exampleFormControlSelect1"><strong>Valor</strong></label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">$</span><input type="text" class="form-control" name="parte'+i+'" value="" aria-label="Amount (to the nearest dollar)" required></div></div>'
+    if (val == 1){
+      tot = $('#tot').val()
+      valor = '<label for="exampleFormControlSelect1"><strong>Valor</strong></label><div class="input-group"><div class="input-group-prepend"><p id="p">'+tot+'</p><input type="hidden" class="form-control" id="parte'+i+'" name="parte'+i+'" value="'+tot+'" aria-label="Amount (to the nearest dollar)"></div></div>'
+    }else {
+      valor = '<label for="exampleFormControlSelect1"><strong>Valor</strong></label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">$</span><input type="text" class="form-control" name="parte'+i+'" value="" aria-label="Amount (to the nearest dollar)" required></div></div>'
+    }
     if (i==0){
       sel = '<div id="div-form-controle"><div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></div></div>'
     } else {
@@ -199,6 +204,12 @@ function aplicarDesconto(){
   val_old = $('#tot').val()
   val_new = val_old - desconto
   $('#tot').val(val_new)
+  val = $('#plot-pag').val()
+  console.log(val)
+  if (val == 1){
+    $('#parte0').val(val_new)
+    $('#p').html(val_new)
+  }
   $('#tot-visual').html('<strong>Valor total: R$'+val_new+'.00</strong>')
 }
 

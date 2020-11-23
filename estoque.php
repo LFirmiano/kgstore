@@ -71,7 +71,7 @@ $(document).ready(function() {
                 ?>
                 <th scope="row"><?php echo $row->produto ?></th>
                 <td><?php echo $row->categoria ?></td>
-                <td><?php echo $row->valor ?></td>
+                <td><?php echo "R$ ".$row->valor ?></td>
                 <td>
 
                 <!--botao visualizar-->
