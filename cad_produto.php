@@ -67,7 +67,7 @@
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
-        <input type="text" class="form-control" name="valor" aria-label="Amount (to the nearest dollar)" required>
+        <input type="text" class="form-control" name="valor_compra" aria-label="Amount (to the nearest dollar)" required>
       </div>
       <small class="form-text text-muted">Valor que a KG comprou do fornecedor</small>
      </div>
