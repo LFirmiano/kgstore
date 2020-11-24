@@ -13,7 +13,7 @@ $ano = date('Y', time());
 
 $pegar_dados = "SELECT * FROM caixa WHERE id_caixa = :id";
 $dados = $conn->prepare($pegar_dados);
-$id = 7;
+$id = 1;
 $dados->bindParam(':id',$id,PDO::PARAM_STR);
 $dados->execute();
 $row = $dados->fetch(PDO::FETCH_OBJ);
