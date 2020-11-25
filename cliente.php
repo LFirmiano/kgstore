@@ -72,7 +72,7 @@ $(document).ready(function() {
                       // echo $row->produto;
                 ?>
                 <th scope="row"><?php echo $row->nome ?></th>
-                <td><?php echo $row->data_nascimento ?></td>
+                <td><?= date_format(new DateTime($row->data_nascimento),'d/m/Y') ?></td>
                 <td><?php echo $row->telefone ?></td>
                 <td>
 

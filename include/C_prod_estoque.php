@@ -4,13 +4,15 @@ include "bd.php";
 
 // CADASTRO DE PRODUTO
 
-$query = "INSERT INTO produtos (produto,categoria,fornecedor,valor) VALUES (:produto,:categoria,:fornecedor,:valor)";
+$query = "INSERT INTO produtos (produto,categoria,fornecedor,valor,valor_compra) VALUES (:produto,:categoria,:fornecedor,:valor,:valor_compra)";
 
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':produto',$_POST['produto'],PDO::PARAM_STR);
 $stmt->bindParam(':categoria',$_POST['categoria'],PDO::PARAM_STR);
 $stmt->bindParam(':fornecedor',$_POST['fornecedor'],PDO::PARAM_STR);
 $stmt->bindParam(':valor',$_POST['valor'],PDO::PARAM_STR);
+$stmt->bindParam(':valor_compra',$_POST['valor_compra'],PDO::PARAM_STR);
+
 
 if($stmt->execute()){
 

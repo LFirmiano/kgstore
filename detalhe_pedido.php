@@ -55,7 +55,7 @@
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->parcelas ?>">
 
       <label for="disabledTextInput"><strong>Observação:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->observacao ?>">
+      <textarea type="text" id="disabledTextInput" class="form-control" value=""><?php echo $row->observacao ?></textarea>
 
       <label for="disabledTextInput"><strong>Hora Compra:</strong></label>
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo date_format(new DateTime($row->data),'H:i:s') ?>">
