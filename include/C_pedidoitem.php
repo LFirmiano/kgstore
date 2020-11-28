@@ -28,6 +28,9 @@ for ($i=0;$i<count($array_formas);$i++){
         $formas[] = $array_formas[$i];
         $val_formas[] = $array_formas[$i+1];
         $val_tot += $array_formas[$i+1];
+        $auxiliar01 = 0;
+        $valor_caixa = $array_formas[$i+1];
+        include "C_caixa.php";
         $i++;
         continue;
     } else if ($array_formas[$i] == "Débito"){
@@ -126,7 +129,7 @@ for ($i=0; $i<count($array);$i++){
             // EXECUTAR O SELECT NA TABELA DE ESTOQUE PARA EDITAR AS QUANTIDADES
             $select->bindParam(':produto',$produto,PDO::PARAM_STR);
             $select->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
-            $select->execute();
+            //$select->execute();
             $qtd_old = $select->fetch(PDO::FETCH_OBJ);
             // OPERACAO PARA DIMINUIR O VALOR DO ESTOQUE
             $quantidade_lucro = intval($array[$i+1]);
@@ -135,17 +138,17 @@ for ($i=0; $i<count($array);$i++){
             $update->bindParam(':quantidade',$qtd_new,PDO::PARAM_STR);
             $update->bindParam(':produto',$produto,PDO::PARAM_STR);
             $update->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
-            $update->execute();
+            //$update->execute();
             // INSERIR NA TABELA PEDIDO ITEM
             $qtd_pedidos_item += intval($array[$i+1]);
             $stmt->bindParam(':tamanho',$array[$i],PDO::PARAM_STR);
             $stmt->bindParam(':quantidade',$array[$i+1],PDO::PARAM_STR);
-            $stmt->execute();
+            //$stmt->execute();
             $i+=2;
 
             // EXECUTAR O SELECT NA TABELA DE PRODUTO PARA PEGAR O VALOR COMPRA
             $select_lucro->bindParam(':produto',$produto,PDO::PARAM_STR);
-            $select_lucro->execute();
+            //$select_lucro->execute();
             $val_compra = $select_lucro->fetch(PDO::FETCH_OBJ);
 
             $val_para_lucro = $val_para_lucro*$quantidade_lucro;
