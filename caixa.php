@@ -41,6 +41,7 @@
           <input type="text" placeholder="Digite algo" class="form-control" name="obs">
           <br>
           <input type="text" class="form-control" placeholder="Valor" name="valor">
+          <input type="hidden" class="form-control" placeholder="Valor" name="caixa_red">
           <br>
           <button type="submit" class="btn btn-outline-success btn-sm">Adicionar</button>
           </form>
@@ -57,6 +58,7 @@
           <input type="text" class="form-control" placeholder="Digite algo" name="obs">
           <br>
           <input type="text" class="form-control" placeholder="Valor" name="retirada">
+          <input type="hidden" class="form-control" placeholder="Valor" name="caixa_red">
           <br>
           <button type="submit" class="btn btn-outline-danger btn-sm">Retirar</button>
           </form>

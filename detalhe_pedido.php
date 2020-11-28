@@ -6,6 +6,17 @@
     <?php include "include/painel2.php" ?>
 
 </head>
+
+<style>
+.botao-transp{
+  background: transparent;
+  border: none !important;
+  color: blue;
+  text-decoration: underline;
+}
+
+</style>
+
 <body>
     <script>
         $('#myModal').on('shown.bs.modal', function () {
@@ -19,7 +30,9 @@
    <?php 
    include "include/menu.php";
    include "include/R_pedido.php";
-   $_SESSION['data'] = $_POST['data'];
+   if (isset($_POST['data'])){
+      $_SESSION['data'] = $_POST['data'];
+    }
    ?>
    
 
@@ -29,36 +42,38 @@
    <h1 class="display-4 text-center">Informações do Pedido</h1>
 
    <div style="margin-top:2%; margin-bottom:5%">
-   <fieldset disabled>
+   <fieldset>
     <div class="form-group-inline">
       <label for="disabledTextInput"><strong>Quantidade Itens:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->qtd_pedidos_item ?>">
-      <form method="POST" action="detalhe_produto.php">
-      <a href="#" onclick="this.parentNode.submit()">Ver detalhes do produto</a>
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->qtd_pedidos_item ?>" disabled>
+      <form method="POST" id="form_submit" action="detalhe_produto.php">
+        <input type="hidden" value=<?php echo $_POST['visualizar'] ?> name="id_voltar">
+        <button type="submit" class="botao-transp" >Ver detalhes do pedido</button>
+        <!-- <a href="javascript:pagamento.submit()" target='_blank'>Ver detalhes do produto</a> -->
       </form>
 
       <br>
    
       <label for="disabledTextInput"><strong>Valor:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->valor_final ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->valor_final ?>" disabled>
 
       <label for="disabledTextInput"><strong>Cliente:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->cliente ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->cliente ?>" disabled>
  
       <label for="disabledTextInput"><strong>Pagamento:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->pagamento ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->pagamento ?>" disabled>
 
       <label for="disabledTextInput"><strong>Desconto:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo "R$" . $row->desconto . ".00" ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo "R$" . $row->desconto . ".00" ?>" disabled>
 
       <label for="disabledTextInput"><strong>Parcelas:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->parcelas ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->parcelas ?>" disabled>
 
       <label for="disabledTextInput"><strong>Observação:</strong></label>
-      <textarea type="text" id="disabledTextInput" class="form-control" value=""><?php echo $row->observacao ?></textarea>
+      <textarea type="text" id="disabledTextInput" class="form-control" value="" disabled><?php echo $row->observacao ?></textarea>
 
       <label for="disabledTextInput"><strong>Hora Compra:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo date_format(new DateTime($row->data),'H:i:s') ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo date_format(new DateTime($row->data),'H:i:s') ?>" disabled>
 
     </div>
         
@@ -72,4 +87,5 @@
      
 
 </body>
+
 </html>

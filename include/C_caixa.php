@@ -4,7 +4,7 @@ include "bd.php";
 
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
-$dataLocal = date('Y-m-d H:i:s', time());
+$diaLoc = date('Y-m-d H:i:s', time());
 $dia = date('d', time());
 $mes = date('m', time());
 $ano = date('Y', time());
@@ -18,21 +18,28 @@ $dados->bindParam(':id',$id,PDO::PARAM_STR);
 $dados->execute();
 $row = $dados->fetch(PDO::FETCH_OBJ);
 
-if (isset($_POST['valor'])){
+if (isset($_POST['valor']) && isset($_POST['caixa_red'])){
     $val = intval($_POST['valor']);
     $valor_caixa = intval($row->valor) + $val; 
     $tipo = "DEPÓSITO";
-} else if (isset($_POST['retirada'])){
+    $obs = $_POST['obs'];
+} else if (isset($_POST['retirada']) && isset($_POST['caixa_red'])){
     $val = intval($_POST['retirada']);
     $valor_caixa = intval($row->valor) - $val; 
     $tipo = "RETIRADA";
+    $obs = $_POST['obs'];
+} else if (isset($auxiliar01)){
+    $val = $valor_caixa;
+    $valor_caixa = intval($row->valor) + $valor_caixa; 
+    $tipo = "COMPRA";
+    $obs = "VALOR ADICIONADO POR COMPRA EM ESPECIE";
 }
 
 $query = "UPDATE caixa SET valor = :valor WHERE id_caixa = :id";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':valor',$valor_caixa,PDO::PARAM_STR);
-$stmt->bindParam(':id',$id,PDO::PARAM_STR);
-$stmt->execute();
+$u_caixa = $conn->prepare($query);
+$u_caixa->bindParam(':valor',$valor_caixa,PDO::PARAM_STR);
+$u_caixa->bindParam(':id',$id,PDO::PARAM_STR);
+$u_caixa->execute();
 
 // if (empty($row)){
 //     // INSERIR PELA PRIMEIRA VEZ O CAIXA
@@ -67,11 +74,13 @@ $stmt->execute();
 $query2 = "INSERT INTO movimentacao_caixa (valor,obs,tipo,data_caixa) VALUES (:valor,:obs,:tipo,:data_caixa)";
 $stmt2 = $conn->prepare($query2);
 $stmt2->bindParam(':valor',$val,PDO::PARAM_STR);
-$stmt2->bindParam(':obs',$_POST['obs'],PDO::PARAM_STR);
+$stmt2->bindParam(':obs',$obs,PDO::PARAM_STR);
 $stmt2->bindParam(':tipo',$tipo,PDO::PARAM_STR);
-$stmt2->bindParam(':data_caixa',$dataLocal,PDO::PARAM_STR);
+$stmt2->bindParam(':data_caixa',$diaLoc,PDO::PARAM_STR);
 $stmt2->execute();
 
-header("Location: ../caixa.php");
+if (isset($_POST['caixa_red'])){
+    header("Location: ../caixa.php");
+}
 
 ?>

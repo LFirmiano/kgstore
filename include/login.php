@@ -27,6 +27,13 @@ if ($stmt->execute()){
             if ($ident == 1){
                 header("Location: ../caixa.php");
             }
+        } else {
+            $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Credenciais Incorretas!</strong> Tente Novamente.</div>';
+            if ($ident == 0){
+                header("Location: ../login_adm.php");
+            } else {
+                header("Location: ../login_caixa.php");
+            }
         }
     } else {
         $_SESSION['msg'] = '<div class="alert alert-danger col" role="alert"><strong>Login Incorreto!</strong> Tente Novamente.</div>';
