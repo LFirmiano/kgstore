@@ -148,7 +148,6 @@ for ($i=0; $i<count($array);$i++){
             // EXECUTAR O SELECT NA TABELA DE PRODUTO PARA PEGAR O VALOR COMPRA
             $select_lucro->bindParam(':produto',$produto,PDO::PARAM_STR);
             $select_lucro->execute();
-            // VALOR DE COMPRA
             $val_compra = $select_lucro->fetch(PDO::FETCH_OBJ);
 
             $valor_venda = $val_para_lucro*$quantidade_lucro;
