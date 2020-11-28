@@ -116,10 +116,12 @@ $stmt->bindParam(':hora_compra',$dataLocal,PDO::PARAM_STR);
 $i=0;
 for ($i=0; $i<count($array);$i++){
     if (substr($array[$i],0,4) == "prod"){
+        // PEGUEI NOME DO PRODUTO
         $produto = substr($array[$i],4,strlen($array[$i]));
         $stmt->bindParam(':produto',$produto,PDO::PARAM_STR);
         $val = $i+1;
         $stmt->bindParam(':valor',$array[$val],PDO::PARAM_STR);
+        // PEGUEI VALOR DO PRODUTO
         $val_para_lucro = $array[$val];
         $i = $i+2;
         while (isset($array[$i]) && substr($array[$i],0,4) != "prod"){
@@ -129,6 +131,7 @@ for ($i=0; $i<count($array);$i++){
             $select->execute();
             $qtd_old = $select->fetch(PDO::FETCH_OBJ);
             // OPERACAO PARA DIMINUIR O VALOR DO ESTOQUE
+                // QUANTIDADE DE PRODUTOS DAQUELE TAMANHO
             $quantidade_lucro = intval($array[$i+1]);
             $qtd_new = intval($qtd_old->quantidade) - intval($array[$i+1]);
             // EXECUTAR UPDATE DO ESTOQUE
@@ -142,15 +145,15 @@ for ($i=0; $i<count($array);$i++){
             $stmt->bindParam(':quantidade',$array[$i+1],PDO::PARAM_STR);
             $stmt->execute();
             $i+=2;
-
             // EXECUTAR O SELECT NA TABELA DE PRODUTO PARA PEGAR O VALOR COMPRA
             $select_lucro->bindParam(':produto',$produto,PDO::PARAM_STR);
             $select_lucro->execute();
+            // VALOR DE COMPRA
             $val_compra = $select_lucro->fetch(PDO::FETCH_OBJ);
 
-            $val_para_lucro = $val_para_lucro*$quantidade_lucro;
+            $valor_venda = $val_para_lucro*$quantidade_lucro;
             $val_compra = $val_compra->valor_compra*$quantidade_lucro;
-            $lucro += $val_para_lucro-$val_compra;
+            $lucro += $valor_venda-$val_compra;
         }
     }
     $i--;
