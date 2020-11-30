@@ -39,7 +39,7 @@
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->endereco ?>">
 
       <label for="disabledTextInput"><strong>Data Nascimento:</strong></label>
-      <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->data_nascimento ?>">
+      <input type="text" id="disabledTextInput" class="form-control" value="<?= date_format(new DateTime($row->data_nascimento),'d/m/Y') ?>">
 
     </div>
         
