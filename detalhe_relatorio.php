@@ -5,8 +5,12 @@
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-$mes = "2020-".$_POST['visualizar']."-01";
-$mes = ucfirst(strftime('%B', strtotime($mes)));
+if (intval($_POST['visualizar']) != 0){
+  $mes = "2020-".$_POST['visualizar']."-01";
+  $mes = ucfirst(strftime('%B', strtotime($mes)));
+} else {
+  $mes = $_POST['visualizar'];
+}
 
 ?>
 <head>
