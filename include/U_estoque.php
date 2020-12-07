@@ -17,13 +17,13 @@ $a1 = 3;
 $r = 2;
 $n = 1 + ($i - $a1)/$r;
 
-$query2 = "UPDATE estoque SET quantidade = :quantidade WHERE produto = :produto AND tamanho = :tamanho";
+$query2 = "UPDATE estoque SET quantidade = :quantidade WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $stmt2 = $conn->prepare($query2);
 
 for ($j=1;$j<=$n;$j++){
 
     $stmt2->bindParam(':quantidade',$array[$aux2],PDO::PARAM_STR);
-    $stmt2->bindParam(':produto',$array[0],PDO::PARAM_STR);
+    $stmt2->bindParam(':produto_id',$array[0],PDO::PARAM_STR);
     $stmt2->bindParam(':tamanho',$array[$aux],PDO::PARAM_STR);
 
     $aux = $j + 2;
