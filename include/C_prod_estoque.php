@@ -49,7 +49,7 @@ if($stmt->execute()){
         $stmt2->bindParam(':quantidade',$array[$aux2],PDO::PARAM_STR);
         $stmt2->bindParam(':produto_id',$foreign_key,PDO::PARAM_STR);
 
-        $aux = $j + 2;
+        $aux = $aux + 2;
         $aux2 = $aux + 1;
 
         $stmt2->execute();
