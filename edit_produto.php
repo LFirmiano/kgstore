@@ -16,8 +16,8 @@
     include "include/L_categoria.php";
     include "include/L_fornecedor.php";
     require_once("include/bd.php");
-    $state = $conn->prepare("SELECT * FROM produtos WHERE produto = :produto");
-    $state->bindParam(':produto',$_POST['prod'],PDO::PARAM_STR);
+    $state = $conn->prepare("SELECT * FROM produtos WHERE id_produto = :id_produto");
+    $state->bindParam(':id_produto',$_POST['prod'],PDO::PARAM_STR);
     if ($state->execute()){
       $col = $state->fetch(PDO::FETCH_OBJ);
     }

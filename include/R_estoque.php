@@ -4,10 +4,10 @@
 
 include_once("bd.php");
 
-$id = $_REQUEST['id'];
+$id = $_POST['visualizar'];
 
-$stmt = $conn->prepare("SELECT * FROM estoque WHERE produto = :produto");
-$stmt->bindParam(':produto',$id,PDO::PARAM_STR);
+$stmt = $conn->prepare("SELECT * FROM estoque WHERE produto_id = :produto_id");
+$stmt->bindParam(':produto_id',$id,PDO::PARAM_STR);
 if($stmt->execute()){
     while($row = $stmt->fetch(PDO::FETCH_OBJ)){
         $estoque_info[] = array(
@@ -18,5 +18,3 @@ if($stmt->execute()){
 } else {
     echo "<br> NÃO FOI POSSIVEL CADASTRAR <br>";
 }
-	
-echo(json_encode($estoque_info));

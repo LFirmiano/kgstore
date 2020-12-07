@@ -16,6 +16,8 @@ $stmt->bindParam(':valor_compra',$_POST['valor_compra'],PDO::PARAM_STR);
 
 if($stmt->execute()){
 
+    $foreign_key = $conn->lastInsertId();
+
      // CADASTRO DE ESTOQUE
 
     $i=0;
@@ -36,7 +38,7 @@ if($stmt->execute()){
     $r = 2;
     $n = 1 + ($i - $a1)/$r;
 
-    $query2 = "INSERT INTO estoque (produto,unidade,tamanho,quantidade) VALUES (:produto,:unidade,:tamanho,:quantidade)";
+    $query2 = "INSERT INTO estoque (produto,unidade,tamanho,quantidade,produto_id) VALUES (:produto,:unidade,:tamanho,:quantidade,:produto_id)";
     $stmt2 = $conn->prepare($query2);
 
     for ($j=1;$j<=$n;$j++){
@@ -45,6 +47,7 @@ if($stmt->execute()){
         $stmt2->bindParam(':unidade',$array[0],PDO::PARAM_STR);
         $stmt2->bindParam(':tamanho',$array[$aux],PDO::PARAM_STR);
         $stmt2->bindParam(':quantidade',$array[$aux2],PDO::PARAM_STR);
+        $stmt2->bindParam(':produto_id',$foreign_key,PDO::PARAM_STR);
 
         $aux = $j + 2;
         $aux2 = $aux + 1;

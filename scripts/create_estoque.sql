@@ -7,3 +7,5 @@ CREATE TABLE estoque (
     tamanho VARCHAR(200) NOT NULL,
     quantidade INT(10) NOT NULL
 )
+ALTER TABLE estoque ADD COLUMN produto_id INT(10) UNSIGNED;
+ALTER TABLE estoque ADD FOREIGN KEY (produto_id) REFERENCES produtos (id_produto);
