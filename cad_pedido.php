@@ -47,10 +47,11 @@
       while ($row = $stmt->fetch(PDO::FETCH_OBJ)){ 
         $data[] = array(
           'produto' => $row->produto,
-          'valor' => $row->valor
+          'valor' => $row->valor,
+          'id' => $row->id_produto
         );
       ?>
-      <option value="<?php echo $row->produto ?>"><?php echo $row->produto ?></option>
+      <option value="<?php echo $row->id_produto ?>"><?php echo $row->produto." ".$row->categoria." (R$".$row->valor.")" ?></option>
     <?php } ?>
     </select>
   </div>
@@ -67,7 +68,8 @@
 
   <?php 
     for($j=0;$j<count($data);$j++){ ?>
-      <input type="hidden" id="<?php echo str_replace(' ','',$data[$j]['produto']) ?>" value=<?php echo $data[$j]['valor'] ?>>
+      <input type="hidden" id="<?php echo str_replace(' ','',$data[$j]['id']) ?>" value=<?php echo $data[$j]['valor'] ?>>
+      <input type="hidden" id="nomeProduto<?php echo str_replace(' ','',$data[$j]['id']) ?>" value=<?php echo $data[$j]['produto'] ?>>
   <?php }?>
 
     <!--botão add item carrinho-->
@@ -120,7 +122,7 @@
     function getval(sel)
     {
         // window.alert(sel.value);
-        $.getJSON('include/R_estoque.php?search=',{id: sel.value, ajax: 'true'}, function(j){
+        $.getJSON('include/R_estoque_ajax.php?search=',{id: sel.value, ajax: 'true'}, function(j){
           var opt = '<option>Selecione o Tamanho</option>';	
           for (var i = 0; i < j.length; i++) {
             opt += '<option value="' + j[i].tamanhos + '">' + j[i].tamanhos + '</option>';
@@ -133,6 +135,8 @@
       var produto = $('#id').val()
       var tamanho = $('#unidades').val()
       var quantidade = $('#quantidade').val()
+      nomeProduto = $('#nomeProduto'+produto).val()
+      console.log(nomeProduto)
       id_val = '#'+ produto.replace(' ','') +''
       var valor = $(id_val).val()
       var hs = '<h5></h5>'
@@ -151,7 +155,7 @@
           $(id_val+'-I').append(ipt_val);
         }
       } else {
-        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + produto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div><button id="delet'+produto.replace(' ','')+'" value="'+produto.replace(' ','')+'" onclick="deletar(this)" class="btn btn-outline-danger btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></input>';
+        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + nomeProduto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div><button id="delet'+produto.replace(' ','')+'" value="'+produto.replace(' ','')+'" onclick="deletar(this)" class="btn btn-outline-danger btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></input>';
         ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +produto.replace(' ','')+'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></div>'
         $('#carrinho').append(hs);
         $('#vals').append(ipt_val);

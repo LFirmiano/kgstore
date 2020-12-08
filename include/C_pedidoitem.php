@@ -103,10 +103,10 @@ foreach ($_POST as $row){
 }
 
 // PREAPRACAO PARA PEGAR E COLOCAR INFORMACOES NO BANCO
-$query = "INSERT INTO pedido_item (produto,tamanho,quantidade,valor,cliente,pagamento,hora_compra) VALUES (:produto,:tamanho,:quantidade,:valor,:cliente,:pagamento,:hora_compra)";
-$s_estoque = "SELECT quantidade FROM estoque WHERE produto=:produto AND tamanho=:tamanho";
-$u_estoque = "UPDATE estoque SET quantidade=:quantidade WHERE produto=:produto AND tamanho=:tamanho";
-$s_lucro = "SELECT valor_compra FROM produtos WHERE produto=:produto";
+$query = "INSERT INTO pedido_item (tamanho,quantidade,valor,cliente,pagamento,hora_compra,produto_id) VALUES (:tamanho,:quantidade,:valor,:cliente,:pagamento,:hora_compra,:produto)";
+$s_estoque = "SELECT quantidade FROM estoque WHERE produto_id=:produto AND tamanho=:tamanho";
+$u_estoque = "UPDATE estoque SET quantidade=:quantidade WHERE produto_id=:produto AND tamanho=:tamanho";
+$s_lucro = "SELECT valor_compra FROM produtos WHERE id_produto=:produto";   
 $stmt = $conn->prepare($query);
 $select = $conn->prepare($s_estoque);
 $update = $conn->prepare($u_estoque);
