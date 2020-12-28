@@ -16,8 +16,8 @@
     include "include/L_categoria.php";
     include "include/L_fornecedor.php";
     require_once("include/bd.php");
-    $state = $conn->prepare("SELECT * FROM produtos WHERE produto = :produto");
-    $state->bindParam(':produto',$_POST['prod'],PDO::PARAM_STR);
+    $state = $conn->prepare("SELECT * FROM produtos WHERE id_produto = :id_produto");
+    $state->bindParam(':id_produto',$_POST['prod'],PDO::PARAM_STR);
     if ($state->execute()){
       $col = $state->fetch(PDO::FETCH_OBJ);
     }
@@ -65,7 +65,7 @@
     </select>
   </div>
 
-  <input type="hidden" name="edit" value=<?php echo $_POST['edit']?>>
+  <input type="hidden" name="prod" value=<?php echo $_POST['prod']?>>
 
   <div class="form-group col-md-4">
   <label for="exampleFormControlSelect1"><strong>Valor do Produto</strong></label>
@@ -86,13 +86,19 @@
   </div>
   </div>
   </div>
-  
-  <a href="edit_estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-  </svg></a>
+
   <button type="submit" class="btn btn-outline-success" style="margin-bottom:2%;">Editar</button>
-  </div>
   </form>
+  <form action="edit_estoque.php" method="POST">
+    <input type="hidden" value="<?php echo $_POST['prod'] ?>" name="visualizar">
+    <input type="hidden" value="<?php echo $_POST['edit'] ?>" name="edit">
+    <button type="submit" class="btn btn-outline-dark" style="margin-bottom:2%;">
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      </svg>
+    </button>
+  </form>
+  </div>
         
 </body>
 </html>

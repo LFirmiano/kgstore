@@ -11,7 +11,10 @@
         $('#myInput').trigger('focus')
         })
     </script>
-   <?php include "include/menu.php";?>
+   <?php 
+   include "include/menu.php";
+   include "include/R_estoque.php";
+   ?>
 
    
    
@@ -19,7 +22,7 @@
    <h1 class="display-4 text-center">Editar Estoque</h1><hr>
 
    <!--Nome produto-->
-   <label class="text-info"><h5><strong>Produto: </strong><?php echo $_POST['visualizar']?></h5></label>
+   <label class="text-info"><h5><strong>Produto: </strong><?php echo $_POST['edit']?></h5></label>
 
    <!--form estoque-->
    <form action="edit_produto.php" method="POST">
@@ -38,6 +41,13 @@
    
    <label><strong>Quantidades:</strong></label>
    <div class="row" style="margin-top:2%; margin-bottom:5%" id="unidades"> 
+    <?php 
+      for ($i=0;$i<count($estoque_info);$i++){
+    ?>
+    <div class="form-group col-md-2"><label for="exampleFormControlInput1"><?= $estoque_info[$i]['tamanhos'] ?></label><input type="hidden" name="<?= $estoque_info[$i]['tamanhos'] ?>H" value="<?= $estoque_info[$i]['tamanhos'] ?>"><input type="number" name="<?= $estoque_info[$i]['tamanhos'] ?>"class="form-control" min="0" value="<?= $estoque_info[$i]['quantidades'] ?>"></div>
+    <?php 
+      }
+    ?>
 <br>
 </div>
 <a href="estoque.php" class="btn btn-outline-dark" style="margin-bottom:2%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -48,20 +58,5 @@
 
   </div>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      var unidade = $('#prod').val();
-      // console.log(unidade);
-      $.getJSON('include/R_estoque.php?search=',{id: unidade, ajax: 'true'}, function(j){
-          var divs = '<div></div>';	
-          for (var i = 0; i < j.length; i++) {
-            divs += '<div class="form-group col-md-2"><label for="exampleFormControlInput1">' + j[i].tamanhos + '</label><input type="hidden" name="' + j[i].tamanhos + 'H" value="' + j[i].tamanhos + '"><input type="number" name="' + j[i].tamanhos + '"class="form-control" min="0" value="' + j[i].quantidades + '"></div>';
-          }	
-          $('#unidades').html(divs).show();
-    });
-    })
-  </script>
 </body>
 </html>
