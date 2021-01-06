@@ -33,7 +33,7 @@
     while ($row = $stmt->fetch(PDO::FETCH_OBJ)){
         $array_aux[$i] = $row->produto;
         if ( $i==0 || ($i>0 && $array_aux[$i-1] != $row->produto)){ ?>
-            <h5 class="text-info" style="margin-top:2%;"><?php echo $row->produto ?> - R$<?php echo $row->valor?>.00</h5>
+            <h5 class="text-info" style="margin-top:2%;"><?php echo $row->produto ?> - R$<?php echo $row->valor?></h5>
             <h6 class="text-secundary"><strong><?php echo $row->tamanho?></strong> -> x<?php echo $row->quantidade ?></h6>
     <?php
 

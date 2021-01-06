@@ -97,14 +97,21 @@ foreach ($_POST as $row){
     $i++;
 }
 
+$pesquisa_sql = "SELECT produto FROM produtos WHERE id_produto = :id";
+$sql_pdo = $conn->prepare($pesquisa_sql);
+
+
 // GERAR O CARRINHO ANTERIOR
 $i = 0;
 for ($i=0; $i<count($array);$i++){
     if (substr($array[$i],0,4) == "prod"){
         $produto = substr($array[$i],4,strlen($array[$i]));
+        $sql_pdo->bindParam(':id',$produto,PDO::PARAM_STR);
+        $sql_pdo->execute();
+        $nome_produto = $sql_pdo->fetch(PDO::FETCH_OBJ);
         $i = $i+2; 
 ?>
-        <h5 class="text-info" style="margin-top:2%;"><?php echo $produto?> - R$<?php echo intval($array[$i-1])?>.00</h5>
+        <h5 class="text-info" style="margin-top:2%;"><?php echo $nome_produto->produto?> - R$<?php echo intval($array[$i-1])?>.00</h5>
 <?php
         while (isset($array[$i]) && substr($array[$i],0,4) != "prod"){
 ?>
