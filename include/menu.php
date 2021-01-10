@@ -45,6 +45,10 @@
           <a class="nav-link text-dark" href="relatorio_caixa.php">Movimentações Caixa</a>
         </li>
         <?php } ?>
+
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="troca.php">Produtos trocados</a>
+        </li>
           
         <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item dropdown">

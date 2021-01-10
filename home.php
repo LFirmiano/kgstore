@@ -15,7 +15,7 @@
     <?php 
     include "include/menu.php";
     include "include/grafs.php";
-    $mes = "2020-".$mes_atual."-01";
+    $mes = "2021-".$mes_atual."-01";
     $mes = ucfirst(strftime('%B', strtotime($mes)));
     ?>
 
@@ -42,18 +42,18 @@
                 
                 <div class="col">
                     <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2%">
-                        <h2 style="color:rgb(0, 204, 102)">Vendas (2020)</h2>
+                        <h2 style="color:rgb(0, 204, 102)">Vendas (2021)</h2>
                         <canvas id="vendasMes"></canvas><br>
-                        <figcaption class="figure-caption">Gráfico de vendas do ano 2020  
+                        <figcaption class="figure-caption">Gráfico de vendas do ano 2021  
                         </figcaption>
                     </div>
 
                     <br><br><hr><br><br>
 
                     <div class="chart-container text-center" style="position:relative, height:30vh; width:28vw; margin-left:2%; margin-top:2%">
-                        <h2 style="color:rgb(255, 0, 0)">Valores (2020)</h2>
+                        <h2 style="color:rgb(255, 0, 0)">Valores (2021)</h2>
                         <canvas id="valoresMes"></canvas><br>
-                        <figcaption class="figure-caption">Gráfico de valores do ano 2020  
+                        <figcaption class="figure-caption">Gráfico de valores do ano 2021  
                         </figcaption>
                     </div>
 
