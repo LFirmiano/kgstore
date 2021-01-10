@@ -45,6 +45,10 @@
           <a class="nav-link text-dark" href="relatorio_caixa.php">Movimentações Caixa</a>
         </li>
         <?php } ?>
+
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="troca.php">Produtos trocados</a>
+        </li>
           
         <?php if ($_SESSION['tipo']==0){ ?>
         <li class="nav-item dropdown">
@@ -69,6 +73,11 @@
         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="perfil.php">Meus Dados</a>
           <a class="dropdown-item" href="dados_empresa.php">Dados da Empresa</a>
+          <?php 
+            if ($_SESSION['adm'] == true){?>
+              <a class="dropdown-item" href="include/trocar.php">Logar como <?=$_SESSION['trocar']?> </a>
+          <?php }
+          ?>
           <div class="dropdown-divider"></div>
           <!--Sair provissorio-->
           <a href="include/logout.php" class="dropdown-item">Sair</a>

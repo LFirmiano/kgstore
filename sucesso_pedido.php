@@ -32,14 +32,21 @@
 </svg></h2> 
 
 <?php
+
+$pesquisa_sql = "SELECT produto FROM produtos WHERE id_produto = :id";
+$sql_pdo = $conn->prepare($pesquisa_sql);
+
 // INSERIR DADOS DO CARRINHO
 $w=0;
 for ($w=0; $w<count($array);$w++){
     if (substr($array[$w],0,4) == "prod"){
         $produto = substr($array[$w],4,strlen($array[$w]));
+        $sql_pdo->bindParam(':id',$produto,PDO::PARAM_STR);
+        $sql_pdo->execute();
+        $nome_produto = $sql_pdo->fetch(PDO::FETCH_OBJ);
         $val = $w+1;
 ?>
-        <h5 class="text-success" style="margin-top:2%;"><?php echo $produto ?> - R$<?php echo $array[$val] ?></h5>
+        <h5 class="text-success" style="margin-top:2%;"><?php echo $nome_produto->produto ?> - R$<?php echo $array[$val] ?></h5>
 <?php
         $w = $w+2;
         while (isset($array[$w]) && substr($array[$w],0,4) != "prod"){ 

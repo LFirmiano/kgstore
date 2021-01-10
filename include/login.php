@@ -22,9 +22,12 @@ if ($stmt->execute()){
             $_SESSION['senha'] = $db_senha;
             $_SESSION['tipo'] = $ident;
             if ($ident == 0){
+                $_SESSION['adm'] = true;
+                $_SESSION['trocar'] = "Caixa";
                 header("Location: ../home.php");
             }
             if ($ident == 1){
+                $_SESSION['adm'] = false;
                 header("Location: ../caixa.php");
             }
         } else {
