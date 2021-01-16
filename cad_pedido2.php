@@ -111,7 +111,7 @@ for ($i=0; $i<count($array);$i++){
         $nome_produto = $sql_pdo->fetch(PDO::FETCH_OBJ);
         $i = $i+2; 
 ?>
-        <h5 class="text-info" style="margin-top:2%;"><?php echo $nome_produto->produto?> - R$<?php echo intval($array[$i-1])?>.00</h5>
+        <h5 class="text-info" style="margin-top:2%;"><?php echo $nome_produto->produto?> - R$<?php echo $array[$i-1]?></h5>
 <?php
         while (isset($array[$i]) && substr($array[$i],0,4) != "prod"){
 ?>
@@ -127,7 +127,7 @@ for ($i=0; $i<count($array);$i++){
 <!-- FIM DA LISTAGEM -->
 
 <br>
-<h5 class="text-info text-right" id="tot-visual" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?>.00</strong></h5>
+<h5 class="text-info text-right" id="tot-visual" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?></strong></h5>
     
 
 </div>
