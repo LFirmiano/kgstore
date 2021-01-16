@@ -166,9 +166,9 @@
     function calcularTotal(valor,qtd,prod){
       qtd = parseInt(qtd)
       valor = valor*qtd
-      valor_total += parseInt(valor)
+      valor_total += valor
       $('#hide').show();
-      $('#entrarvalor').html('Valor total: R$'+ valor_total +'.00');
+      $('#entrarvalor').html('Valor total: R$'+ valor_total);
       $('#tot').val(valor_total)
       bol = false
       for (var j=0;j<i.length;j++){
@@ -192,11 +192,11 @@
       $('#delet' + $(deletar).val() + '').remove();
       for (var j=0;j<i.length;j++){
         if (i[j][0] == $(deletar).val()){
-          valor_total = valor_total - parseInt(i[j][1])
+          valor_total = valor_total - i[j][1]
           if (valor_total == 0){
             $('#hide').hide();
           } else {
-            $('#entrarvalor').html('Valor total: R$'+ valor_total +'.00');
+            $('#entrarvalor').html('Valor total: R$'+ valor_total);
           }
           $('#tot').val(valor_total)
           i[j][1] = 0
