@@ -51,32 +51,38 @@ $(document).ready(function() {
    <?php include "include/menu.php";?>
    <div class="container">
    <h1 class="display-4 text-center">Produtos trocados</h1>
+   <a href="pedidos.php" class="btn btn-outline-success" style="margin-bottom:2%;">Adicionar Troca</a>
    </div>
         <table class="table table-striped container display" id="tabela">
             <thead>
               <tr>
-                <th scope="col">Produto antigo</th>
-                <th scope="col">Produto novo</th>
+                <th scope="col">Produto Antigo</th>
+                <th scope="col">Tamanho trocado</th>
+                <th scope="col">Quantidade trocada</th>
+                <!-- <th scope="col">Pedido</th> -->
                 <th scope="col">Data troca</th>
+                <th scope="col">Valor da Diferença</th>
                 <th scope="col">Detalhes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <?php 
-                    //include "include/L_cliente.php";
-                    //while($row = $stmt->fetch(PDO::FETCH_OBJ)){
-                      // echo $row->produto;
+                    include "include/L_troca.php";
+                    while($row = $stmt->fetch(PDO::FETCH_OBJ)){
                 ?>
-                <th scope="row">Short Jeans<?php //echo $row->nome ?></th>
-                <td>Short de praia<?php //echo $row->telefone ?></td>
-                <td>12/01/2021<?php //date_format(new DateTime($row->data_nascimento),'d/m/Y') ?></td>
+                <th scope="row"><?php echo $row->produto." ".$row->categoria ?></th>
+                <td scope="row"><?php echo $row->tamanho_antigo_trocado ?></td>
+                <td scope="row"><?php echo $row->quantidade_antiga_trocada ?></td>
+                <!-- <td scope="row"><a href="#"><//echo $row->pedido_id ?></a></td> -->
+                <td><?php echo date_format(new DateTime($row->data_troca),'d/m/Y') ?></td>
+                <td scope="row"><?php echo $row->valor_diferenca ?></td>
                 
                 <td>
 
                 <!--botao visualizar-->
-                <form action="" method="POST">
-                  <input type="hidden" value="<?php// echo $row->id_cliente ?>" name="visualizar">
+                <form action="detalhe_troca.php" method="POST">
+                  <input type="hidden" value="<?php echo $row->id_troca ?>" name="visualizar">
                   <button type="submit" class="btn btn-outline-dark" style="float: left; margin-right: 3%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                   </svg></button>
@@ -84,7 +90,7 @@ $(document).ready(function() {
 
                 </td>
               </tr>
-              <?php// } ?>
+              <?php } ?>
             </tbody>
           </table>
 
