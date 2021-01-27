@@ -196,9 +196,9 @@ function plotarFormas(){
       valor = '<label for="exampleFormControlSelect1"><strong>Valor</strong></label><div class="input-group"><div class="input-group-prepend"><span class="input-group-text">$</span><input type="text" class="form-control" name="parte'+i+'" value="" aria-label="Amount (to the nearest dollar)" required></div></div>'
     }
     if (i==0){
-      sel = '<div id="div-form-controle"><div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></div></div>'
+      sel = '<div id="div-form-controle"><div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option><option value="Pix">Pix</option><option value="Transferencia">Transferência</option></select></div></div>'
     } else {
-      sel = '<div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option></select></div>'
+      sel = '<div id="nova-div-form'+i+'" class="form-group col-md-8"><label for="exampleFormControlSelect1"><strong>Forma de Pagamento</strong></label><select class="form-control" id="forma-pag'+i+'" onchange="opcoesParcela(this)" name="forma'+i+'"><option value="Dinheiro (Espécie)">Dinheiro (Espécie)</option><option value="Débito">Débito</option><option value="Crédito">Crédito</option><option value="Pix">Pix</option><option value="Transferencia">Transferência</option></select></div>'
       div = '#div-form-controle'
     }
     $(div).append(sel)
