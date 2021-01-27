@@ -20,7 +20,7 @@
    <!--info pedido-->
    <form method="POST" action="include/C_pedido.php">
    <div class="container">
-   
+   <div class="alert alert-info" role="alert"> Para finalizar a compra, clique em <strong>Finalizar</strong>.</div>
    <h1 class="display-4 text-center text-success">Pedido Efetuado com Sucesso!</h1>    
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
 
@@ -61,7 +61,7 @@ for ($w=0; $w<count($array);$w++){
 ?>
 
 <br>
-<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?>.00</strong></h5>
+<h5 class="text-success" style="margin-top:2%;"><strong>Valor total: R$<?php echo $_POST['tot'] ?></strong></h5>
 
 <h5 class="text-success" style="margin-top:2%;">Pagamento efetuado em: <?php echo $forma?></h5>
 

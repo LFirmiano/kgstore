@@ -4,7 +4,7 @@
 
 include_once("bd.php");
 
-$stmt = $conn->prepare("SELECT * FROM produtos");
+$stmt = $conn->prepare("SELECT * FROM produtos ORDER BY produto ASC");
 $stmt->execute();
 
 ?>
