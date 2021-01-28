@@ -129,7 +129,7 @@
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">$</span>
-        <input type="text" class="form-control" name="valAdc" aria-label="Amount (to the nearest dollar)" required>
+        <input type="text" class="form-control" name="valAdc" id="valAdc" aria-label="Amount (to the nearest dollar)" required>
       </div>
       <small class="form-text text-muted">Caso tenha valor adicional</small>
      </div>
@@ -152,7 +152,12 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 <script>
+
+$(document).ready(function(){
+  $('#valAdc').maskMoney({ decimal: '.', thousands: '', precision: 2 });
+})
 
 let soma = 0
 let id_pai = ''

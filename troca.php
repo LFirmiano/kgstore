@@ -58,10 +58,11 @@ $(document).ready(function() {
               <tr>
                 <th scope="col">Produto Antigo</th>
                 <th scope="col">Tamanho trocado</th>
-                <th scope="col">Quantidade trocada</th>
+                <th scope="col" width="15%">Quantidade trocada</th>
                 <!-- <th scope="col">Pedido</th> -->
                 <th scope="col">Data troca</th>
                 <th scope="col">Valor da Diferença</th>
+                <th scope="col">Pedido</th>
                 <th scope="col">Detalhes</th>
               </tr>
             </thead>
@@ -76,7 +77,8 @@ $(document).ready(function() {
                 <td scope="row"><?php echo $row->quantidade_antiga_trocada ?></td>
                 <!-- <td scope="row"><a href="#"><//echo $row->pedido_id ?></a></td> -->
                 <td><?php echo date_format(new DateTime($row->data_troca),'d/m/Y') ?></td>
-                <td scope="row"><?php echo $row->valor_diferenca ?></td>
+                <td scope="row"><?php echo "R$ ".$row->valor_diferenca ?></td>
+                <td scope="row"><?php echo $row->pedido_id ?></td>
                 
                 <td>
 

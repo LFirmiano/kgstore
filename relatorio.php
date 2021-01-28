@@ -40,7 +40,7 @@ date_default_timezone_set('America/Sao_Paulo');
                       }
                 ?>
                 <th scope="row"><?php echo $mes?></th>
-                <th><?php echo date_format(new DateTime($row->mes),'yy') ?></th>
+                <th><?php echo date_format(new DateTime($row->mes),'Y') ?></th>
                 <th><?php echo $row->valor?></th>
                 <th><?php echo $row->lucro?></th>
                 <td>

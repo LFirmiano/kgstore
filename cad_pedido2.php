@@ -166,7 +166,12 @@ for ($i=0; $i<count($array);$i++){
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 <script>
+
+$(document).ready(function(){
+  $('#desconto').maskMoney({ decimal: '.', thousands: '', precision: 2 });
+})
 
 let global_incre = 0
 
@@ -217,7 +222,7 @@ function aplicarDesconto(){
     $('#parte0').val(val_new)
     $('#p').html(val_new)
   }
-  $('#tot-visual').html('<strong>Valor total: R$'+val_new+'.00</strong>')
+  $('#tot-visual').html('<strong>Valor total: R$'+val_new.toFixed(2)+'</strong>')
 }
 
 </script>
