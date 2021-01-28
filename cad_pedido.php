@@ -219,7 +219,7 @@
           if (valor_total == 0){
             $('#hide').hide();
           } else {
-            $('#entrarvalor').html('Valor total: R$'+ valor_total);
+            $('#entrarvalor').html('Valor total: R$'+ valor_total.toFixed(2));
           }
           $('#tot').val(valor_total)
           i[j][1] = 0

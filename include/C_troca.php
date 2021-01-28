@@ -1,12 +1,15 @@
 <?php
 
 include "bd.php";
+include "functions/RelatorioFunction.php";
 
 $query = "INSERT INTO troca (valor_diferenca,data_troca,produto_antigo_id,tamanho_antigo_trocado,quantidade_antiga_trocada,pedido_id) VALUES (:valor_diferenca,NOW(),:produto_antigo_id,:tamanho_antigo_trocado,:quantidade_antiga_trocada,:pedido_id)";
 $select_estoque = "SELECT quantidade FROM estoque WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $select_estoque_novo = "SELECT quantidade FROM estoque WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $estoque = "UPDATE estoque SET quantidade = :quantidade WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $query_registro = "INSERT INTO registrotroca (produto_novo_id,tamanho_novo_trocado,quantidade_nova_trocada,troca_id) VALUES (:produto_novo_id,:tamanho_novo_trocado,:quantidade_nova_trocada,:troca_id)";
+
+$mes_atual = intval(date('m', time()));
 
 // FORMAR ARRAY
 $i=0;$j=0;$aux=0;
@@ -101,6 +104,23 @@ if($stmt->execute()){
 
         $iteracao--;
 
+    }
+
+    $mes_ano = date('Y', time())."-".str_pad($mes_atual,2,"0",STR_PAD_LEFT)."-".date('d', time());
+    $stat = "pendente";
+
+    $verificador = VerificarMes($mes_atual);
+    if ($verificador == 0){
+        // ADICIONAR RELATORIO INEXISTENTE
+        AdicionarRel($_POST['valAdc'],$_POST['valAdc'],$stat,$mes_ano);
+    } else {
+        // PEGA OS DADOS DO RELATORIO EXISTENTE
+        $pedidos_tot = intval($verificador->pedidos) + 1;
+        $valor_tot = $verificador->valor + $_POST['valAdc'];
+        $lucro_tot = $verificador->lucro + $_POST['valAdc'];
+        
+        //ATUALIZA OS DADOS DO RELATORIO
+        UpdateRelMes($pedidos_tot,$valor_tot,$lucro_tot,$stat,$mes_atual);
     }
 
     header('Location: ../troca.php');
