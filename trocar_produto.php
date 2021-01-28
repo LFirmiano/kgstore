@@ -88,14 +88,17 @@
   </div>
   <div class="form-group col-md-3">
   <label for="exampleFormControlSelect1"><strong>Tamanho</strong></label>
-  <select class="form-control" id="unidades">
+  <select class="form-control" id="unidades" onchange="getQtd(this)">
       <option value="">Selecione o Tamanho</option>
   </select>
   </div>
 
   <div class="form-group col-md-3">
   <label for="exampleFormControlSelect1"><strong>Quantidade</strong></label>
-  <input type="number" class="form-control" id="quantidade" value="">
+  <!-- <input type="number" class="form-control" id="quantidade" value=""> -->
+  <select class="form-control" id="quantidade">
+      <option value="">Selecione a Quantidade</option>
+  </select>
   </div>
 
   <div class="form-group col-md-2">
@@ -163,16 +166,29 @@ let soma = 0
 let id_pai = ''
 
 function getval(sel)
-    {
-        // window.alert(sel.value);
-        $.getJSON('include/R_estoque_ajax.php?search=',{id: sel.value, ajax: 'true'}, function(j){
-          var opt = '<option>Selecione o Tamanho</option>';	
-          for (var i = 0; i < j.length; i++) {
-            opt += '<option value="' + j[i].tamanhos + '">' + j[i].tamanhos + '</option>';
-          }	
-          $('#unidades').html(opt).show();
-  });
-    }
+{
+    // window.alert(sel.value);
+    $.getJSON('include/R_estoque_ajax.php?search=',{id: sel.value, ajax: 'true'}, function(j){
+      var opt = '<option>Selecione o Tamanho</option>';	
+      for (var i = 0; i < j.length; i++) {
+        opt += '<option value="' + j[i].tamanhos + '">' + j[i].tamanhos + '</option>';
+      }	
+      $('#unidades').html(opt).show();
+    });
+}
+
+function getQtd(sel)
+{
+    // window.alert(sel.value);
+    console.log(sel.value)
+    $.getJSON('include/R_qtd_ajax.php?search=',{id: $('#id').val(),tam: sel.value, ajax: 'true'}, function(j){
+      var opt = '<option value="">Selecione a Quantidade</option>';	
+      for (var i = 1; i <= j[0].quantidades; i++) {
+        opt += '<option value="' + i + '">' + i + '</option>';
+      }	
+      $('#quantidade').html(opt).show();
+    });
+}
 
 function calculartot(sel){
   qtd = $(sel).val()
