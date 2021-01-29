@@ -59,11 +59,17 @@
   <div class="form-group col-md-8">
   <label for="exampleFormControlSelect1"><strong>Tamanho e Quantidade</strong></label>
   
-  <select class="form-control" id="unidades" name="tamanho">
+  <select class="form-control" id="unidades" name="tamanho" onchange="getQtd(this)">
       <option value="">Selecione o Tamanho</option>
   </select>
 
-  <input type="number" class="form-control" id="quantidade" name="quantidade">
+  <br>
+
+  <select class="form-control" id="quantidade" name="quantidade">
+      <option value="">Selecione a Quantidade</option>
+  </select>
+
+  <!-- <input type="number" class="form-control" id="" name="quantidade"> -->
   </div>
 
   <?php 
@@ -111,6 +117,7 @@
   <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script>
@@ -123,11 +130,24 @@
     {
         // window.alert(sel.value);
         $.getJSON('include/R_estoque_ajax.php?search=',{id: sel.value, ajax: 'true'}, function(j){
-          var opt = '<option>Selecione o Tamanho</option>';	
+          var opt = '<option value="">Selecione o Tamanho</option>';	
           for (var i = 0; i < j.length; i++) {
             opt += '<option value="' + j[i].tamanhos + '">' + j[i].tamanhos + '</option>';
           }	
           $('#unidades').html(opt).show();
+  });
+    }
+
+    function getQtd(sel)
+    {
+        // window.alert(sel.value);
+        console.log(sel.value)
+        $.getJSON('include/R_qtd_ajax.php?search=',{id: $('#id').val(),tam: sel.value, ajax: 'true'}, function(j){
+          var opt = '<option value="">Selecione a Quantidade</option>';	
+          for (var i = 1; i <= j[0].quantidades; i++) {
+            opt += '<option value="' + i + '">' + i + '</option>';
+          }	
+          $('#quantidade').html(opt).show();
   });
     }
 
@@ -136,31 +156,34 @@
       var tamanho = $('#unidades').val()
       var quantidade = $('#quantidade').val()
       nomeProduto = $('#nomeProduto'+produto).val()
-      console.log(nomeProduto)
       id_val = '#'+ produto.replace(' ','') +''
       var valor = $(id_val).val()
       var hs = '<h5></h5>'
       var ipt_val = '<input type="hidden"></input>'
 
-      if ( $(id_val+'-D').length ){
-        console.log('#'+tamanho+'')
-        if ( $('#'+tamanho+produto.replace(' ','')+'').length ){
-          total_qtd = parseInt($('#qtd'+tamanho +produto.replace(' ','')+'').val()) + parseInt(quantidade)
-          $('#qtd'+tamanho +produto.replace(' ','')+'').val(total_qtd)
-          $('#'+tamanho+produto.replace(' ','')+'-SHOW').html('<strong>'+ tamanho +'</strong> -> x'+ total_qtd +'')
+      preenchido = verificaPreenchimento()
+
+      if (preenchido == true){
+        if ( $(id_val+'-D').length ){
+          console.log('#'+tamanho+'')
+          if ( $('#'+tamanho+produto.replace(' ','')+'').length ){
+            total_qtd = parseInt($('#qtd'+tamanho +produto.replace(' ','')+'').val()) + parseInt(quantidade)
+            $('#qtd'+tamanho +produto.replace(' ','')+'').val(total_qtd)
+            $('#'+tamanho+produto.replace(' ','')+'-SHOW').html('<strong>'+ tamanho +'</strong> -> x'+ total_qtd +'')
+          } else {
+            hs += '<h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6>';
+            ipt_val += '<input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></input>';
+            $(id_val+'-D').append(hs);
+            $(id_val+'-I').append(ipt_val);
+          }
         } else {
-          hs += '<h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6>';
-          ipt_val += '<input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></input>';
-          $(id_val+'-D').append(hs);
-          $(id_val+'-I').append(ipt_val);
+          hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + nomeProduto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div><button id="delet'+produto.replace(' ','')+'" value="'+produto.replace(' ','')+'" onclick="deletar(this)" class="btn btn-outline-danger btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></input>';
+          ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +produto.replace(' ','')+'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></div>'
+          $('#carrinho').append(hs);
+          $('#vals').append(ipt_val);
         }
-      } else {
-        hs += '<div id='+ produto.replace(' ','') +'-D><h5 class="text-info" style="margin-top:2%;">' + nomeProduto + ' - R$'+ valor +'</h5><h6 class="text-secundary" id="'+tamanho+produto.replace(' ','')+'-SHOW"><strong>'+ tamanho +'</strong> -> x'+ quantidade +'</h6></div><button id="delet'+produto.replace(' ','')+'" value="'+produto.replace(' ','')+'" onclick="deletar(this)" class="btn btn-outline-danger btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></button></input>';
-        ipt_val += '<div id='+ produto.replace(' ','') +'-I><input type="hidden" name="prod'+ produto +'" value="prod'+ produto +'"></input><input type="hidden" name="'+ valor +produto.replace(' ','')+'" value="'+ valor +'"></input></input><input type="hidden" id="'+ tamanho +produto.replace(' ','')+'" name="'+ tamanho +produto.replace(' ','')+'" value="'+ tamanho +'"></input><input type="hidden" id="qtd'+ tamanho +produto.replace(' ','')+'" name="qtd'+ tamanho +produto.replace(' ','')+'" value="'+ quantidade +'"></div>'
-        $('#carrinho').append(hs);
-        $('#vals').append(ipt_val);
+        calcularTotal(valor,quantidade,produto)
       }
-      calcularTotal(valor,quantidade,produto)
     })
 
     function calcularTotal(valor,qtd,prod){
@@ -196,13 +219,25 @@
           if (valor_total == 0){
             $('#hide').hide();
           } else {
-            $('#entrarvalor').html('Valor total: R$'+ valor_total);
+            $('#entrarvalor').html('Valor total: R$'+ valor_total.toFixed(2));
           }
           $('#tot').val(valor_total)
           i[j][1] = 0
         }
       }
       console.log(i)
+    }
+
+    function verificaPreenchimento(){
+      if ($('#unidades').val() == ""){
+        swal("Preencha o tamanho!")
+        return false
+      } else if ($('#quantidade').val() == "") {
+        swal("Preencha a quantidade!")
+        return false
+      } else {
+        return true
+      }
     }
 
 </script>

@@ -39,6 +39,11 @@ for ($i=0;$i<count($array_formas);$i++){
         $val_formas[] = $array_formas[$i+1];
         $val_tot += $val_parcial;
         $i++;
+    } else if ($array_formas[$i] == "Pix" || $array_formas[$i] == "Transferencia") {
+        $formas[] = $array_formas[$i];
+        $val_formas[] = $array_formas[$i+1];
+        $val_tot += $array_formas[$i+1];
+        $i++;
     } else {
         if (isset($array_formas[$i+2])){
             $formas[] = $array_formas[$i];

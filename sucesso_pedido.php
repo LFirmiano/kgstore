@@ -20,7 +20,7 @@
    <!--info pedido-->
    <form method="POST" action="include/C_pedido.php">
    <div class="container">
-   
+   <div class="alert alert-info" role="alert"> Para finalizar a compra, clique em <strong>Finalizar</strong>.</div>
    <h1 class="display-4 text-center text-success">Pedido Efetuado com Sucesso!</h1>    
    <div  class="row" style="margin-top:2%; margin-bottom:5%">
 

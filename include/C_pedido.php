@@ -67,8 +67,8 @@ if($stmt->execute()){
         $select->execute();
         $row = $select->fetch(PDO::FETCH_OBJ);
         $pedidos_tot = intval($row->pedidos) + 1;
-        $valor_tot = intval($row->valor) + intval($_POST['valor_final']);
-        $lucro_tot = intval($row->lucro) + intval($_POST['lucro']);
+        $valor_tot = $row->valor + $_POST['valor_final'];
+        $lucro_tot = $row->lucro + $_POST['lucro'];
         UpdateRelMes($pedidos_tot,$valor_tot,$lucro_tot,$stat,$mes);
 
         // INSERIR VALORES NA TABELA PARCELAS
@@ -94,8 +94,8 @@ if($stmt->execute()){
                         AdicionarRel($_POST['val_parcela'],$_POST['val_parcela'],$stat,$mes_ano);
                     } else {
                         $pedidos_tot = intval($verificador->pedidos) + 1;
-                        $valor_tot = intval($verificador->valor) + intval($_POST['val_parcela']);
-                        $lucro_tot = intval($verificador->lucro) + intval($_POST['val_parcela']);
+                        $valor_tot = $verificador->valor + $_POST['val_parcela'];
+                        $lucro_tot = $verificador->lucro + $_POST['val_parcela'];
                         UpdateRelMes($pedidos_tot,$valor_tot,$lucro_tot,$stat,$mes);
                     }
                 }
