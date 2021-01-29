@@ -18,6 +18,7 @@
                 <th scope="col">Tamanho</th>
                 <th scope="col">Valor</th>
                 <th scope="col">Hora compra</th>
+                <th scope="col">Foi Trocado?</th>
                 <th scope="col">Trocar</th>
               </tr>
             </thead>
@@ -31,6 +32,14 @@
                 <td><?php echo $row->tamanho ?></td>
                 <td>R$ <?php echo $row->valor ?></td>
                 <td><?php echo date_format(new DateTime($row->hora_compra),'H:i:s') ?></td>
+                <td>
+                <?php 
+                  if ($row->is_trocado != true){
+                    echo '<span class="badge badge-pill badge-danger">Não</span>';
+                  } else {
+                    echo '<span class="badge badge-pill badge-success">Sim</span>';
+                  }
+                ?></td>
                 <td>
 
                 <!--botão visualizar produtos-->

@@ -10,3 +10,7 @@ CREATE TABLE pedido_item (
 
 ALTER TABLE pedido_item ADD COLUMN produto_id INT(10) UNSIGNED;
 ALTER TABLE pedido_item ADD FOREIGN KEY (produto_id) REFERENCES produtos (id_produto);
+
+ALTER TABLE pedido_item ADD COLUMN is_trocado BOOLEAN;
+ALTER TABLE pedido_item ADD COLUMN troca_id INT(10) UNSIGNED;
+ALTER TABLE pedido_item ADD FOREIGN KEY (troca_id) REFERENCES troca (id_troca);
