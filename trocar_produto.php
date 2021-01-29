@@ -40,7 +40,8 @@
     </div>
 
   </fieldset>
-
+  
+  <input type="hidden" name="pedido_item_id" value="<?php echo $_POST['visualizar'] ?>">
   <input type="hidden" name="pedido_id" value="<?php echo $_POST['pedido_id'] ?>">
   <input type="hidden" name="prodAntigo" value="<?php echo $row->id_produto ?>">
   <input type="hidden" name="tamAntigo" value="<?php echo $row->tamanho ?>">

@@ -8,6 +8,8 @@ $select_estoque = "SELECT quantidade FROM estoque WHERE produto_id = :produto_id
 $select_estoque_novo = "SELECT quantidade FROM estoque WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $estoque = "UPDATE estoque SET quantidade = :quantidade WHERE produto_id = :produto_id AND tamanho = :tamanho";
 $query_registro = "INSERT INTO registrotroca (produto_novo_id,tamanho_novo_trocado,quantidade_nova_trocada,troca_id) VALUES (:produto_novo_id,:tamanho_novo_trocado,:quantidade_nova_trocada,:troca_id)";
+$query_trocado = "UPDATE pedido_item SET is_trocado = :is_trocado, troca_id = :troca_id WHERE id_pedido_item = :id_pedido_item";
+$trocado_is = true;
 
 $mes_atual = intval(date('m', time()));
 
@@ -45,6 +47,12 @@ $stmt->bindParam(':pedido_id',$_POST['pedido_id'],PDO::PARAM_STR);
 if($stmt->execute()){
 
     $troca_id = $conn->lastInsertId();
+
+    $select_trocado = $conn->prepare($query_trocado);
+    $select_trocado->bindParam(':is_trocado',$trocado_is,PDO::PARAM_STR);
+    $select_trocado->bindParam(':id_pedido_item',$_POST['pedido_item_id'],PDO::PARAM_STR);
+    $select_trocado->bindParam(':troca_id',$troca_id,PDO::PARAM_STR);
+    $select_trocado->execute();
 
     $stmt_select_estoque = $conn->prepare($select_estoque);
     $stmt_select_estoque->bindParam(':produto_id',$_POST['prodAntigo'],PDO::PARAM_STR);
