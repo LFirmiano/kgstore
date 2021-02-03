@@ -48,6 +48,7 @@
       <input type="text" id="disabledTextInput" class="form-control" value="<?php echo $row->qtd_pedidos_item ?>" disabled>
       <form method="POST" id="form_submit" action="detalhe_produto.php">
         <input type="hidden" value=<?php echo $_POST['visualizar'] ?> name="id_voltar">
+        <input type="hidden" value="<?php echo $row->data ?>" name="data">
         <button type="submit" class="botao-transp" >Ver detalhes do pedido</button>
         <!-- <a href="javascript:pagamento.submit()" target='_blank'>Ver detalhes do produto</a> -->
       </form>
