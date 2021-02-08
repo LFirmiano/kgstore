@@ -19,18 +19,18 @@ $dados->execute();
 $row = $dados->fetch(PDO::FETCH_OBJ);
 
 if (isset($_POST['valor']) && isset($_POST['caixa_red'])){
-    $val = intval($_POST['valor']);
-    $valor_caixa = intval($row->valor) + $val; 
+    $val = $_POST['valor'];
+    $valor_caixa = $row->valor + $val; 
     $tipo = "DEPÓSITO";
     $obs = $_POST['obs'];
 } else if (isset($_POST['retirada']) && isset($_POST['caixa_red'])){
-    $val = intval($_POST['retirada']);
-    $valor_caixa = intval($row->valor) - $val; 
+    $val = $_POST['retirada'];
+    $valor_caixa = $row->valor - $val; 
     $tipo = "RETIRADA";
     $obs = $_POST['obs'];
 } else if (isset($auxiliar01)){
     $val = $valor_caixa;
-    $valor_caixa = intval($row->valor) + $valor_caixa; 
+    $valor_caixa = $row->valor + $valor_caixa; 
     $tipo = "COMPRA";
     $obs = "VALOR ADICIONADO POR COMPRA EM ESPECIE";
 }
